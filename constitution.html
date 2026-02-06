@@ -1,0 +1,2878 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constitution UJIMA</title>
+    <link rel="stylesheet" href="styles/constitution.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+
+  <body class="h-full font-body bg-[#0a0503] text-[#e8dcc4] overflow-x-hidden">
+    <div id="app" class="w-full h-full">
+      <!-- Progress Bar -->
+      <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+      <!-- Back to Top Button -->
+      <div
+        class="back-to-top"
+        id="back-to-top"
+        role="button"
+        aria-label="Retour en haut"
+      >
+        <svg
+          class="w-6 h-6 text-[#0a0503]"
+          fill="none"
+          stroke="currentColor"
+          viewbox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            d="M5 10l7-7m0 0l7 7m-7-7v18"
+          />
+        </svg>
+      </div>
+
+      <!-- Sidebar Navigation -->
+      <div class="sidebar-nav hidden-sidebar" id="sidebar-nav">
+        <div class="reading-progress-bar" id="sidebar-progress"></div>
+        <h3
+          class="font-display text-xl font-semibold text-[#daa520] mb-4 text-center"
+        >
+          Navigation
+        </h3>
+        <div class="section-ornament mb-6" style="width: 80px"></div>
+        <div id="sidebar-items"></div>
+      </div>
+      <!-- Sidebar Toggle Button -->
+      <div
+        class="sidebar-toggle"
+        id="sidebar-toggle"
+        role="button"
+        aria-label="Toggle navigation"
+      >
+        <svg
+          class="sidebar-toggle-chevron w-5 h-5 text-[#daa520]"
+          fill="none"
+          stroke="currentColor"
+          viewbox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+          <div class="flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+              <div class="logo-wrap" style="width: 40px; height: 40px">
+                <span class="font-display font-bold text-[#daa520] text-lg"
+                  ><img
+                    class="nav-logo"
+                    src="assets/_images/_logos/logo-ujima.png"
+                    alt="logo UJIMA"
+                /></span>
+              </div>
+              <span class="font-display text-2xl font-semibold gradient-gold"
+                >UJIMA</span
+              >
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+              <a
+                href="#preambule"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Préambule</a
+              >
+              <a
+                href="#principes"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Principes</a
+              >
+              <a
+                href="#constitution"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Constitution</a
+              >
+              <a
+                href="#vision"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Vision</a
+              >
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-[#daa520] p-2">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewbox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            id="mobile-menu"
+            class="hidden md:hidden mt-4 pb-4 border-t border-[#daa520]/10 pt-4"
+          >
+            <div class="flex flex-col gap-4">
+              <a
+                href="#preambule"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Préambule</a
+              >
+              <a
+                href="#principes"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Principes</a
+              >
+              <a
+                href="#constitution"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Constitution</a
+              >
+              <a
+                href="#vision"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Vision</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Hero Section -->
+      <section
+        class="min-h-screen py-[4rem] hero-gradient flex items-center justify-center relative pt-20"
+      >
+        <div class="absolute inset-0 overflow-hidden">
+          <div
+            class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#daa520]/5 rounded-full blur-3xl"
+          ></div>
+          <div
+            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#cd853f]/5 rounded-full blur-3xl"
+          ></div>
+        </div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+          <div class="animate-in opacity-0 mb-8">
+            <div class="seal-decoration mx-auto mb-6">
+              <span class="font-display font-bold text-[#daa520] text-6xl"
+                >U</span
+              >
+            </div>
+          </div>
+          <h1
+            id="hero-title"
+            class="animate-in opacity-0 delay-100 font-display text-6xl md:text-8xl lg:text-9xl/[1.2] font-bold mb-6 leading-tight gradient-gold"
+          >
+            UJIMA
+          </h1>
+          <div
+            class="section-ornament mb-8 animate-in opacity-0 delay-200"
+          ></div>
+          <p
+            id="hero-subtitle"
+            class="animate-in opacity-0 delay-300 font-display text-2xl md:text-3xl text-[#daa520] mb-4 italic"
+          >
+            Un État Fédéral Africain
+          </p>
+          <p
+            class="animate-in opacity-0 delay-400 text-[#c9b896] text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed"
+          >
+            Constitution fondamentale d'une organisation destinée à préfigurer
+            un modèle fédéral africain souverain, juste et fonctionnel
+          </p>
+          <div
+            class="animate-in opacity-0 delay-400 flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <a
+              href="#constitution"
+              class="px-8 py-4 bg-gradient-to-r from-[#daa520] to-[#b8860b] text-[#0a0503] font-semibold rounded-md hover:shadow-lg hover:shadow-[#daa520]/30 transition-all duration-300 transform hover:scale-105"
+            >
+              Lire la Constitution
+            </a>
+            <a
+              href="#preambule"
+              class="px-8 py-4 border-2 border-[#daa520] text-[#daa520] font-semibold rounded-md hover:bg-[#daa520]/10 transition-all duration-300"
+            >
+              Découvrir le Préambule
+            </a>
+          </div>
+        </div>
+        <div
+          class="arrow-down bottom-[1rem] absolute bottom-0 left-1/2 animate-bounce"
+        >
+          <svg
+            class="w-6 h-6 text-[#daa520]/50"
+            fill="none"
+            stroke="currentColor"
+            viewbox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
+      </section>
+      <!-- Préambule Section -->
+      <section
+        id="preambule"
+        class="py-24 bg-[#0f0805] relative overflow-hidden"
+      >
+        <div class="absolute inset-0 opacity-5">
+          <div
+            class="absolute inset-0"
+            style="
+              background-image: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                #daa520 2px,
+                #daa520 3px
+              );
+              background-size: 100% 40px;
+            "
+          ></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+          <div class="text-center mb-16">
+            <span
+              class="text-[#daa520] text-sm font-medium uppercase tracking-widest"
+              >Constitution</span
+            >
+            <h2
+              class="font-display text-5xl md:text-6xl font-bold mt-4 mb-6 text-[#e8dcc4]"
+            >
+              PRÉAMBULE
+            </h2>
+            <div class="section-ornament"></div>
+          </div>
+          <div class="preambule-box rounded-lg p-8 md:p-12 mb-12">
+            <div class="quote-mark mb-4">"</div>
+            <div class="space-y-6 text-[#c9b896] leading-relaxed text-lg">
+              <p class="drop-cap">
+                Conscients que l'histoire de l'humanité est marquée par des
+                injustices systémiques, des dominations économiques, culturelles
+                et politiques,
+              </p>
+              <p>
+                Reconnaissant la nécessité pour les peuples africains et
+                afro-descendants de se doter de leurs propres institutions
+                d'émancipation, de protection et de projection collective,
+              </p>
+              <p>
+                Animés par la volonté de contribuer à l'avènement d'un monde
+                fondé sur la justice, la dignité humaine, la solidarité, la
+                responsabilité collective et la paix,
+              </p>
+              <p class="font-semibold text-[#daa520] text-xl mt-8">
+                Nous, membres fondateurs de UJIMA, proclamons la présente
+                Constitution comme loi fondamentale de notre organisation, et
+                affirmons que la Nation UJIMA constitue une forme d'État Fédéral
+                Africain (EFA), non territorial à ce stade, destiné à
+                préfigurer, expérimenter et démontrer un modèle fédéral africain
+                souverain, juste et fonctionnel.
+              </p>
+              <p class="text-center italic mt-8 text-[#b8860b]">
+                UJIMA se fonde sur les principes de travail collectif,
+                d'autonomie, de justice et de souveraineté morale, et agit dans
+                le respect des droits humains universels, de la fraternité entre
+                les peuples et de la responsabilité envers les générations
+                futures.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Principes Fondamentaux -->
+      <section id="principes" class="py-24 bg-[#0a0503]">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="text-center mb-16">
+            <span
+              class="text-[#daa520] text-sm font-medium uppercase tracking-widest"
+              >Fondements</span
+            >
+            <h2
+              class="font-display text-5xl md:text-6xl font-bold mt-4 mb-6 text-[#e8dcc4]"
+            >
+              Principes Fondamentaux
+            </h2>
+            <div class="section-ornament"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="principle-card rounded-lg p-8">
+              <img
+                class="principle-icon"
+                src="assets/_icons/_global/justice.png"
+                alt="justice icons"
+              />
+              <h3
+                class="font-display text-2xl font-semibold mb-4 text-[#daa520] text-center"
+              >
+                Justice
+              </h3>
+              <p class="text-[#c9b896] text-sm leading-relaxed text-center">
+                Un système fondé sur l'équité et le respect des droits
+                fondamentaux de chaque membre
+              </p>
+            </div>
+            <div class="principle-card rounded-lg p-8">
+              <img
+                class="principle-icon"
+                src="assets/_icons/_global/handshake.png"
+                alt="handshake icon"
+              />
+              <h3
+                class="font-display text-2xl font-semibold mb-4 text-[#daa520] text-center"
+              >
+                Solidarité
+              </h3>
+              <p class="text-[#c9b896] text-sm leading-relaxed text-center">
+                L'entraide collective comme pilier central de notre organisation
+              </p>
+            </div>
+            <div class="principle-card rounded-lg p-8">
+              <img
+                class="principle-icon"
+                src="assets/_icons/_global/freedom.png"
+                alt="freedom icon"
+              />
+              <h3
+                class="font-display text-2xl font-semibold mb-4 text-[#daa520] text-center"
+              >
+                Autonomie
+              </h3>
+              <p class="text-[#c9b896] text-sm leading-relaxed text-center">
+                L'autodétermination et l'indépendance dans nos décisions et
+                actions
+              </p>
+            </div>
+            <div class="principle-card rounded-lg p-8">
+              <img
+                class="principle-icon"
+                src="assets/_icons/_global/crown.png"
+                alt="crown icon"
+              />
+              <h3
+                class="font-display text-2xl font-semibold mb-4 text-[#daa520] text-center"
+              >
+                Souveraineté
+              </h3>
+              <p class="text-[#c9b896] text-sm leading-relaxed text-center">
+                Une souveraineté morale et collective au service de
+                l'émancipation
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Constitution Complète -->
+      <section id="constitution" class="py-24 bg-[#0f0805]">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="text-center mb-16">
+            <span
+              class="text-[#daa520] text-sm font-medium uppercase tracking-widest"
+              >Document Fondamental</span
+            >
+            <h2
+              id="constitution-title"
+              class="font-display text-5xl md:text-6xl font-bold mt-4 mb-6 text-[#e8dcc4]"
+            >
+              Constitution de l'Association UJIMA
+            </h2>
+            <div class="section-ornament"></div>
+            <p class="text-[#c9b896] mt-6 max-w-3xl mx-auto leading-relaxed">
+              Texte intégral de la constitution définissant les structures, les
+              principes et le fonctionnement de l'État Fédéral Africain UJIMA
+            </p>
+          </div>
+          <!-- Search Bar -->
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-input"
+              class="search-input"
+              placeholder="Rechercher un article, titre ou mot-clé..."
+              aria-label="Rechercher dans la constitution"
+            />
+            <svg
+              class="search-icon w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <div class="search-results" id="search-results"></div>
+          </div>
+          <!-- Table des matières -->
+          <div class="table-of-contents rounded-lg p-8 mb-12">
+            <h3 class="font-display text-2xl font-semibold mb-6 text-[#daa520]">
+              Table des Matières
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <a
+                href="#titre1"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre I - Identité et Principes Fondamentaux</a
+              >
+              <a
+                href="#titre2"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre II - Objectifs et Mission</a
+              >
+              <a
+                href="#titre3"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre III - Nationalité et Citoyenneté</a
+              >
+              <a
+                href="#titre4"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre IV - Conditions d'Adhésion</a
+              >
+              <a
+                href="#titre5"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre V - Souveraineté et Institutions</a
+              >
+              <a
+                href="#titre6"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre VI - Assemblée Constituante et Citoyenne</a
+              >
+              <a
+                href="#titre7"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre VII - Conseil Suprême UJIMA</a
+              >
+              <a
+                href="#titre8"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre VIII - Gouvernement UJIMA</a
+              >
+              <a
+                href="#titre9"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre IX - De la Justice Interne</a
+              >
+              <a
+                href="#titre10"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre X - Administration et Service Civil</a
+              >
+              <a
+                href="#titre11"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre XI - Validation des Dirigeants Élus</a
+              >
+              <a
+                href="#titre12"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre XII - Du Comité d'Éthique</a
+              >
+              <a
+                href="#titre13"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre XIII - Du Congrès Panafricain Annuel</a
+              >
+              <a
+                href="#titre14"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre XIV - Des Ressources et de l'Économie</a
+              >
+              <a
+                href="#titre15"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre XV - De la Discipline et de la Responsabilité</a
+              >
+              <a
+                href="#titre16"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre XVI - Des Révisions Constitutionnelles</a
+              >
+              <a
+                href="#titre17"
+                class="toc-link text-[#c9b896] hover:text-[#daa520] transition-all text-sm"
+                >Titre XVII - Dispositions Finales</a
+              >
+            </div>
+          </div>
+          <!-- Articles de la constitution -->
+          <div class="space-y-12">
+            <!-- Titre I -->
+            <div id="titre1" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE I - DISPOSITIONS GÉNÉRALES
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 1 - Dénomination et Nature
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Il est créé une association dénommée
+                    <strong class="text-[#daa520]">UJIMA</strong>, constituant
+                    un État Fédéral Africain (EFA) non territorial, organisation
+                    panafricaine à vocation d'émancipation collective, de
+                    souveraineté morale et de développement endogène des peuples
+                    africains et afro-descendants.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 2 - Siège
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Le siège de l'association est établi en France. Il peut être
+                    transféré par décision du Conseil Fédéral, ratifiée par
+                    l'Assemblée Générale.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 3 - Durée
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    L'association est constituée pour une durée illimitée. Elle
+                    peut être dissoute dans les conditions prévues par la
+                    présente Constitution.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Titre II -->
+            <div id="titre2" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE II - PRINCIPES FONDAMENTAUX
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 4 - Objectifs
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    UJIMA poursuit les objectifs suivants :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">▸</span>
+                      <span
+                        >Promouvoir l'émancipation économique, culturelle et
+                        politique des peuples africains et
+                        afro-descendants</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">▸</span>
+                      <span
+                        >Développer des institutions panafricaines de
+                        solidarité, de justice et de gouvernance</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">▸</span>
+                      <span
+                        >Expérimenter et démontrer un modèle fédéral africain
+                        souverain et viable</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">▸</span>
+                      <span
+                        >Favoriser la coopération, l'entraide et le
+                        développement mutuel entre membres</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">▸</span>
+                      <span
+                        >Préserver et promouvoir les valeurs, cultures et
+                        patrimoines africains</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 5 - Valeurs Cardinales
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    UJIMA se fonde sur les valeurs suivantes, inaliénables et
+                    non négociables :
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-4 pl-4">
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border border-[#daa520]/20"
+                    >
+                      <h5 class="font-semibold text-[#daa520] mb-2">
+                        UJIMA (Travail Collectif)
+                      </h5>
+                      <p class="text-[#c9b896] text-sm">
+                        Construire et maintenir ensemble notre communauté
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border border-[#daa520]/20"
+                    >
+                      <h5 class="font-semibold text-[#daa520] mb-2">
+                        Justice et Équité
+                      </h5>
+                      <p class="text-[#c9b896] text-sm">
+                        Garantir l'égalité de traitement et de dignité
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border border-[#daa520]/20"
+                    >
+                      <h5 class="font-semibold text-[#daa520] mb-2">
+                        Solidarité
+                      </h5>
+                      <p class="text-[#c9b896] text-sm">
+                        Soutien mutuel et responsabilité collective
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border border-[#daa520]/20"
+                    >
+                      <h5 class="font-semibold text-[#daa520] mb-2">
+                        Souveraineté
+                      </h5>
+                      <p class="text-[#c9b896] text-sm">
+                        Autodétermination et indépendance morale
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 6 - Moyens d'Action
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Pour atteindre ses objectifs, UJIMA met en œuvre des
+                    programmes éducatifs, économiques, culturels et sociaux ;
+                    développe des partenariats avec d'autres organisations ;
+                    organise des événements et des formations ; et publie des
+                    études et des recommandations sur les questions africaines
+                    et afro-descendantes.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Titre III -->
+            <div id="titre3" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE III - ORGANISATION INSTITUTIONNELLE
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 7 - Structure Fédérale
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    UJIMA est organisée selon une structure fédérale comportant
+                    trois niveaux :
+                  </p>
+                  <div class="pl-4 space-y-4">
+                    <div
+                      class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-4 rounded-l-lg border-l-4 border-[#daa520]"
+                    >
+                      <h5 class="font-semibold text-[#daa520] mb-2">
+                        1. Le Niveau Fédéral
+                      </h5>
+                      <p class="text-[#c9b896] text-sm">
+                        Incarnant la souveraineté collective et les institutions
+                        centrales
+                      </p>
+                    </div>
+                    <div
+                      class="bg-gradient-to-r from-[#b8860b]/10 to-transparent p-4 rounded-l-lg border-l-4 border-[#b8860b]"
+                    >
+                      <h5 class="font-semibold text-[#b8860b] mb-2">
+                        2. Les Circonscriptions Régionales
+                      </h5>
+                      <p class="text-[#c9b896] text-sm">
+                        Entités territoriales ou diasporiques regroupant les
+                        membres
+                      </p>
+                    </div>
+                    <div
+                      class="bg-gradient-to-r from-[#cd853f]/10 to-transparent p-4 rounded-l-lg border-l-4 border-[#cd853f]"
+                    >
+                      <h5 class="font-semibold text-[#cd853f] mb-2">
+                        3. Les Cellules Locales
+                      </h5>
+                      <p class="text-[#c9b896] text-sm">
+                        Unités de base assurant l'ancrage communautaire
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 8 - Les Organes Fédéraux
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Les institutions fédérales d'UJIMA comprennent :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        ><strong class="text-[#e8dcc4]"
+                          >L'Assemblée Générale Fédérale</strong
+                        >
+                        - organe suprême de délibération</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        ><strong class="text-[#e8dcc4]"
+                          >Le Conseil Fédéral</strong
+                        >
+                        - organe exécutif et de gouvernance</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        ><strong class="text-[#e8dcc4]"
+                          >Le Président Fédéral</strong
+                        >
+                        - chef de l'État et représentant</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        ><strong class="text-[#e8dcc4]"
+                          >La Cour de Justice</strong
+                        >
+                        - organe juridictionnel</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        ><strong class="text-[#e8dcc4]"
+                          >Le Conseil des Sages</strong
+                        >
+                        - organe consultatif</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Titre IV -->
+            <div id="titre4" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE IV - CONDITIONS D'ADHÉSION ET D'ACCÈS À LA NATIONALITÉ
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 12 - Éligibilité de principe
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Peut demander l'adhésion à UJIMA toute personne qui :
+                  </p>
+                  <div class="pl-4 space-y-3">
+                    <div class="flex items-start gap-3">
+                      <span class="text-[#daa520] font-bold min-w-[24px]"
+                        >1.</span
+                      >
+                      <span class="text-[#c9b896]"
+                        >S'identifie consciemment comme Africaine ou
+                        Afro-descendante, par l'histoire, la culture, l'héritage
+                        ou l'engagement ;</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="text-[#daa520] font-bold min-w-[24px]"
+                        >2.</span
+                      >
+                      <span class="text-[#c9b896]"
+                        >Reconnaît la légitimité du projet politique, culturel
+                        et moral de UJIMA ;</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="text-[#daa520] font-bold min-w-[24px]"
+                        >3.</span
+                      >
+                      <span class="text-[#c9b896]"
+                        >N'est pas engagée dans une organisation ou une pratique
+                        hostile aux principes de justice, de dignité et
+                        d'émancipation portés par UJIMA.</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 13 - Citoyens associés
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Peuvent être admises comme Citoyens Associés UJIMA, sans
+                    accès à la nationalité pleine, les personnes non africaines
+                    qui :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>soutiennent activement la mission de UJIMA ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>respectent sa souveraineté institutionnelle ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >n'occupent pas de fonctions stratégiques de direction
+                        ou de justice.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 14 - Acte volontaire d'adhésion
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    L'adhésion à UJIMA est un acte libre, volontaire et
+                    conscient. Toute personne candidate doit :
+                  </p>
+                  <div class="pl-4 space-y-3">
+                    <div class="flex items-start gap-3">
+                      <span class="text-[#daa520] font-bold min-w-[24px]"
+                        >1.</span
+                      >
+                      <span class="text-[#c9b896]"
+                        >Déposer une demande officielle d'adhésion ;</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="text-[#daa520] font-bold min-w-[24px]"
+                        >2.</span
+                      >
+                      <span class="text-[#c9b896]"
+                        >Fournir les informations nécessaires à l'inscription au
+                        Registre Central ;</span
+                      >
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="text-[#daa520] font-bold min-w-[24px]"
+                        >3.</span
+                      >
+                      <span class="text-[#c9b896]"
+                        >S'engager à respecter la Constitution et les Lois
+                        UJIMA.</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 15 - Serment d'adhésion
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    L'adhésion est validée par la prestation d'un
+                    <strong class="text-[#daa520]"
+                      >Serment d'Engagement UJIMA</strong
+                    >, par lequel la personne s'engage à reconnaître l'autorité
+                    institutionnelle de UJIMA, à agir avec loyauté envers la
+                    Nation UJIMA et à défendre la dignité, la justice et l'unité
+                    du peuple.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 16 - Accès à la nationalité pleine
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    L'accès à la nationalité UJIMA pleine est conditionné :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>à une période probatoire ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>à une formation civique et historique UJIMA ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>à une contribution active ou matérielle ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >à la validation par les institutions compétentes.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 17 - Nationalité des enfants
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Est National·e UJIMA de naissance tout enfant né d'au moins
+                    un parent citoyen UJIMA, sous réserve d'inscription au
+                    Registre Central. Les enfants bénéficient d'une protection
+                    institutionnelle renforcée et d'un statut de
+                    <strong class="text-[#daa520]">citoyen en formation</strong
+                    >.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Titre V -->
+            <div id="titre5" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE V - SOUVERAINETÉ ET INSTITUTIONS
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 18 - Principe de souveraineté interne
+                  </h4>
+                  <div
+                    class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-6 rounded-lg border-l-4 border-[#daa520] mb-4"
+                  >
+                    <p class="text-[#c9b896] leading-relaxed mb-4">
+                      <strong class="text-[#daa520]"
+                        >La souveraineté de UJIMA réside dans sa
+                        Constitution</strong
+                      >, qui constitue la norme suprême de l'ordre
+                      institutionnel UJIMA.
+                    </p>
+                    <p class="text-[#c9b896] leading-relaxed mb-4">
+                      Cette souveraineté s'exerce à travers les institutions
+                      constitutionnelles, dans le respect strict de la
+                      hiérarchie établie par la présente Constitution.
+                    </p>
+                    <p class="text-[#c9b896] leading-relaxed mb-4">
+                      <strong class="text-[#e8dcc4]"
+                        >Nulle institution, nul organe, nul individu ne peut se
+                        prévaloir d'une souveraineté supérieure ou concurrente à
+                        celle de la Constitution.</strong
+                      >
+                    </p>
+                    <p class="text-[#c9b896] leading-relaxed italic">
+                      Cette souveraineté s'inscrit dans la perspective de la
+                      construction progressive d'un État Fédéral Africain, fondé
+                      sur l'unité dans la diversité, l'autonomie des peuples
+                      africains et la coopération fédérale entre nations
+                      africaines souveraines.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 19 - Institutions fondamentales
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-4">
+                    Les institutions fondamentales de UJIMA sont :
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-4 pl-4">
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="institutions-icon"
+                          src="assets/_icons/_global/constitution.png"
+                          alt="constitution icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          La Constitution
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Norme suprême de l'ordre institutionnel
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="institutions-icon"
+                          src="assets/_icons/_global/crown.png"
+                          alt="crown icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Le Conseil Suprême UJIMA
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Organe directeur et garant de la Constitution
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="institutions-icon"
+                          src="assets/_icons/_global/institution.png"
+                          alt="institution icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          L'Assemblée Constituante et Citoyenne
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Représentation populaire et législative
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="institutions-icon"
+                          src="assets/_icons/_global/government.png"
+                          alt="government icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Le Gouvernement UJIMA
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Pouvoir exécutif et administratif
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="institutions-icon"
+                          src="assets/_icons/_global/justice.png"
+                          alt="justice icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Le Bureau de Justice UJIMA
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Pouvoir judiciaire et arbitrage
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="institutions-icon"
+                          src="assets/_icons/_global/administration.png"
+                          alt="dministration icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          L'Administration et le Service Civil
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Gestion opérationnelle et services publics
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Titre VI -->
+            <div id="titre6" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE VI - DE L'ASSEMBLÉE CONSTITUANTE ET CITOYENNE
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 20 - Rôle
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    L'Assemblée est l'organe délibératif et constituant de la
+                    Nation UJIMA.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Elle adopte et révise la Constitution sous le contrôle de
+                    constitutionnalité du Conseil Suprême.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Ses décisions sont exécutoires sauf opposition motivée du
+                    Conseil Suprême pour inconstitutionnalité.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 21 - Composition
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    L'Assemblée est composée de représentants élus ou désignés
+                    selon des règles définies par la loi organique.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Titre VII -->
+            <div id="titre7" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE VII - DU CONSEIL SUPRÊME UJIMA
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 22 - Rôle
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Conseil Suprême UJIMA est l'organe suprême de garantie,
+                    d'interprétation et de protection de la Constitution.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Il est placé immédiatement en dessous de la Constitution et
+                    au-dessus de toutes les autres institutions de la Nation
+                    UJIMA.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Il incarne la continuité historique, morale et
+                    institutionnelle de UJIMA.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 22 bis - Du Potentat UJIMA
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Potentat UJIMA est le chef suprême institutionnel de la
+                    Nation UJIMA.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Il est le garant vivant de la Constitution, de la vision
+                    fondatrice et de l'unité de la Nation.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Il exerce son autorité dans les limites strictes de la
+                    Constitution et ne peut ni la suspendre ni la modifier.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Il dispose du pouvoir de :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >valider ou invalider les décisions des institutions
+                        subordonnées en cas d'inconstitutionnalité ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >dissoudre l'Assemblée en cas de violation grave de la
+                        Constitution ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >nommer ou révoquer les hauts responsables selon les
+                        procédures prévues.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 22 ter - Du Suppléant du Potentat
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Le Suppléant assiste le Potentat et le remplace en cas
+                    d'empêchement, d'incapacité ou de vacances.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 23 - Attributions
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Le Conseil Suprême veille au respect de la Constitution,
+                    arbitre les conflits institutionnels et valide les
+                    nominations aux plus hautes fonctions.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Titre VIII -->
+            <div id="titre8" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE VIII - DU GOUVERNEMENT UJIMA
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 24 - Nature
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Le Gouvernement UJIMA est l'organe exécutif central. Il est
+                    composé de neuf (9) ministères de souveraineté.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 25 - Composition
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-4">
+                    Le Gouvernement comprend notamment :
+                  </p>
+                  <div class="grid md:grid-cols-1 gap-3 pl-4">
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère de l'Économie Souveraine et des
+                        Ressources Stratégiques
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère de l'Éducation, de la Conscience et de la
+                        Transmission
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère de la Culture, de l'Art, des Médias et de
+                        l'Imaginaire Collectif
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère du Travail, de l'Organisation Sociale et
+                        de la Dignité
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère de la Justice, du Droit et de la
+                        Discipline Institutionnelle
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère du Pouvoir Politique et des Relations
+                        Stratégiques
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère de la Spiritualité, de l'Éthique et des
+                        Valeurs
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère de la Famille, des Couples, de l'Enfance
+                        et de la Continuité Biologique
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • le Ministère de la Défense, de la Sécurité et de la
+                        Contre-Domination
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 26 - Responsabilité
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Le Gouvernement est responsable devant l'Assemblée et le
+                    Conseil Suprême.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 26 bis - Président général / Chef du Gouvernement
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Président général est le Chef du Gouvernement UJIMA.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Il dirige l'action gouvernementale, coordonne les ministères
+                    et répond de son action devant l'Assemblée et le Conseil
+                    Suprême.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 26 ter - Des Assistants du Président général
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Les Assistants du Président général sont des autorités
+                    exécutives déléguées, placées sous l'autorité directe du
+                    Président général.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Ils constituent des extensions fonctionnelles, géopolitiques
+                    et civilisationnelles de l'Exécutif central.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Ils ne disposent d'aucune souveraineté propre et ne peuvent
+                    exercer de pouvoir concurrent à celui du Président général.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 26 quart - Hiérarchie et fonctions des Assistants
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Les Assistants du Président général sont les suivants :
+                  </p>
+                  <div class="pl-4 space-y-3">
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[20px]"
+                          >1.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          ><strong class="text-[#e8dcc4]"
+                            >Premier Assistant</strong
+                          >
+                          – Adjoint direct du Président général</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[20px]"
+                          >2.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          ><strong class="text-[#e8dcc4]"
+                            >Deuxième Assistant</strong
+                          >
+                          – Chef titulaire des Noirs d'Afrique</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[20px]"
+                          >3.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          ><strong class="text-[#e8dcc4]"
+                            >Troisième Assistant</strong
+                          >
+                          – Chef titulaire des Noirs des Antilles</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[20px]"
+                          >4.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          ><strong class="text-[#e8dcc4]"
+                            >Quatrième Assistant</strong
+                          >
+                          – Chef titulaire des Noirs d'Amérique du Nord</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[20px]"
+                          >5.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          ><strong class="text-[#e8dcc4]"
+                            >Cinquième Assistant</strong
+                          >
+                          – Chef titulaire des Noirs d'Amérique centrale et du
+                          Sud</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[20px]"
+                          >6.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          ><strong class="text-[#e8dcc4]"
+                            >Sixième Assistant</strong
+                          >
+                          – Chef titulaire des Noirs d'Asie et d'Océanie</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mt-4">
+                    Ils assurent la coordination politique, stratégique et
+                    institutionnelle des actions de UJIMA dans leurs zones
+                    respectives, sans préjudice des compétences sectorielles des
+                    ministères.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 26 qinq - Rapport hiérarchique
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Les Assistants rendent compte exclusivement au Président
+                    général.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Ils coordonnent l'action des ministères dans leurs zones
+                    géographiques, sans pouvoir de tutelle sur ceux-ci.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Titre IX -->
+            <div id="titre9" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE IX - DE LA JUSTICE INTERNE
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 27 - Bureau de Justice UJIMA
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Il est institué un Bureau de Justice chargé de protéger les
+                    citoyens UJIMA, de juger les manquements à la Constitution
+                    et de sanctionner les actes de corruption, d'abus de pouvoir
+                    et de trahison des principes.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 28 - Indépendance
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Le Bureau de Justice est indépendant dans ses fonctions
+                    juridictionnelles, mais il reconnaît l'autorité
+                    constitutionnelle suprême du Conseil Suprême.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Titre X -->
+            <div id="titre10" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE X - DE L'ADMINISTRATION ET DU SERVICE CIVIL
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 29 - Service civil UJIMA
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    UJIMA institue un Service Civil fondé sur la compétence,
+                    l'éthique, le mérite et le service du bien commun.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 30 - Neutralité
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Les agents du Service Civil sont politiquement neutres et
+                    soumis à un code déontologique strict.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 30 bis - De l'Administration et du Service Civil
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    L'Administration et le Service Civil UJIMA constituent le
+                    bras technique et neutre de la Nation.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Ils sont placés sous l'autorité du Gouvernement UJIMA et
+                    soumis au contrôle juridictionnel du Bureau de Justice.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Titre XI -->
+            <div id="titre11" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE XI - VALIDATION DES DIRIGEANTS ÉLUS
+              </h3>
+              <p class="text-[#b8860b] italic mb-8 pl-4">
+                Mécanisme de qualification morale et institutionnelle
+              </p>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 31 - Principe de validation préalable
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Toute personne élue ou désignée à une fonction
+                    institutionnelle supérieure au sein de UJIMA ne peut entrer
+                    en fonction qu'après validation expresse de ses qualités
+                    morales, de son intégrité, de sa loyauté constitutionnelle
+                    et de ses compétences par l'organe compétent.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 font-semibold">
+                    L'élection ou la désignation ne confère, à elle seule, aucun
+                    droit automatique à l'exercice effectif d'une fonction.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 32 - Organe de validation
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    La validation des dirigeants élus ou désignés relève
+                    exclusivement du
+                    <strong class="text-[#daa520]">Conseil Suprême UJIMA</strong
+                    >, agissant en tant que gardien et interprète suprême de la
+                    Constitution.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    À ce titre, le Conseil Suprême examine :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>le caractère moral du candidat ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>sa conduite passée et présente ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >sa loyauté envers la Constitution et la Nation UJIMA
+                        ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >sa capacité à exercer la fonction dans l'intérêt
+                        supérieur de UJIMA.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 33 - Condition suspensive d'entrée en fonction
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Aucune personne élue ou désignée à une haute fonction ne
+                    peut :
+                  </p>
+                  <ul
+                    class="text-[#c9b896] leading-relaxed pl-8 space-y-2 mb-4"
+                  >
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>prêter serment,</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>exercer une autorité,</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>signer un acte institutionnel,</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>représenter officiellement UJIMA,</span>
+                    </li>
+                  </ul>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    tant que sa validation n'a pas été formellement accordée par
+                    le Conseil Suprême UJIMA.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 font-semibold">
+                    Tout acte accompli en violation du présent article est nul
+                    et non avenu.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 34 - Rejet de validation
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    En cas de rejet de validation par le Conseil Suprême :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >la personne élue ou désignée est réputée ne jamais
+                        avoir accédé à la fonction ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >elle ne peut se prévaloir d'aucun droit lié à ladite
+                        fonction ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >la décision du Conseil Suprême est motivée et
+                        irrévocable sur le plan institutionnel.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 35 - Nomination provisoire en cas de rejet
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    En cas de rejet d'un dirigeant élu ou désigné :
+                  </p>
+                  <ul
+                    class="text-[#c9b896] leading-relaxed pl-8 space-y-2 mb-4"
+                  >
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >le
+                        <strong class="text-[#e8dcc4]"
+                          >Président général / Chef du Gouvernement</strong
+                        >,</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >ou, le cas échéant, le
+                        <strong class="text-[#e8dcc4]">Potentat</strong>,</span
+                      >
+                    </li>
+                  </ul>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    peut nommer une personne qualifiée pour exercer la fonction
+                    à titre provisoire.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Cette nomination provisoire est valable :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>jusqu'à une nouvelle élection,</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >ou jusqu'à la prochaine session de l'Assemblée,</span
+                      >
+                    </li>
+                  </ul>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mt-3">
+                    selon les modalités prévues par la loi organique.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 36 - Durée du mandat conditionnelle
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    La durée normale du mandat des dirigeants élus ou désignés
+                    de UJIMA est fixée à
+                    <strong class="text-[#daa520]">quatre (4) années</strong>.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Toutefois, le maintien en fonction est expressément
+                    conditionné :
+                  </p>
+                  <ul
+                    class="text-[#c9b896] leading-relaxed pl-8 space-y-2 mb-4"
+                  >
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>au respect permanent de la Constitution ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >à une conduite conforme aux intérêts supérieurs de la
+                        Nation UJIMA ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >au maintien de la confiance institutionnelle du Conseil
+                        Suprême.</span
+                      >
+                    </li>
+                  </ul>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Le Conseil Suprême peut, à tout moment, constater la perte
+                    de qualification d'un dirigeant et enclencher les procédures
+                    de suspension ou de destitution prévues.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 37 - Principe de supériorité morale sur la
+                    légitimité électorale
+                  </h4>
+                  <div
+                    class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-6 rounded-lg border-l-4 border-[#daa520] mb-4"
+                  >
+                    <p class="text-[#c9b896] leading-relaxed mb-4">
+                      Dans l'ordre institutionnel UJIMA :
+                    </p>
+                    <p
+                      class="text-[#daa520] leading-relaxed font-bold text-lg mb-4"
+                    >
+                      la légitimité électorale ne prime jamais sur la légitimité
+                      morale, constitutionnelle et institutionnelle.
+                    </p>
+                    <p class="text-[#c9b896] leading-relaxed">
+                      Aucune majorité, aucune élection, aucune pression
+                      politique ne peut contraindre le Conseil Suprême à valider
+                      un candidat jugé incompatible avec les valeurs, la
+                      sécurité ou l'avenir de la Nation UJIMA.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Titre XII -->
+            <div id="titre12" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE XII - DU COMITÉ D'ÉTHIQUE
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 38 - Création du Comité d'Éthique et de
+                    Qualification
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Il est institué un
+                    <strong class="text-[#daa520]"
+                      >Comité d'Éthique et de Qualification</strong
+                    >, organe indépendant chargé d'évaluer l'éligibilité morale,
+                    constitutionnelle et institutionnelle des candidats aux
+                    fonctions supérieures de UJIMA.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 39 - Attributions du Comité
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Comité d'Éthique et de Qualification :
+                  </p>
+                  <ul
+                    class="text-[#c9b896] leading-relaxed pl-8 space-y-2 mb-4"
+                  >
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >examine les candidatures avant toute élection ou
+                        nomination ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >vérifie la conformité morale, éthique et
+                        constitutionnelle des candidats ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >identifie les conflits d'intérêts, comportements
+                        incompatibles ou risques institutionnels ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >rend des avis motivés d'éligibilité ou
+                        d'inéligibilité.</span
+                      >
+                    </li>
+                  </ul>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 font-semibold">
+                    Ses avis sont obligatoires et contraignants.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 40 - Effet juridique de l'avis
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Aucune personne ne peut être :
+                  </p>
+                  <ul
+                    class="text-[#c9b896] leading-relaxed pl-8 space-y-2 mb-4"
+                  >
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>candidate,</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>élue,</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>désignée,</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>ni entrer en fonction,</span>
+                    </li>
+                  </ul>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 font-semibold">
+                    sans avis favorable préalable du Comité d'Éthique et de
+                    Qualification.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 41 - Garanties d'indépendance
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Comité d'Éthique et de Qualification :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>exerce ses fonctions en toute indépendance ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >ne reçoit d'instruction d'aucune autorité politique ou
+                        exécutive ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >est protégé contre toute pression, intimidation ou
+                        représailles.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 42 - Rôle du Conseil Suprême
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Conseil Suprême UJIMA :
+                  </p>
+                  <ul
+                    class="text-[#c9b896] leading-relaxed pl-8 space-y-2 mb-4"
+                  >
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >garantit l'indépendance, l'intégrité et l'inviolabilité
+                        du Comité d'Éthique et de Qualification ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>veille au respect strict de ses procédures ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <div>
+                        <span>peut intervenir uniquement en cas de :</span>
+                        <ul class="mt-2 space-y-1 pl-6">
+                          <li class="flex items-start gap-2">
+                            <span class="text-[#b8860b]">◦</span>
+                            <span>violation manifeste de la Constitution,</span>
+                          </li>
+                          <li class="flex items-start gap-2">
+                            <span class="text-[#b8860b]">◦</span>
+                            <span>compromission grave du Comité,</span>
+                          </li>
+                          <li class="flex items-start gap-2">
+                            <span class="text-[#b8860b]">◦</span>
+                            <span>dysfonctionnement institutionnel avéré.</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 43 - Principe fondamental
+                  </h4>
+                  <div
+                    class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-6 rounded-lg border-l-4 border-[#daa520]"
+                  >
+                    <p class="text-[#c9b896] leading-relaxed mb-4 text-center">
+                      À UJIMA,
+                    </p>
+                    <div class="space-y-3 text-center">
+                      <p class="text-[#daa520] font-semibold text-lg">
+                        nul n'est éligible par ambition personnelle,
+                      </p>
+                      <p class="text-[#daa520] font-semibold text-lg">
+                        nul n'est validé par popularité,
+                      </p>
+                      <p class="text-[#daa520] font-semibold text-lg">
+                        nul n'accède au pouvoir sans légitimité morale.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Titre XIII -->
+            <div id="titre13" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE XIII - DU CONGRÈS PANAFRICAIN ANNUEL DE LA NATION UJIMA
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 44 - Institution du Congrès Panafricain Annuel
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Il est institué un
+                    <strong class="text-[#daa520]"
+                      >Congrès Panafricain Annuel de la Nation UJIMA</strong
+                    >.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Congrès constitue le moment solennel de rassemblement, de
+                    reconnaissance et de célébration collective de la Nation
+                    UJIMA.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Il exprime l'unité morale, culturelle et politique du peuple
+                    UJIMA, dans le respect strict de la Constitution et de la
+                    hiérarchie institutionnelle.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 45 - Nature et statut du Congrès
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Congrès Panafricain Annuel est un espace constitutionnel
+                    de convergence.
+                  </p>
+                  <div
+                    class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-6 rounded-lg border-l-4 border-[#daa520] mb-4"
+                  >
+                    <p class="text-[#c9b896] leading-relaxed mb-3">
+                      Il
+                      <strong class="text-[#e8dcc4]">ne constitue ni</strong> un
+                      organe législatif,
+                      <strong class="text-[#e8dcc4]">ni</strong> un organe
+                      exécutif, <strong class="text-[#e8dcc4]">ni</strong> un
+                      organe juridictionnel.
+                    </p>
+                    <p class="text-[#c9b896] leading-relaxed">
+                      Il ne dispose d'aucun pouvoir normatif, décisionnel ou
+                      coercitif, et ne peut se substituer aux institutions
+                      constitutionnelles de la Nation UJIMA.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 46 - Convocation et périodicité
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Congrès Panafricain Annuel est convoqué au moins une fois
+                    par an.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Sa convocation relève :
+                  </p>
+                  <ul
+                    class="text-[#c9b896] leading-relaxed pl-8 space-y-2 mb-4"
+                  >
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>du Président général / Chef du Gouvernement,</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>ou du Conseil Suprême UJIMA,</span>
+                    </li>
+                  </ul>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    selon des modalités fixées par la loi organique.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    En cas de circonstances exceptionnelles, un Congrès
+                    extraordinaire peut être convoqué.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 47 - Participants institutionnels
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-4">
+                    Sont convoqués ou représentés au Congrès Panafricain Annuel
+                    :
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-3 pl-4">
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">• le Conseil Suprême UJIMA</p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">• le Gouvernement UJIMA</p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • les Assistants du Président général
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">• les Ministres</p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • les responsables reconnus des branches, sections et
+                        divisions
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <p class="text-[#c9b896]">
+                        • les délégués des citoyens UJIMA
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mt-4 italic">
+                    La participation institutionnelle est conditionnée à la
+                    reconnaissance officielle du statut des participants.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 48 - Participation populaire et panafricaine
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Congrès est ouvert aux :
+                  </p>
+                  <ul
+                    class="text-[#c9b896] leading-relaxed pl-8 space-y-2 mb-4"
+                  >
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>citoyens UJIMA ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>familles et communautés affiliées ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>partenaires panafricains ;</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span>sympathisants reconnus.</span>
+                    </li>
+                  </ul>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    Le Congrès constitue un espace d'expression populaire,
+                    culturelle et panafricaine, destiné à renforcer le lien
+                    vivant entre les institutions et le peuple.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 49 - Fonctions institutionnelles du Congrès
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-4">
+                    Le Congrès Panafricain Annuel a pour fonctions :
+                  </p>
+                  <div class="pl-4 space-y-3">
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[24px]"
+                          >1.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          >la présentation publique des rapports institutionnels
+                          annuels ;</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[24px]"
+                          >2.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          >la reddition morale et politique des comptes par les
+                          dirigeants ;</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[24px]"
+                          >3.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          >la reconnaissance solennelle des responsables et
+                          représentants ;</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[24px]"
+                          >4.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          >l'annonce des orientations générales et des priorités
+                          stratégiques ;</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[24px]"
+                          >5.</span
+                        >
+                        <span class="text-[#c9b896]"
+                          >la consolidation de l'unité et de la cohésion de la
+                          Nation UJIMA.</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 50 - Fonctions cérémonielles et symboliques
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-4">
+                    Le Congrès comprend des actes cérémoniels et civiques,
+                    notamment :
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-4 pl-4">
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="ceremony-icon"
+                          src="assets/_icons/_global/oath.png"
+                          alt="oath icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Serments publics
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Engagement solennel des responsables
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="ceremony-icon"
+                          src="assets/_icons/_global/crown.png"
+                          alt="crow icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Investitures symboliques
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Reconnaissance des nouveaux dirigeants
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="ceremony-icon"
+                          src="assets/_icons/_global/tribute.png"
+                          alt="tribute icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Hommages et commémorations
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Célébration de l'histoire panafricaine
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="ceremony-icon"
+                          src="assets/_icons/_global/ceremony.png"
+                          alt="ceremony icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Rites civiques
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Cérémonies propres à la Nation UJIMA
+                      </p>
+                    </div>
+                  </div>
+                  <p
+                    class="text-[#c9b896] leading-relaxed pl-4 mt-4 italic text-sm"
+                  >
+                    Ces actes ne produisent pas d'effets juridiques directs,
+                    mais participent à la légitimation morale et collective de
+                    l'ordre institutionnel.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 51 - Dimension culturelle et festive
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Le Congrès Panafricain Annuel comprend des activités
+                    culturelles, éducatives et festives panafricaines.
+                  </p>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    Ces activités visent à :
+                  </p>
+                  <ul class="text-[#c9b896] leading-relaxed pl-8 space-y-2">
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >célébrer l'identité et la créativité des peuples
+                        africains et afro-descendants ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >transmettre les valeurs et la mémoire collective
+                        ;</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#daa520] mt-1">•</span>
+                      <span
+                        >renforcer le sentiment d'appartenance à la Nation
+                        UJIMA.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 52 - Respect de la hiérarchie constitutionnelle
+                  </h4>
+                  <div
+                    class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-6 rounded-lg border-l-4 border-[#daa520]"
+                  >
+                    <p class="text-[#c9b896] leading-relaxed mb-4">
+                      Les travaux, déclarations et cérémonies du Congrès
+                      Panafricain Annuel s'exercent dans le respect strict de la
+                      Constitution.
+                    </p>
+                    <p class="text-[#c9b896] leading-relaxed font-semibold">
+                      Aucune décision, résolution ou proclamation issue du
+                      Congrès ne peut contredire la Constitution ni se
+                      substituer aux institutions constitutionnelles établies.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Titre XIV -->
+            <div id="titre14" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE XIV - DES RESSOURCES ET DE L'ÉCONOMIE
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 53 - Trésor UJIMA
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4">
+                    UJIMA dispose d'un
+                    <strong class="text-[#daa520]">Trésor</strong> destiné à
+                    financer ses institutions, ses programmes et ses actions de
+                    justice et de solidarité.
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 54 - Autonomie économique
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-3">
+                    UJIMA peut créer des coopératives, des fonds de
+                    développement et des entreprises solidaires dans l'intérêt
+                    collectif.
+                  </p>
+                  <div class="grid md:grid-cols-3 gap-4 pl-4 mt-4">
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="economy-icon"
+                          src="assets/_icons/_global/handshake.png"
+                          alt="handshake icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Coopératives
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Structures économiques collectives
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="economy-icon"
+                          src="assets/_icons/_global/money.png"
+                          alt="money icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Fonds de développement
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Investissements stratégiques
+                      </p>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/40 p-5 rounded-lg border border-[#daa520]/20 hover:border-[#daa520]/40 transition-all"
+                    >
+                      <div class="flex items-center gap-3 mb-2">
+                        <img
+                          class="economy-icon"
+                          src="assets/_icons/_global/building.png"
+                          alt="building icon"
+                        />
+                        <h5 class="font-semibold text-[#daa520]">
+                          Entreprises solidaires
+                        </h5>
+                      </div>
+                      <p class="text-[#c9b896] text-sm">
+                        Activités économiques communes
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Titre XV -->
+            <div id="titre15" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE XV - DE LA DISCIPLINE ET DE LA RESPONSABILITÉ
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 55 - Responsabilité des dirigeants
+                  </h4>
+                  <div
+                    class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-6 rounded-lg border-l-4 border-[#daa520]"
+                  >
+                    <p class="text-[#c9b896] leading-relaxed">
+                      Tout responsable est
+                      <strong class="text-[#e8dcc4]"
+                        >personnellement responsable</strong
+                      >
+                      de ses actes devant les institutions de justice UJIMA.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 56 - Sanctions
+                  </h4>
+                  <p class="text-[#c9b896] leading-relaxed pl-4 mb-4">
+                    Les sanctions internes peuvent aller de l'avertissement à la
+                    suspension, jusqu'à la destitution et l'exclusion.
+                  </p>
+                  <div class="pl-4 space-y-3">
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#cd853f]/30 hover:border-[#cd853f] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#cd853f] font-bold min-w-[24px]"
+                          >1.</span
+                        >
+                        <div>
+                          <span class="text-[#daa520] font-semibold"
+                            >Avertissement</span
+                          >
+                          <p class="text-[#c9b896] text-sm mt-1">
+                            Rappel à l'ordre pour manquements mineurs
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#b8860b]/30 hover:border-[#b8860b] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#b8860b] font-bold min-w-[24px]"
+                          >2.</span
+                        >
+                        <div>
+                          <span class="text-[#daa520] font-semibold"
+                            >Suspension</span
+                          >
+                          <p class="text-[#c9b896] text-sm mt-1">
+                            Retrait temporaire de fonctions
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#daa520]/30 hover:border-[#daa520] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#daa520] font-bold min-w-[24px]"
+                          >3.</span
+                        >
+                        <div>
+                          <span class="text-[#daa520] font-semibold"
+                            >Destitution</span
+                          >
+                          <p class="text-[#c9b896] text-sm mt-1">
+                            Révocation définitive de la fonction
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="bg-[#1a0e0a]/30 p-4 rounded border-l-4 border-[#8b5a3c]/30 hover:border-[#8b5a3c] transition-all"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span class="text-[#8b5a3c] font-bold min-w-[24px]"
+                          >4.</span
+                        >
+                        <div>
+                          <span class="text-[#daa520] font-semibold"
+                            >Exclusion</span
+                          >
+                          <p class="text-[#c9b896] text-sm mt-1">
+                            Retrait définitif de la citoyenneté UJIMA
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Titre XVI -->
+            <div id="titre16" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE XVI - DES RÉVISIONS
+                <span class="title-span">CONSTITUTIONNELLES</span>
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 57 - Révision
+                  </h4>
+                  <div
+                    class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-6 rounded-lg border-l-4 border-[#daa520]"
+                  >
+                    <p class="text-[#c9b896] leading-relaxed mb-4">
+                      La Constitution ne peut être révisée que par l'<strong
+                        class="text-[#e8dcc4]"
+                        >Assemblée</strong
+                      >
+                      à une
+                      <strong class="text-[#daa520]">majorité qualifiée</strong
+                      >.
+                    </p>
+                    <p class="text-[#c9b896] leading-relaxed text-sm italic">
+                      Ce mécanisme garantit la stabilité institutionnelle tout
+                      en permettant l'évolution nécessaire de la Nation UJIMA.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Titre XVII -->
+            <div id="titre17" class="constitutional-article">
+              <h3 class="font-display text-3xl font-bold mb-6 text-[#daa520]">
+                TITRE XVII - DISPOSITIONS FINALES
+              </h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="font-semibold text-xl mb-3 text-[#e8dcc4]">
+                    Article 58 - Entrée en vigueur
+                  </h4>
+                  <div
+                    class="bg-gradient-to-r from-[#daa520]/10 to-transparent p-6 rounded-lg border-l-4 border-[#daa520]"
+                  >
+                    <p class="text-[#c9b896] leading-relaxed">
+                      La présente Constitution entre en vigueur dès son
+                      <strong class="text-[#daa520]"
+                        >adoption solennelle</strong
+                      >
+                      par les membres fondateurs de UJIMA.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Clôture Solennelle -->
+            <div class="mt-16 p-8 md:p-12 preambule-box rounded-lg">
+              <h3
+                class="font-display text-3xl font-bold mb-8 text-center text-[#daa520]"
+              >
+                CLÔTURE SOLENNELLE
+              </h3>
+              <div class="section-ornament mb-8"></div>
+              <div class="max-w-3xl mx-auto">
+                <p
+                  class="text-[#c9b896] text-lg leading-relaxed text-center mb-8"
+                >
+                  Par cette Constitution, UJIMA affirme sa vocation à être une
+                  institution d'émancipation, de justice et de souveraineté
+                  morale, au service des peuples et de l'humanité.
+                </p>
+                <div class="flex justify-center items-center gap-4 mt-8">
+                  <div
+                    class="h-px w-24 bg-gradient-to-r from-transparent to-[#daa520]"
+                  ></div>
+                  <span class="text-[#daa520] text-3xl">✦</span>
+                  <div
+                    class="h-px w-24 bg-gradient-to-l from-transparent to-[#daa520]"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Signature -->
+          <div class="mt-16 text-center">
+            <div class="inline-block">
+              <div class="section-ornament mb-8"></div>
+              <p class="font-display text-xl text-[#daa520] italic mb-4">
+                Fait et adopté en Assemblée Générale Constituante
+              </p>
+              <p class="text-[#c9b896] mb-8">
+                Par les membres fondateurs d'UJIMA
+              </p>
+              <div class="seal-decoration mx-auto">
+                <div class="text-center">
+                  <span class="font-display font-bold text-[#daa520] text-4xl"
+                    >U</span
+                  >
+                  <p class="text-[#c9b896] text-xs mt-2">SCEAU OFFICIEL</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Vision Section -->
+      <section
+        id="vision"
+        class="py-24 bg-gradient-to-b from-[#0a0503] to-[#1a0e0a]"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="text-center mb-12">
+            <span
+              class="text-[#daa520] text-sm font-medium uppercase tracking-widest"
+              >Notre Engagement</span
+            >
+            <h2
+              class="font-display text-5xl md:text-6xl font-bold mt-4 mb-6 text-[#e8dcc4]"
+            >
+              Vision et Avenir
+            </h2>
+            <div class="section-ornament"></div>
+          </div>
+          <div class="preambule-box rounded-lg p-8 md:p-12">
+            <p class="text-[#c9b896] text-lg leading-relaxed text-center mb-8">
+              UJIMA aspire à devenir un modèle de fédération africaine
+              fonctionnelle, démontrant qu'une organisation panafricaine fondée
+              sur la justice, la solidarité et l'autonomie peut prospérer et
+              servir de référence pour l'avenir du continent et de sa diaspora.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6 mt-8">
+              <div class="text-center">
+                <img
+                  class="vision-icon"
+                  src="assets/_icons/_global/africa.png"
+                  alt="africa icon"
+                />
+                <h4 class="font-semibold text-[#daa520] mb-2">
+                  Unité Panafricaine
+                </h4>
+                <p class="text-[#c9b896] text-sm">
+                  Rassembler les forces vives du continent et de la diaspora
+                </p>
+              </div>
+              <div class="text-center">
+                <img
+                  class="vision-icon"
+                  src="assets/_icons/_global/innovation.png"
+                  alt="innovation icon"
+                />
+                <h4 class="font-semibold text-[#daa520] mb-2">
+                  Innovation Sociale
+                </h4>
+                <p class="text-[#c9b896] text-sm">
+                  Expérimenter de nouveaux modèles de gouvernance
+                </p>
+              </div>
+              <div class="text-center">
+                <img
+                  class="vision-icon"
+                  src="assets/_icons/_global/path.png"
+                  alt="path icon"
+                />
+                <h4 class="font-semibold text-[#daa520] mb-2">
+                  Développement Endogène
+                </h4>
+                <p class="text-[#c9b896] text-sm">
+                  Construire notre propre chemin vers la prospérité
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer class="py-12 bg-[#0a0503] border-t border-[#daa520]/20">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex flex-col items-center gap-6">
+            <p
+              id="footer-text"
+              class="text-[#c9b896] text-center max-w-2xl leading-relaxed text-xl"
+            >
+              Retrouvez-nous sur nos réseaux :
+            </p>
+            <div class="social-container">
+              <a
+                href="https://www.instagram.com/ujimaat"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/instagram.svg"
+                  alt="Instagram icon"
+                />
+              </a>
+
+              <a
+                href="https://www.facebook.com/share/1GTKUkw9SJ/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/Facebook.svg"
+                  alt="Facebook icon"
+                />
+              </a>
+
+              <a
+                href="https://discord.gg/h2kF27hn9r"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/discord.png"
+                  alt="Discord icon"
+                />
+              </a>
+
+              <a
+                href="mailto:contact@ujima.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/protonmail.svg"
+                  alt="Protonmail icon"
+                />
+              </a>
+
+              <a
+                href="tel:+33786414546"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/signal.svg"
+                  alt="Signal icon"
+                />
+              </a>
+            </div>
+            <div class="section-ornament"></div>
+            <div>
+              <div class="text-[#8b7355] text-sm text-center">
+                © 2026 UJIMA - Tous droits réservés
+              </div>
+              <div class="text-[#8b7355] text-sm text-center">
+                Site web réalisé par
+                <a
+                  class="developer"
+                  href="https://www.linkedin.com/in/alirayane/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Rayane Ali</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="scripts/constitution.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9c23f946f588fc51',t:'MTc2OTEzNjUyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

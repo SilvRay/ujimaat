@@ -1,0 +1,1213 @@
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oracle 2026</title>
+    <link rel="stylesheet" href="styles/oracle-2026.css" />
+    <!-- Fonts (OK dans Webflow via Custom Code > Head) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" aria-hidden="true">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu" aria-label="Navigation sections">
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="Introduction"
+        data-section="context"
+        aria-label="Aller à : Introduction"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="Oracle du 10"
+        data-section="oracle-intro"
+        aria-label="Aller à : Oracle du 10"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="Épiphanie"
+        data-section="epiphany"
+        aria-label="Aller à : Épiphanie"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="LOSSO SA"
+        data-section="losso"
+        aria-label="Aller à : LOSSO SA"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="L'année 2026"
+        data-section="year2026"
+        aria-label="Aller à : L'année 2026"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="Le Chasseur"
+        data-section="legend"
+        aria-label="Aller à : Le chasseur et le caïman"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="Avertissements"
+        data-section="warnings"
+        aria-label="Aller à : Avertissements spirituels"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="Héritage"
+        data-section="heritage"
+        aria-label="Aller à : Héritage et ancêtres"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="Bien-veillance"
+        data-section="bienveillance"
+        aria-label="Aller à : La bien-veillance"
+      ></button>
+      <button
+        class="nav-dot"
+        type="button"
+        data-label="Conclusion"
+        data-section="conclusion"
+        aria-label="Aller à : Conclusion"
+      ></button>
+    </nav>
+
+    <!-- Back to Top Button -->
+    <button
+      class="back-to-top"
+      id="backToTop"
+      type="button"
+      aria-label="Revenir en haut"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        style="color: white"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        ></path>
+      </svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between md:justify-center">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="seal-decoration" style="width: 40px; height: 40px">
+              <span class="font-display font-bold text-[#daa520] text-lg"
+                ><img
+                  class="nav-logo"
+                  src="assets/_images/_logos/logo-ujima.png"
+                  alt="logo UJIMA"
+              /></span>
+            </div>
+            <span class="font-display text-2xl font-semibold gradient-gold"
+              >UJIMA</span
+            >
+          </a>
+          <div class="menu-toggle" id="menuToggle">
+            <svg
+              class="w-6 h-6"
+              style="color: var(--color-primary)"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden mt-4 pb-4 border-t border-[#daa520]/10 pt-4"
+        >
+          <div class="flex flex-col gap-4">
+            <a
+              href="#preambule"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Préambule</a
+            >
+            <a
+              href="#principes"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Principes</a
+            >
+            <a
+              href="#constitution"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Constitution</a
+            >
+            <a
+              href="#vision"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Vision</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="hero">
+      <div class="floating-particles" aria-hidden="true">
+        <div
+          class="particle"
+          style="left: 10%; top: 20%; animation-delay: 0s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 80%; top: 40%; animation-delay: 2s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 30%; top: 60%; animation-delay: 4s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 70%; top: 80%; animation-delay: 6s"
+        ></div>
+        <div
+          class="particle"
+          style="left: 50%; top: 30%; animation-delay: 8s"
+        ></div>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="animate-fade-in-up">
+          <div class="mystical-number">2026</div>
+          <h1 class="hero-title font-cormorant">
+            Oracle <span class="gradient-text">2026</span>
+          </h1>
+          <div class="ornament" aria-hidden="true"></div>
+          <p class="hero-subtitle animate-fade-in-up delay-200">
+            L'année de la révélation, du retour à l'Oracle ancestral
+          </p>
+        </div>
+
+        <div class="scroll-indicator" aria-hidden="true">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenu -->
+    <main>
+      <section class="section" id="context">
+        <div class="container">
+          <article class="card scroll-reveal">
+            <p class="reading-text drop-cap">
+              Chacun peut aujourd'hui le constater sans peine : le monde
+              traverse une récession profonde, non seulement économique, mais
+              surtout géopolitique et spirituelle. Ce que nous vivons n'est pas
+              un accident de l'Histoire, mais l'aboutissement de près de trois
+              mille ans de systèmes accumulés, de structures figées, dont
+              l'effondrement progressif engendre désormais le chaos.
+            </p>
+            <p
+              class="reading-text"
+              style="font-weight: 700; text-align: center"
+            >
+              <span style="color: var(--color-primary)"
+                >Mais qui sont les architectes de cet héritage de désordre
+                ?</span
+              >
+            </p>
+            <p class="reading-text">
+              Deux puissances dominantes se dressent au cœur de cette longue
+              dérive : le pouvoir religieux et le pouvoir temporel.
+            </p>
+            <p class="reading-text">
+              Le premier, incarné par les grandes religions issues du Livre
+              d'Abraham, s'est proclamé dépositaire exclusif du spirituel,
+              s'érigeant en représentant de Dieu sur la terre.
+            </p>
+            <p class="reading-text">
+              Le second, celui des États, a revendiqué la souveraineté sur les
+              corps et les territoires.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Ces deux pouvoirs, en apparence distincts, partagent pourtant un
+              même symbole inconscient, un même animal totémique : l'hyène.
+              Prédateur insatiable, se nourrissant de chair fraîche et de sang,
+              elle incarne la rapacité, la prédation continue, l'avidité sans
+              repos. Ainsi, sous couvert de droit international et d'autorité
+              judiciaire, ces forces ont peu à peu dépouillé les peuples de leur
+              souveraineté réelle.
+            </p>
+            <p class="reading-text">
+              L'Afrique, notamment, a été privée de son droit fondamental à
+              disposer de la vie et de la mort. Là où gisent des ressources, les
+              prédateurs surgissent. Les terres sont confisquées, les peuples
+              déplacés. Les événements récents, qu'ils se déroulent au
+              Venezuela, à Gaza, au Nigéria ou ailleurs, témoignent de cette
+              même logique : déposséder, dominer, exploiter.
+            </p>
+          </article>
+
+          <article class="card scroll-reveal">
+            <h2
+              id="oracle-intro"
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">L'Oracle du 10</span>
+            </h2>
+            <p class="reading-text">
+              C'est dans ce contexte que nous entrons dans l'année 2026, une
+              année lourde d'épreuves et de révélations.
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-weight: 700;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Pourquoi ?
+            </p>
+            <p class="reading-text">
+              Parce que, dans la science des nombres, 2026 = 10 (2+0+2+6). Le 10
+              est le nombre de la récession, du contrôle, du blocage, parfois
+              même de l'enfermement. Mais le 10 n'est pas seulement un nombre
+              d'épreuve, il porte aussi une clé spirituelle majeure. Il est le
+              nombre de l'Oracle.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Le 10 renferme des vérités dissimulées, que seule la tradition
+              permet de dévoiler. Et nous allons le faire à travers la sagesse
+              ancestrale du Fâ, car le 10, en tant que valeur absolue et en tant
+              qu'arcane, recèle un secret fondamental.
+            </p>
+            <p class="reading-text">
+              Peu de personnes le savent : janvier n'est pas le premier mois de
+              l'année, mais le dixième. Lorsque l'on compte à partir du Bélier,
+              premier signe du zodiaque, décembre devient le neuvième mois, et
+              janvier le dixième.
+            </p>
+            <p class="reading-text">
+              Or, le 10 est aussi le nom de la roue de Pythagore. Pythagore,
+              grand philosophe de l'Antiquité, portait un nom dont la racine
+              signifie l'enfant de l'Oracle. Ainsi, janvier annonce déjà
+              l'Oracle, le recommencement, le nouveau départ.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Chaque être humain est alors invité à retourner à l'Oracle, comme
+              on se remet au tirage du destin, afin de découvrir quel nombre,
+              quelle étoile, accompagnera son année. Janvier devient ainsi le
+              mois-oracle, celui où l'on interroge le sort pour espérer plus de
+              joie, plus de lumière, et moins de souffrance.
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-weight: 700;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              C'est pourquoi la divination en janvier revêt une importance
+              capitale.
+            </p>
+          </article>
+
+          <article class="card scroll-reveal">
+            <p class="reading-text">
+              Dans le paradigme africain, la nuit de la Saint-Sylvestre
+              correspond précisément à ce moment sacré où les anciens allaient
+              consulter l'Oracle. Ils interrogeaient l'année nouvelle :
+            </p>
+            <div class="quote-box">
+              <p
+                style="
+                  margin: 0 0 16px;
+                  font-style: italic;
+                  font-size: clamp(1.4rem, 2.3vw, 2rem);
+                  line-height: 1.7;
+                  color: var(--color-primary);
+                "
+              >
+                Comment sera-t-elle pour moi ?
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-style: italic;
+                  font-size: clamp(1.4rem, 2.3vw, 2rem);
+                  line-height: 1.7;
+                  color: var(--color-primary);
+                "
+              >
+                Que me réserve-t-elle ?
+              </p>
+            </div>
+            <p class="reading-text">
+              L'Oracle permet de discerner le faste et le néfaste, de comprendre
+              les signes du temps, de savoir comment se préparer, comment entrer
+              dignement dans la nouvelle année, comment modeler son comportement
+              afin de vivre pleinement les premiers pas de 2026.
+            </p>
+          </article>
+
+          <article class="card scroll-reveal" id="epiphany">
+            <h2
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">Épiphanie</span>
+            </h2>
+            <p class="reading-text">
+              C'est dans cette continuité que le 6 janvier, jour de l'Épiphanie,
+              célèbre symboliquement les Rois Mages, que nos traditions
+              reconnaissent comme les Bɔ̀kɔ́nɔ̀n détenteurs de la science
+              divinatoire. Ce jour marque l'acte de révélation.
+            </p>
+            <p class="reading-text">
+              Avant d'entrer dans l'année nouvelle, il est donc essentiel de
+              consulter le signe de l'Oracle, de connaître l'étoile qui guidera
+              ton chemin. Ainsi seulement peuvent être accomplis des dons
+              justes, des projets justes, des offrandes justes, des sacrifices
+              justes.
+            </p>
+            <p class="reading-text">
+              L'antique adage de Delphes —
+              <span
+                style="
+                  font-style: italic;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                "
+                >Connais-toi toi-même</span
+              >
+              — demeure d'une brûlante actualité. La philosophie de Dieu n'est
+              pas la philosophie spéculative abstraite des humains, ni ce que
+              l'on appelle la rationalité qui est une philosophie de
+              questionnement sans suite. La philosophie divine est connaissance
+              vécue, expérience intérieure, alignement du destin.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Après une année difficile, chaque être humain s'interroge :
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Comment ne pas entrer dans la nouvelle année chargée des mêmes
+              fardeaux ?
+            </p>
+            <p class="reading-text">
+              La purification est nécessaire, mais elle doit être juste. Encore
+              faut-il savoir quel rituel accomplir, quelle voie emprunter.
+            </p>
+            <p class="reading-text">
+              Chacun a le droit — et le devoir — de trouver sa voie juste pour
+              2026, afin que ses plaintes soient entendues, que ses
+              supplications atteignent le divin, et que l'aide se manifeste.
+              L'Oracle révèle les signes des temps. Il permet de distinguer le
+              destin favorable du destin contraire, de comprendre le cheminement
+              personnel, le microcosme propre à chacun.
+            </p>
+            <p class="reading-text">
+              Accidents, pertes, abondance, épreuves ou grande fortune : tout
+              peut être entrevu à travers la consultation. C'est pourquoi
+              l'Oracle est aussi nommé
+              <span style="font-weight: 700; color: var(--color-primary)"
+                >Fortuna Major</span
+              >, la révélation des grandes lignes de la destinée. Telle est la
+              véritable définition de la science ésotérique : dévoiler les
+              fortunes majeures de chaque être, afin qu'il puisse entrer dans la
+              vie nouvelle en conscience.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              La divination révèle l'étoile qui accompagnera l'année 2026, les
+              nombres-clés qui structureront son énergie. Elle n'est ni
+              accessoire ni optionnelle : elle est incontournable.
+            </p>
+            <p class="reading-text">
+              Car, lors d'une consultation, l'arcane qui se manifeste pour
+              porter le message de la Providence dépend toujours de la question
+              posée.
+            </p>
+            <p class="reading-text" style="font-weight: 700">
+              La question qui a été posée ici pour la communauté est : Sur quel
+              horizon de destin pouvons-nous rester pour que la nouvelle année
+              2026, la mort les maladies, les pleurs restent isolés, et que
+              l'année soit une année de paix ?
+            </p>
+            <p
+              class="font-cormorant reading-heading"
+              style="
+                margin: 32px auto 0;
+                text-align: center;
+                font-weight: 700;
+                font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+                line-height: 1.35;
+              "
+            >
+              <span class="gradient-text"
+                >L'arcane majeur qui est sortie est LOSSO SA</span
+              >
+            </p>
+          </article>
+
+          <article class="card scroll-reveal" id="losso">
+            <h2
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 8px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">ORACLE 2026 – TOFFA</span>
+            </h2>
+            <h3
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+                color: var(--color-primary);
+              "
+            >
+              (LOSSO SA)
+            </h3>
+            <h4
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(1.3rem, 2vw, 1.8rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              Qui sera le roi de la tête ?
+            </h4>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Lorsque Mɛ̀tɔ̀ Nɔ̀fín, l'architecte de l'univers créait l'homme, il
+              devait désigner un roi et nommer un régent pour chaque partie du
+              corps humain.
+            </p>
+            <p class="reading-text">
+              Lorsqu'il arriva au niveau de la tête, il demanda :
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+                font-size: clamp(1.4rem, 2.3vw, 2rem);
+                line-height: 1.7;
+              "
+            >
+              « Qui sera le roi de la tête, le roi de tous les éléments qui la
+              constituent ? »
+            </p>
+            <p class="reading-text">
+              L'oreille entendit et déclara que ce serait elle.
+            </p>
+            <p class="reading-text">
+              Les yeux entendirent et dirent que ce serait eux.
+            </p>
+            <p class="reading-text">
+              La bouche entendit et affirma que ce serait elle.
+            </p>
+            <p class="reading-text">
+              Le nez entendit et déclara que ce serait lui.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Alors Mɛ̀tɔ̀ Nɔ̀fín l'Infini, c'est-à-dire l'Architecte de l'Univers,
+              leur dit :
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+                font-size: clamp(1.4rem, 2.3vw, 2rem);
+                line-height: 1.7;
+              "
+            >
+              « Très bien. Vous allez venir me voir, et celui qui viendra me
+              voir et reviendra le plus vite, c'est celui-là que je choisirai
+              comme roi. »
+            </p>
+            <p class="reading-text">
+              Le nez alla consulter le Fâ et posa la question suivante :
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+                font-size: clamp(1.4rem, 2.3vw, 2rem);
+                line-height: 1.7;
+              "
+            >
+              « Sur quel horizon de destinée je vais rester, pour être le roi de
+              la tête »
+            </p>
+            <p class="reading-text">Et LOSSO SA est sorti.</p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              LOSSO SA lui prescrivit alors les cérémonies qu'il devait
+              accomplir. Il accomplit ces cérémonies. Lorsqu'ils allèrent chez
+              le Maître du destin et qu'ils revinrent, les autres commencèrent
+              par dormir et c'est le nez seul qui ne dormait pas. Le nez
+              respirait !
+            </p>
+            <p class="reading-text">
+              Lorsque le maître du destin est venu, Il a constaté que tout le
+              monde dormait déjà et que le nez seul ne dormait pas. Le signe a
+              émis une incantation qui dit :
+            </p>
+            <div class="quote-box">
+              <p
+                style="
+                  margin: 0;
+                  font-style: italic;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  font-size: clamp(1.4rem, 2.3vw, 2rem);
+                  line-height: 1.7;
+                "
+              >
+                « Il a fait nuit et tous les éléments se sont endormis sauf le
+                nez qui est resté sur sa garde »
+              </p>
+            </div>
+          </article>
+
+          <article class="card scroll-reveal" id="year2026">
+            <h2
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">L'année 2026</span>
+            </h2>
+            <p class="reading-text">
+              Cet aphorisme, ou allégorie indique que l'année 2026 sera une
+              année de bonheur et de prospérité pour ceux qui sauront se
+              réveiller tôt, rester éveillés et ne pas être paresseux.
+            </p>
+            <div class="bar-list">
+              <p class="reading-text">
+                • Ce sera une année de travail : seul le travail paiera.
+              </p>
+              <p class="reading-text">
+                • Le travail nourrira l'homme et constituera un levier de
+                richesse.
+              </p>
+              <p class="reading-text">
+                • Il faudra développer une attitude de bienveillance : être
+                bienveillant c'est veiller au bien, rester en éveil et ne pas
+                dormir spirituellement.
+              </p>
+              <p class="reading-text">
+                • L'essor matériel doit être le fruit d'un effort spirituel et
+                intérieur.
+              </p>
+            </div>
+            <div class="ornament" aria-hidden="true"></div>
+            <p
+              class="reading-text"
+              style="
+                font-weight: 700;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Si tu travailles sur quelque chose qui n'est pas fait pour toi, tu
+              n'obtiendras jamais de résultats.
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-weight: 700;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Chacun doit travailler sur ses talents et les faire fructifier.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Quel que soit l'âge de la pierre, les noix de palme ne peuvent pas
+              la détruire.
+            </p>
+            <p class="reading-text">
+              Il y aura des luttes, des rivalités et un droit d'ainesse bafoué.
+              Si les noirs sont les aînés du monde, leur identité culturelle et
+              cultuelle sera encore plus piétinée.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Le papillon qui a combattu la neige ne peut pas affronter le feu
+              ardent.
+            </p>
+            <p class="reading-text">
+              Il y aura des problèmes dans les relations, les couples, l'amitié
+              et dans toutes les dynamiques sociales. La cause fondamentale sera
+              la prétention.
+            </p>
+            <p class="reading-text">
+              Le FÂ parle d'une légende entre le chasseur et le caïman.
+            </p>
+          </article>
+
+          <article class="card scroll-reveal" id="legend">
+            <h2
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">Le chasseur et le caïman</span>
+            </h2>
+            <p class="reading-text">
+              Le chasseur et le caïman étaient des amis très proches. Ils
+              avaient l'habitude de se rendre visite régulièrement l'un chez
+              l'autre.
+            </p>
+            <p class="reading-text">
+              Afin de renforcer leur amitié, ils conclurent un accord. Selon cet
+              accord, lorsque l'un rendrait visite à l'autre, il ne devrait
+              jamais venir fatigué. En effet, venir epuisé exposait à des
+              dangers, à des pièges et à des situations incontrôlables.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Un jour, le chasseur partit à la chasse. Il chassa longtemps et, à
+              la fin de la journée, il était extrêmement fatigué. Malgré cela,
+              il se dit :
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+                font-size: clamp(1.4rem, 2.3vw, 2rem);
+                line-height: 1.7;
+              "
+            >
+              « Avant de rentrer chez moi, je dois passer voir mon ami. »
+            </p>
+            <p class="reading-text">
+              Alors qu'il s'approchait de la maison de son ami le caïman, située
+              au bord de l'eau, la fatigue le submergea. Incapable de résister,
+              il s'endormit profondément au bord de l'eau.
+            </p>
+            <p class="reading-text">
+              Le caïman, en sortant de la rivière, aperçut quelque chose au bord
+              de l'eau. Voyant qu'il s'agissait d'un être vivant, il se dit :
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+                font-size: clamp(1.4rem, 2.3vw, 2rem);
+                line-height: 1.7;
+              "
+            >
+              « Voici ma proie. »
+            </p>
+            <p class="reading-text">
+              Il s'en saisit, lui arracha la tête, écrasa la tête, puis retourna
+              sous l'eau.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Le lendemain matin, tout le monde se réveilla. On chercha le
+              chasseur, mais on ne le trouva nulle part. Les gens vinrent
+              ensuite au bord de l'eau pour puiser de l'eau, et c'est là qu'ils
+              découvrirent la tête du chasseur, ainsi que son corps sans tête.
+            </p>
+            <p class="reading-text">
+              C'est alors que le caïman se souvint que son ami lui avait dit
+              qu'il viendrait lui rendre visite. Or, son ami n'était pas venu la
+              veille. Il se dit donc qu'il allait, à son tour, aller chez son
+              ami.
+            </p>
+            <p class="reading-text">
+              Il sortit de l'eau et arriva au bord de la rivière. Voyant des
+              gens rassemblés, il demanda :
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+                font-size: clamp(1.4rem, 2.3vw, 2rem);
+                line-height: 1.7;
+              "
+            >
+              « Que se passe-t-il ici ? »
+            </p>
+            <p class="reading-text">On lui répondit :</p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+                font-size: clamp(1.4rem, 2.3vw, 2rem);
+                line-height: 1.7;
+              "
+            >
+              « Nous venons de retrouver le corps de ton ami, le chasseur, sans
+              tête. »
+            </p>
+            <p class="reading-text">
+              À ces mots, le caïman se lamenta et s'écria :
+            </p>
+            <div class="quote-box">
+              <p
+                style="
+                  margin: 0;
+                  font-style: italic;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  font-size: clamp(1.4rem, 2.3vw, 2rem);
+                  line-height: 1.7;
+                "
+              >
+                « Hélas ! J'ai mangé la tête de mon ami. »
+              </p>
+            </div>
+            <div class="ornament" aria-hidden="true"></div>
+            <p
+              class="reading-text"
+              style="font-weight: 700; text-align: center"
+            >
+              Cet oracle annonce qu'il y aura beaucoup de trahisons au cours de
+              l'année.
+            </p>
+          </article>
+
+          <article class="card scroll-reveal" id="warnings">
+            <h2
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">Avertissements spirituels</span>
+            </h2>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Le FÂ dit : Femme ayant des cicatrices dans le ventre ne peut
+              qu'accoucher d'un enfant ayant aussi des cicatrices dans le
+              ventre.
+            </p>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Le FÂ dit : Si l'intérieur des cuisses de la femme ne se tait pas,
+              la calebasse à manger de la femme ne se taira pas.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text" style="font-weight: 700">
+              Le FÂ dit que la loge noire, la sorcellerie va vraiment et
+              sérieusement bouffer et fera beaucoup de ravages au cours de cette
+              année. Chaque population devra essayer de renforcer ses
+              protections.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Le FÂ dit : L'armée de feu qui s'est rebellée dans la forêt
+              s'éteindra en arrivant à la mer.
+            </p>
+            <p class="reading-text">
+              Les conflits viendront de l'intérieur du pays (de nous-mêmes) et
+              non de l'extérieur (des autres).
+            </p>
+            <p
+              class="reading-text"
+              style="font-style: italic; color: rgba(232, 227, 216, 0.7)"
+            >
+              Pour des raisons de sécurité, il est préférable de ne pas entrer
+              dans plus de détails.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <p class="reading-text">
+              Chacun doit savoir que l'année sera bonne, mais marquée par de
+              nombreux pleurs. Ce sera une année durant laquelle les hésitations
+              seront telles que, si l'on cède à la paresse, on finira par ne
+              rien entreprendre, et les conséquences ne se feront sentir que
+              plus tard.
+            </p>
+          </article>
+
+          <article class="card scroll-reveal" id="heritage">
+            <h2
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">Héritage et ancêtres</span>
+            </h2>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Le FÂ dit : Celui qui compte sur la mémoire de ses ancêtres ne
+              peut pas manger la poussière.
+            </p>
+            <p class="reading-text">
+              Il ne peut pas non plus tomber dans l'armée du feu, car ses
+              ancêtres le sauveront avant.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <h3
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                color: var(--color-primary);
+                font-weight: 700;
+                font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+                margin: 0 0 16px;
+              "
+            >
+              Il faudra :
+            </h3>
+            <div class="bar-list">
+              <p class="reading-text">
+                • Implorer la bénédiction des ancêtres.
+              </p>
+              <p class="reading-text">• Éviter le rouge.</p>
+              <p class="reading-text">
+                • Se resolidariser à son énergie ancestrale originelle.
+              </p>
+            </div>
+            <div class="ornament" aria-hidden="true"></div>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Le FÂ dit : Une seule main ne peut pas fermer la jarre trouée. Il
+              faut plusieurs mains pour fermer la jarre trouée afin qu'elle
+              conserve l'eau pour la prospérité du pays.
+            </p>
+            <p
+              class="reading-text"
+              style="font-weight: 700; text-align: center"
+            >
+              Cela signifie que le peuple doit s'engager sur la voie de la
+              réconciliation afin de connaître le bonheur.
+            </p>
+          </article>
+
+          <article class="card scroll-reveal" id="bienveillance">
+            <h2
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">La bien-veillance spirituelle</span>
+            </h2>
+            <p
+              class="reading-text"
+              style="
+                font-weight: 700;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Seule le fait de veiller au bien sera le levier du mieux-être et
+              du bonheur.
+            </p>
+            <div class="bar-list">
+              <p class="reading-text">
+                • Ne pas s'endormir par paresse ou par excès de confiance.
+              </p>
+              <p class="reading-text">
+                • Celui qui dort tombera dans le désarroi à son réveil.
+              </p>
+            </div>
+            <div class="ornament" aria-hidden="true"></div>
+            <p
+              class="reading-text"
+              style="
+                font-style: italic;
+                text-align: center;
+                color: var(--color-primary);
+              "
+            >
+              Le FÂ dit : Quelle que soit la manière dont le palmier est géant,
+              s'il tombe, il ne peut pas écraser la pierre sur laquelle le pays
+              a été fondé.
+            </p>
+            <div class="ornament" aria-hidden="true"></div>
+            <div class="bar-list">
+              <p class="reading-text">
+                • Problèmes de virilité chez les hommes.
+              </p>
+              <p class="reading-text">
+                • Attention à l'infidélité et à la trahison.
+              </p>
+            </div>
+          </article>
+
+          <article class="card scroll-reveal" id="conclusion">
+            <h2
+              class="font-cormorant reading-heading"
+              style="
+                text-align: center;
+                font-size: clamp(2rem, 3.2vw, 3rem);
+                margin: 0 0 24px;
+                font-weight: 700;
+              "
+            >
+              <span class="gradient-text">Conclusion</span>
+            </h2>
+            <p class="reading-text" style="text-align: center">
+              C'est donc pour éloigner le néfaste, se rapprocher du faste et
+              permettre à la bonne fortune de nous accompagner que nous mettons
+              en place la
+              <span style="font-weight: 700; color: #ffd700">NEW E.R.A</span>.
+              Véritable mode opératoire fondé sur les recommandations du FÂ, il
+              vise à nous maintenir alignés sur les énergies idoines, à
+              renforcer notre protection individuelle et communautaire, et à
+              activer les mannes ancestrales.
+            </p>
+          </article>
+
+          <a href="new-era.html" class="cta-button" data-cta-bottom
+            >NEW E.R.A</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-12 bg-[#0a0503] border-t border-[#daa520]/20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col items-center gap-6">
+          <p
+            id="footer-text"
+            class="text-[#c9b896] text-center max-w-2xl leading-relaxed text-xl"
+          >
+            Retrouvez-nous sur nos réseaux :
+          </p>
+          <div class="social-container">
+            <a
+              href="https://www.instagram.com/ujimaat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="social-icon"
+                src="assets/_icons/_global/instagram.svg"
+                alt="Instagram icon"
+              />
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/1GTKUkw9SJ/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="social-icon"
+                src="assets/_icons/_global/Facebook.svg"
+                alt="Facebook icon"
+              />
+            </a>
+
+            <a
+              href="https://discord.gg/h2kF27hn9r"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="social-icon"
+                src="assets/_icons/_global/discord.png"
+                alt="Discord icon"
+              />
+            </a>
+
+            <a
+              href="mailto:contact@ujima.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="social-icon"
+                src="assets/_icons/_global/protonmail.svg"
+                alt="Protonmail icon"
+              />
+            </a>
+
+            <a
+              href="tel:+33786414546"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="social-icon"
+                src="assets/_icons/_global/signal.svg"
+                alt="Signal icon"
+              />
+            </a>
+          </div>
+          <div class="section-ornament"></div>
+          <div>
+            <div class="text-[#8b7355] text-sm text-center">
+              © 2026 UJIMA - Tous droits réservés
+            </div>
+            <div class="text-[#8b7355] text-sm text-center">
+              Site web réalisé par
+              <a
+                class="developer"
+                href="https://www.linkedin.com/in/alirayane/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Rayane Ali</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="scripts/oracle-2026.js"></script>
+  </body>
+</html>

@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UJIMA — Accueil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montez&family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/index.css" />
+
+    <script src="/_sdk/element_sdk.js"></script>
+
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  </head>
+  <body class="h-full">
+    <div class="h-full w-full">
+      <header>
+        <nav>
+          <div class="hidden md:flex gap-4">
+            <a
+              href="https://ujima-tchimberi.webflow.io/maat-city"
+              target="_blank"
+              class="btn-primary"
+              id="cta-button"
+              >La cité UJIMA</a
+            >
+            <a
+              href="https://ujima.fr/"
+              target="_blank"
+              class="btn-primary"
+              id="cta-button"
+              >Nos formations en ligne</a
+            >
+            <a
+              href="https://discord.gg/h2kF27hn9r"
+              target="_blank"
+              class="btn-primary"
+              id="cta-button"
+              >La communauté Discord</a
+            >
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-[#daa520] p-2">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+          <div
+            id="mobile-menu"
+            class="hidden md:hidden mt-4 pb-4 border-t border-[#daa520]/10 pt-4 w-full"
+          >
+            <div class="flex flex-col gap-4">
+              <a
+                href="https://ujima-tchimberi.webflow.io/maat-city"
+                target="_blank"
+                class="btn-primary"
+                id="cta-button"
+                >La cité UJIMA</a
+              >
+              <a
+                href="https://ujima.fr/"
+                target="_blank"
+                class="btn-primary"
+                id="cta-button"
+                >Nos formations en ligne</a
+              >
+              <a
+                href="https://discord.gg/h2kF27hn9r"
+                target="_blank"
+                class="btn-primary"
+                id="cta-button"
+                >La communauté Discord</a
+              >
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="main-gradient">
+        <section class="hero">
+          <span class="hero-title-logo"
+            ><img src="assets/_images/_logos/logo-ujima.png" alt=""
+          /></span>
+          <h1 id="hero-title">UJIMA FUNSCHOOLING</h1>
+          <p id="hero-subtitle">
+            Votre association panafricaine œuvrant pour l'émancipation, la
+            justice et la souveraineté des peuples descendants d'africains et de
+            tous les mélanisés du monde.
+          </p>
+        </section>
+        <div class="grid">
+          <a class="card" href="constitution.html">
+            <div class="card-content">
+              <div class="icon">
+                <img
+                  class="card-icon"
+                  src="assets/_icons/_global/constitution.png"
+                  alt="constitution icon"
+                />
+              </div>
+              <h2 id="card1-title">
+                <span class="text-[0.8rem] translate-y-1">©</span>
+                Constitution de l'État Fédéral Africain
+              </h2>
+              <p id="card1-description">
+                Le texte fondamental qui définit les principes et valeurs de la
+                Nation UJIMA
+              </p>
+            </div>
+            <div class="cta">
+              <span>Consulter le texte fondateur</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+
+          <a class="card" href="oracle-2026.html">
+            <div class="card-content">
+              <div class="icon">
+                <img
+                  class="card-icon"
+                  src="assets/_icons/_global/oracle.png"
+                  alt="oracle icon"
+                />
+              </div>
+              <h2 id="card2-title">Oracle 2026</h2>
+              <p id="card2-description">
+                Découvrez les prédictions et visions pour l'avenir de de la
+                Nation noire en 2026
+              </p>
+            </div>
+            <div class="cta">
+              <span>Voir les prévisions 2026</span> <span class="arrow">→</span>
+            </div>
+          </a>
+
+          <a class="card" href="new-era.html">
+            <div class="card-content">
+              <div class="icon">
+                <svg
+                  viewbox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+              <h2 id="card3-title">New E.R.A</h2>
+              <p id="card3-description">
+                École Révolutionnaire Africaine : formation de CADRES par cycles
+                progressifs
+              </p>
+            </div>
+            <div class="cta">
+              <span>Découvrir le 1er cycle</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+
+          <a id="kalendrier" class="card" href="kalendrier.html">
+            <div class="card-content">
+              <div class="icon">
+                <img
+                  class="card-icon"
+                  src="assets/_icons/_global/kalendrier.png"
+                  alt="calendar icon"
+                />
+              </div>
+              <h2 id="card4-title">Kalendrier Révolutionnaire</h2>
+              <p id="card4-description">
+                Explorez le calendrier UJIMA et ses évènements culturels, basé
+                sur une tradition africaine
+              </p>
+            </div>
+            <div class="cta">
+              <span>Parcourir le Kalendrier</span><span class="arrow">→</span>
+            </div>
+          </a>
+
+          <a
+            id="dico"
+            data-target-date="2026-03-10T00:00:00"
+            class="card"
+            href="dictionnaire-panafricain.html"
+          >
+            <div class="card-content">
+              <div class="icon">
+                <img
+                  class="card-icon"
+                  src="assets/_icons/_global/dictionnaire.png"
+                  alt="dictionary icon"
+                />
+              </div>
+              <h2 id="card5-title">Dictionnaire UJIMA</h2>
+              <p id="card5-description">
+                Un dictionnaire complet des langues, cultures et traditions
+                africaines
+              </p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="cta">
+                <span>Bientôt disponible</span> <span class="arrow">→</span>
+              </div>
+              <div class="countdown-timer">
+                <div class="countdown-item">
+                  <span class="countdown-number" data-days>07</span>
+                  <span class="countdown-label">Jrs</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" data-hours>23</span>
+                  <span class="countdown-label">Hrs</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" data-minutes>59</span>
+                  <span class="countdown-label">Min</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" data-seconds>59</span>
+                  <span class="countdown-label">Sec</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a
+            id="strategie"
+            data-target-date="2026-03-19T00:00:00"
+            class="card"
+            href="cadre-strategique.html"
+          >
+            <div class="card-content">
+              <div class="icon">
+                <img
+                  class="card-icon"
+                  src="assets/_icons/_global/strategie.png"
+                  alt="mind map icon"
+                />
+              </div>
+              <h2 id="card6-title">Cadre stratégique</h2>
+              <p id="card6-description">
+                Le plan directeur pour coordonner nos actions et maximiser notre
+                impact collectif
+              </p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="cta">
+                <span>Bientôt disponible</span> <span class="arrow">→</span>
+              </div>
+              <div class="countdown-timer">
+                <div class="countdown-item">
+                  <span class="countdown-number" data-days>07</span>
+                  <span class="countdown-label">Jrs</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" data-hours>23</span>
+                  <span class="countdown-label">Hrs</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" data-minutes>59</span>
+                  <span class="countdown-label">Min</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" data-seconds>59</span>
+                  <span class="countdown-label">Sec</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </main>
+      <section class="section_transition">
+        <div class="city_header">
+          <h2>MaâtCity</h2>
+          <p>La cité de la renaissance africaine au cœur du Bénin</p>
+        </div>
+        <div class="animate-bounce">
+          <svg
+            class="w-6 h-6 text-[#daa520]/50"
+            fill="none"
+            stroke="black"
+            viewbox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <section class="section_city">
+        <a
+          href="https://ujima-tchimberi.webflow.io/"
+          class="button c-16 w-inline-block"
+          ><div class="btn-circle-outline">
+            <div class="btn-circle-cover"></div>
+          </div>
+          <div class="btn-txt">Je visualise</div></a
+        >
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-12 bg-[#0a0503] border-t border-[#daa520]/20">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="flex flex-col items-center gap-6">
+            <p
+              id="footer-text"
+              class="text-[#c9b896] text-center max-w-2xl leading-relaxed text-xl"
+            >
+              Retrouvez-nous sur nos réseaux :
+            </p>
+            <div class="social-container">
+              <a
+                href="https://www.instagram.com/ujimaat"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/instagram.svg"
+                  alt="Instagram icon"
+                />
+              </a>
+
+              <a
+                href="https://www.facebook.com/share/1GTKUkw9SJ/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/Facebook.svg"
+                  alt="Facebook icon"
+                />
+              </a>
+
+              <a
+                href="https://discord.gg/h2kF27hn9r"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/discord.png"
+                  alt="Discord icon"
+                />
+              </a>
+
+              <a
+                href="mailto:contact@ujima.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/protonmail.svg"
+                  alt="Protonmail icon"
+                />
+              </a>
+
+              <a
+                href="tel:+33786414546"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="social-icon"
+                  src="assets/_icons/_global/signal.svg"
+                  alt="Signal icon"
+                />
+              </a>
+            </div>
+            <div class="section-ornament"></div>
+            <div>
+              <div class="text-[#8b7355] text-sm text-center">
+                © 2026 UJIMA - Tous droits réservés
+              </div>
+              <div class="text-[#8b7355] text-sm text-center">
+                Site web réalisé par
+                <a
+                  class="developer"
+                  href="https://www.linkedin.com/in/alirayane/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Rayane Ali</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="scripts/index.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9c2754b7f0b504ad',t:'MTc2OTE3MTcyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

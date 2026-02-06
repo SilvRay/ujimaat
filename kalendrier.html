@@ -1,0 +1,743 @@
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendrier Luni-Solaire 2026-2027</title>
+    <link rel="stylesheet" href="styles/kalendrier.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+  </head>
+  <body class="font-body h-full">
+    <!-- Écran de chargement -->
+    <div id="loadingScreen">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 left-0 right-0 z-50 nav-glass">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-center">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="seal-decoration" style="width: 40px; height: 40px">
+              <span class="font-display font-bold text-[#daa520] text-lg"
+                ><img
+                  class="nav-logo"
+                  src="assets/_images/_logos/logo-ujima.png"
+                  alt="logo UJIMA"
+              /></span>
+            </div>
+            <span class="font-display text-2xl font-semibold gradient-gold"
+              >UJIMA</span
+            >
+          </a>
+        </div>
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden mt-4 pb-4 border-t border-[#daa520]/10 pt-4"
+        >
+          <div class="flex flex-col gap-4">
+            <a
+              href="#preambule"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Préambule</a
+            >
+            <a
+              href="#principes"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Principes</a
+            >
+            <a
+              href="#constitution"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Constitution</a
+            >
+            <a
+              href="#vision"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Vision</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="mainContent" class="page-wrapper">
+      <div class="py-8 px-4">
+        <div class="mx-auto">
+          <!-- En-tête -->
+          <div class="p-10 mb-8">
+            <h1
+              id="mainTitle"
+              class="font-display text-[2.75rem] sm:leading-tight sm:text-6xl font-bold text-center mb-4"
+            >
+              Calendrier luni-solaire équinoxial
+            </h1>
+            <h2
+              id="subtitle"
+              class="font-body text-xl text-center text-[#525252] mb-4 font-medium"
+            >
+              Kalendrier africain de l'an 110 018 depuis l'invention de
+              l'agriculture
+            </h2>
+            <h3
+              id="yearStudy"
+              class="font-body text-lg text-center text-[#454545bf] mb-8 font-medium"
+            >
+              Année civile grégorienne : 20 mars 2026 → 20 mars 2027 basée sur
+              la révolution des astres.
+            </h3>
+          </div>
+
+          <!-- Main -->
+          <main class="main-wrapper">
+            <div class="header-inner-card rounded-2xl p-8">
+              <p
+                class="text-center text-[#f0f0f0] leading-relaxed font-body text-base"
+              >
+                <span id="newYearLabel" class="font-bold text-[#C9A24D]"
+                  >Jour de l'An solaire</span
+                >
+                :
+                <strong class="text-[#f0f0f0]">20 mars 2026 (Équinoxe)</strong
+                ><br /><em class="text-[#eaeaeac7]"
+                  >Début du mois 1 : 19 mars 2026 (Nouvelle Lune)</em
+                ><br /><span
+                  id="monthStartLabel"
+                  class="font-bold text-[#C9A24D]"
+                  >Début des mois lunaires</span
+                >
+                : <strong class="text-[#f0f0f0]">Nouvelle Lune</strong>
+              </p>
+            </div>
+
+            <!-- Boutons de navigation principale -->
+            <div class="p-8 mb-8 bg-[#1A1A1A]">
+              <div class="flex flex-wrap gap-4 justify-center items-center">
+                <button
+                  id="viewSearchBtn"
+                  type="button"
+                  class="font-semibold text-lg"
+                  aria-label="Afficher la recherche de signe"
+                >
+                  <span>Trouver le signe</span>
+                  <div class="underline-wrapper">
+                    <div class="btn-underline"></div>
+                  </div>
+                </button>
+                <button
+                  id="viewWeekBtn"
+                  type="button"
+                  class="font-semibold text-lg"
+                  aria-label="Afficher la vue hebdomadaire"
+                >
+                  <span>Vue semaine</span>
+                  <div class="underline-wrapper">
+                    <div class="btn-underline"></div>
+                  </div>
+                </button>
+                <button
+                  id="viewMonthBtn"
+                  type="button"
+                  class="font-semibold text-lg"
+                  aria-label="Afficher la vue mensuelle"
+                >
+                  <span>Vue mensuelle</span>
+                  <div class="underline-wrapper">
+                    <div class="btn-underline"></div>
+                  </div>
+                </button>
+                <button
+                  id="viewYearBtn"
+                  type="button"
+                  class="font-semibold text-lg"
+                  aria-label="Afficher la vue annuelle"
+                >
+                  <span>Vue annuelle</span>
+                  <div class="underline-wrapper">
+                    <div class="btn-underline"></div>
+                  </div>
+                </button>
+                <!-- <button
+                  id="themeToggle"
+                  type="button"
+                  class="px-6 py-4 bg-gray-800 text-white rounded-xl hover:bg-gray-900 transition font-semibold text-lg shadow-md flex items-center gap-2"
+                  title="Basculer mode sombre/clair"
+                  aria-label="Basculer le thème"
+                >
+                  <span id="themeIcon" aria-hidden="true">🌙</span>
+                  <span id="themeText">Mode sombre</span>
+                </button> -->
+              </div>
+            </div>
+
+            <!-- Sélecteur de date -->
+            <div
+              id="searchSection"
+              class="bg-[#525252] w-[90%] mx-auto rounded-md shadow-xl p-8 mb-8 border border-[#C9A24D]"
+            >
+              <h3
+                class="font-display text-3xl font-bold text-center mb-6 text-white flex flex-col sm:flex-row items-center justify-center gap-2"
+              >
+                <img
+                  class="w-8 h-8"
+                  src="assets/_icons/_global/loupe.svg"
+                  alt="l'icône loupe"
+                />
+                Trouver le signe
+              </h3>
+              <div
+                class="flex flex-wrap gap-4 items-center justify-center mb-6"
+              >
+                <label
+                  for="dateInput"
+                  class="font-semibold text-white text-lg font-body"
+                  >Date :</label
+                >
+                <input
+                  id="dateInput"
+                  type="date"
+                  min="2026-03-19"
+                  max="2027-03-20"
+                  class="px-5 py-3 rounded-md focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none transition font-body text-base"
+                  aria-label="Sélectionner une date"
+                />
+                <button
+                  id="todayBtn"
+                  type="button"
+                  class="font-semibold"
+                  aria-label="Sélectionner la date d'aujourd'hui"
+                >
+                  <span>Aujourd'hui</span>
+                  <div class="underline-wrapper">
+                    <div class="btn-underline"></div>
+                  </div>
+                </button>
+                <button
+                  id="clearBtn"
+                  type="button"
+                  class="px-6 py-3 bg-[#2B2B2B] text-white rounded-md hover:bg-gray-600 transition duration-300 font-semibold shadow-md"
+                  aria-label="Effacer la sélection"
+                >
+                  Effacer
+                </button>
+              </div>
+              <div
+                id="result"
+                class="text-center text-lg font-medium min-h-[2rem]"
+                role="status"
+                aria-live="polite"
+              ></div>
+              <p class="text-center text-gray-300 text-sm mt-4 font-body">
+                Plage couverte : 19 mars 2026 → 20 mars 2027
+              </p>
+            </div>
+
+            <!-- Navigation mois par mois -->
+            <div id="monthSection" class="hidden">
+              <div
+                class="bg-[#525252] border border-[#c9a24d] w-[90%] mx-auto rounded-md shadow-xl p-8 mb-8"
+              >
+                <h3
+                  class="font-display text-3xl font-bold text-center mb-6 text-white flex flex-col sm:flex-row items-center justify-center gap-2"
+                >
+                  <img
+                    class="w-8 h-8"
+                    src="assets/_icons/_global/month.png"
+                    alt="icône de calendrier pour le mois"
+                  />
+                  Navigation mois par mois
+                </h3>
+                <div
+                  class="flex flex-wrap gap-4 items-center justify-center mb-6"
+                >
+                  <button
+                    id="prevMonth"
+                    type="button"
+                    class="px-8 py-4 bg-[#C9A24D] text-white rounded-md hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 flex items-center gap-3 text-lg"
+                    aria-label="Mois précédent"
+                  >
+                    <span class="text-2xl" aria-hidden="true">◀</span>
+                    <span>Précédent</span>
+                  </button>
+                  <select
+                    id="monthSelect"
+                    class="px-6 py-4 border-3 border-blue-300 rounded-md focus:border-blue-500 focus:ring-4 focus:ring-blue-200 focus:outline-none transition-all font-bold text-lg font-body bg-gradient-to-br from-white to-blue-50 shadow-md hover:shadow-lg cursor-pointer min-w-[280px] text-center"
+                    aria-label="Sélectionner un mois"
+                  ></select>
+                  <button
+                    id="nextMonth"
+                    type="button"
+                    class="px-8 py-4 bg-[#C9A24D] text-white rounded-md hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 flex items-center gap-3 text-lg"
+                    aria-label="Mois suivant"
+                  >
+                    <span>Suivant</span>
+                    <span class="text-2xl" aria-hidden="true">▶</span>
+                  </button>
+                </div>
+                <div
+                  class="flex flex-wrap gap-4 items-center justify-center mb-4"
+                >
+                  <button
+                    id="goToTodayMonth"
+                    type="button"
+                    class="font-semibold"
+                    aria-label="Aller au jour actuel"
+                  >
+                    <span>📍 Aller à aujourd'hui</span>
+                    <div class="underline-wrapper">
+                      <div class="btn-underline"></div>
+                    </div>
+                  </button>
+                  <button
+                    id="exportMonthBtn"
+                    type="button"
+                    class="px-6 py-3 text-white rounded-md bg-[#2B2B2B] hover:bg-gray-600 transition duration-300 font-semibold shadow-md flex items-center gap-2"
+                    aria-label="Exporter le mois"
+                  >
+                    💾 Exporter le mois
+                  </button>
+                </div>
+                <div
+                  id="monthMeta"
+                  class="text-center text-gray-700 font-semibold text-base"
+                  role="status"
+                ></div>
+              </div>
+              <!-- Calendrier du mois -->
+              <div class="bg-[#3a3a3a] shadow-xl py-4 mb-8">
+                <h3
+                  class="font-display text-3xl font-bold text-center mb-6 text-white flex items-center justify-center gap-2"
+                >
+                  <img
+                    class="w-8 h-8"
+                    src="assets/_icons/_global/month.png"
+                    alt="icône de calendrier pour la semaine"
+                  />
+                  Calendrier du mois
+                </h3>
+                <div
+                  id="calTitle"
+                  class="text-center text-gray-700 font-semibold text-lg mb-6"
+                ></div>
+                <div class="overflow-x-auto">
+                  <div id="calendarContainer">
+                    <div class="calendar-grid">
+                      <div class="calendar-header">
+                        Dzoɖa<br /><span>(Dim)</span>
+                      </div>
+                      <div class="calendar-header">
+                        Blaɖa<br /><span>(Lun)</span>
+                      </div>
+                      <div class="calendar-header">
+                        Kuɖa<br /><span>(Mar)</span>
+                      </div>
+                      <div class="calendar-header">
+                        Yàwoɖa<br /><span>(Mer)</span>
+                      </div>
+                      <div class="calendar-header">
+                        Fiɖa<br /><span>(Jeu)</span>
+                      </div>
+                      <div class="calendar-header">
+                        Mlɛmlɛ̀ɖa<br /><span>(Ven)</span>
+                      </div>
+                      <div class="calendar-header">
+                        Kwasiɖa<br /><span>(Sam)</span>
+                      </div>
+                    </div>
+                    <div id="calendarDays" class="calendar-grid"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vue semaine -->
+            <div id="weekSection" class="hidden">
+              <div
+                class="bg-[#525252] border border-[#c9a24d] w-[90%] mx-auto rounded-md shadow-xl p-8 mb-8"
+              >
+                <h3
+                  class="font-display text-3xl font-bold text-center mb-6 text-white flex flex-col sm:flex-row items-center justify-center gap-2"
+                >
+                  <img
+                    class="w-8 h-8"
+                    src="assets/_icons/_global/week.png"
+                    alt="icône de calendrier pour la semaine"
+                  />
+                  Navigation semaine par semaine
+                </h3>
+                <div
+                  class="flex flex-wrap gap-4 items-center justify-center mb-6"
+                >
+                  <button
+                    id="prevWeek"
+                    type="button"
+                    class="px-8 py-4 bg-[#c9a24d] text-white rounded-md transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 flex items-center gap-3 text-lg"
+                    aria-label="Semaine précédente"
+                  >
+                    <span class="text-2xl" aria-hidden="true">◀</span>
+                    <span>Précédent</span>
+                  </button>
+                  <div
+                    id="weekInfo"
+                    class="px-6 py-4 border-3 border-indigo-300 rounded-md bg-gradient-to-br from-white to-indigo-50 shadow-md font-bold text-lg font-body min-w-[280px] text-center"
+                  ></div>
+                  <button
+                    id="nextWeek"
+                    type="button"
+                    class="px-8 py-4 bg-[#C9A24D] text-white rounded-md transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 flex items-center gap-3 text-lg"
+                    aria-label="Semaine suivante"
+                  >
+                    <span>Suivant</span>
+                    <span class="text-2xl" aria-hidden="true">▶</span>
+                  </button>
+                </div>
+                <div
+                  class="flex flex-wrap gap-4 items-center justify-center mb-4"
+                >
+                  <button
+                    id="goToTodayWeek"
+                    type="button"
+                    class="font-semibold"
+                    aria-label="Aller à la semaine actuelle"
+                  >
+                    <span>📍 Aller à aujourd'hui</span>
+                    <div class="underline-wrapper">
+                      <div class="btn-underline"></div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <!-- Calendrier de la semaine -->
+              <div class="bg-[#3a3a3a] shadow-xl p-8 mb-8">
+                <h3
+                  class="font-display text-3xl font-bold text-center mb-6 text-white flex items-center justify-center gap-2"
+                >
+                  <img
+                    class="w-8 h-8"
+                    src="assets/_icons/_global/week.png"
+                    alt="icône de calendrier pour la semaine"
+                  />
+                  Calendrier de la semaine
+                </h3>
+                <div
+                  id="weekCalendar"
+                  class="grid grid-cols-1 lg:grid-cols-7 gap-4"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Vue annuelle -->
+            <div id="yearSection" class="hidden">
+              <div class="bg-[#3a3a3a] shadow-xl p-8 mb-8">
+                <h3
+                  class="font-display text-3xl font-bold text-center mb-6 text-white flex flex-col sm:flex-row items-center justify-center gap-2"
+                >
+                  <img
+                    class="w-8 h-8"
+                    src="assets/_icons/_global/year.png"
+                    alt="icône de calendrier pour l'année"
+                  />
+                  Vue annuelle
+                </h3>
+                <p
+                  class="text-center text-[#eaeaeac7] mb-8 font-body text-base"
+                >
+                  Cliquez sur un mois pour voir son calendrier détaillé
+                </p>
+                <div
+                  id="yearGrid"
+                  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Légende -->
+            <div class="py-8">
+              <h3
+                class="font-display text-2xl font-bold text-center mb-6 text-white flex items-center justify-center gap-2"
+              >
+                <img
+                  class="w-8 h-8"
+                  src="assets/_icons/_global/legend.png"
+                  alt="l'icône loupe"
+                />
+                Légende
+              </h3>
+              <!-- Compteur jusqu'à la prochaine fête -->
+              <div
+                id="nextFestivalCountdown"
+                class="w-[90%] mx-auto mb-8 bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 rounded-md p-6 border-3 border-purple-400 shadow-lg"
+              >
+                <div class="text-center">
+                  <img
+                    id="nextFestivalIcon"
+                    class="w-10 h-10 mb-3 mx-auto"
+                    src="assets/_icons/_global/confetti.png"
+                    alt="icône confetti"
+                  />
+                  <h4
+                    class="font-display text-2xl font-bold text-purple-900 mb-2"
+                  >
+                    Prochaine fête
+                  </h4>
+                  <div
+                    class="text-xl font-bold text-purple-800 mb-3"
+                    id="nextFestivalName"
+                  ></div>
+                  <div
+                    class="bg-white bg-opacity-70 rounded-xl p-4 inline-block"
+                  >
+                    <div
+                      class="text-4xl font-black text-purple-600 mb-1"
+                      id="daysUntilFestival"
+                    ></div>
+                    <div
+                      class="text-sm font-semibold text-purple-700"
+                      id="daysUntilLabel"
+                    ></div>
+                  </div>
+                  <div
+                    class="text-base text-purple-700 mt-3 font-medium flex items-center justify-center gap-2"
+                    id="nextFestivalDate"
+                  ></div>
+                </div>
+              </div>
+              <!-- Fêtes traditionnelles -->
+              <div
+                class="w-[90%] mx-auto mb-8 bg-black rounded-md p-6 border border-[#C9A24D]"
+              >
+                <h4
+                  class="font-display text-xl font-bold text-center mb-4 text-[#C9A24D] flex items-center justify-center gap-2"
+                >
+                  <img
+                    class="w-7 h-7"
+                    src="assets/_icons/_global/confetti.png"
+                    alt="icône confetti"
+                  />
+                  Fêtes traditionnelles
+                </h4>
+                <p
+                  class="text-center text-sm text-[#eaeaeac7] mb-4 font-medium"
+                >
+                  Cliquez sur une fête pour voir le jour dans le calendrier
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    class="festival-card bg-[linear-gradient(45deg,#c9a24d,transparent)] rounded-md p-4 cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-amber-400 text-left"
+                    data-date="2026-03-20"
+                    aria-label="Voir Ƒe yeye dans le calendrier"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="text-3xl" aria-hidden="true">
+                        <img
+                          class="w-10 h-10"
+                          src="assets/_icons/_global/confetti.png"
+                          alt="icône confetti"
+                        />
+                      </div>
+                      <div>
+                        <div class="font-bold text-white">Ƒe yeye</div>
+                        <div class="text-sm text-gray-100">
+                          Nouvel An - 20 mars
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    class="festival-card bg-[linear-gradient(45deg,#c9a24d,transparent)] rounded-md p-4 shadow-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-green-400 text-left"
+                    data-date="2026-05-08"
+                    aria-label="Voir Ƒeakè dans le calendrier"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="text-3xl" aria-hidden="true">🌱</div>
+                      <div>
+                        <div class="font-bold text-white">Ƒeakè</div>
+                        <div class="text-sm text-gray-100">
+                          Fête de la germination - 08 mai
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    class="festival-card bg-[linear-gradient(45deg,#c9a24d,transparent)] rounded-md p-4 shadow-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-purple-400 text-left"
+                    data-date="2026-07-02"
+                    aria-label="Voir Kɛ̀kɛlì Zã dans le calendrier"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="text-3xl" aria-hidden="true">✨</div>
+                      <div>
+                        <div class="font-bold text-white">Kɛ̀kɛlì Zã</div>
+                        <div class="text-sm text-gray-100">
+                          Fête des Lumières - 02 juillet
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    class="festival-card bg-[linear-gradient(45deg,#c9a24d,transparent)] rounded-md p-4 shadow-sm cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-yellow-400 text-left"
+                    data-date="2026-08-26"
+                    aria-label="Voir Nuŋe zã dans le calendrier"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="text-3xl" aria-hidden="true">🌾</div>
+                      <div>
+                        <div class="font-bold text-white">Nuŋe zã</div>
+                        <div class="text-sm text-gray-100">
+                          Fête des moissons - 26 août
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <!-- Éléments -->
+              <h4
+                class="font-display text-xl font-bold text-center mb-4 text-white"
+              >
+                Éléments astrologiques
+              </h4>
+              <div
+                class="w-[90%] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 mb-8"
+              >
+                <div
+                  class="element-feu rounded-md p-6 text-center transform transition hover:scale-105"
+                >
+                  <div class="element-icon-wrapper mx-auto mb-4">
+                    <div class="text-5xl" aria-label="Feu">🔥</div>
+                  </div>
+                  <div class="font-bold text-white text-lg mb-2">Feu</div>
+                  <div class="text-sm text-white font-medium">
+                    Bélier, Lion, Sagittaire
+                  </div>
+                </div>
+                <div
+                  class="element-terre rounded-md p-6 text-center transform transition hover:scale-105"
+                >
+                  <div class="element-icon-wrapper mx-auto mb-4">
+                    <div class="text-5xl" aria-label="Terre">🌍</div>
+                  </div>
+                  <div class="font-bold text-white text-lg mb-2">Terre</div>
+                  <div class="text-sm text-white font-medium">
+                    Taureau, Vierge, Capricorne
+                  </div>
+                </div>
+                <div
+                  class="element-air rounded-md p-6 text-center transform transition hover:scale-105"
+                >
+                  <div class="element-icon-wrapper mx-auto mb-4">
+                    <div class="text-5xl" aria-label="Air">💨</div>
+                  </div>
+                  <div class="font-bold text-white text-lg mb-2">Air</div>
+                  <div class="text-sm text-white font-medium">
+                    Gémeaux, Balance, Verseau
+                  </div>
+                </div>
+                <div
+                  class="element-eau rounded-md p-6 text-center transform transition hover:scale-105"
+                >
+                  <div class="element-icon-wrapper mx-auto mb-4">
+                    <div class="text-5xl" aria-label="Eau">💧</div>
+                  </div>
+                  <div class="font-bold text-white text-lg mb-2">Eau</div>
+                  <div class="text-sm text-white font-medium">
+                    Cancer, Scorpion, Poissons
+                  </div>
+                </div>
+              </div>
+              <div
+                class="w-[90%] mx-auto bg-gradient-to-br from-[#525252] via-orange-50 to-[#525252] rounded-md p-6 border-2 border-amber-300 shadow-inner"
+              >
+                <p
+                  class="text-center text-gray-800 leading-relaxed font-body text-base"
+                >
+                  <strong class="text-amber-900 text-lg"
+                    >⚠️ Note importante :</strong
+                  ><br /><span class="text-gray-700"
+                    >Les mois lunaires comptent
+                    <strong>29 ou 30 jours</strong></span
+                  ><br /><em class="text-gray-600 text-sm"
+                    ><strong>Intercycle (hors signe) :</strong> 8 mars → 20 mars
+                    2027 (13 jours)</em
+                  >
+                </p>
+              </div>
+            </div>
+          </main>
+
+          <footer class="text-center mt-10 text-black text-sm font-body">
+            <p>
+              Calendrier luni-solaire • Année 2026-2027 • Système équinoxial
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <!-- Modal flottant -->
+    <div
+      id="dayModal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalDate"
+    >
+      <div class="modal-content">
+        <button
+          type="button"
+          class="modal-close"
+          id="closeModal"
+          aria-label="Fermer"
+        >
+          ×
+        </button>
+        <div class="modal-header">
+          <div class="modal-date" id="modalDate"></div>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <script src="scripts/kalendrier.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9c2a211702bffc51',t:'MTc2OTIwMTA2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
