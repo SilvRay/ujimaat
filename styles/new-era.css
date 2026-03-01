@@ -96,10 +96,15 @@ body {
   transition: width 0.2s ease;
 }
 
+/* Navbar */
+.nav-glass {
+  background: rgba(10, 5, 3, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(218, 165, 32, 0.1);
+}
+
 /* Countdown */
 .countdown-banner {
-  position: sticky;
-  top: 0;
   background: linear-gradient(
     90deg,
     rgba(255, 0, 0, 0.2),
@@ -108,7 +113,6 @@ body {
   border-bottom: 2px solid #ff6600;
   padding: 15px 20px;
   text-align: center;
-  z-index: 999;
   backdrop-filter: blur(10px);
 }
 .countdown-text {

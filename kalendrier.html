@@ -17,9 +17,9 @@
     <!-- Navigation -->
     <nav class="sticky top-0 left-0 right-0 z-50 nav-glass">
       <div class="max-w-7xl mx-auto px-6 py-4">
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-between">
           <a href="index.html" class="flex items-center gap-3">
-            <div class="seal-decoration" style="width: 40px; height: 40px">
+            <div class="logo-wrap" style="width: 40px; height: 40px">
               <span class="font-display font-bold text-[#daa520] text-lg"
                 ><img
                   class="nav-logo"
@@ -28,9 +28,46 @@
               /></span>
             </div>
             <span class="font-display text-2xl font-semibold gradient-gold"
-              >UJIMA</span
+              >Accueil</span
             >
           </a>
+          <div class="md:flex items-center gap-8 hidden">
+            <a
+              href="/constitution.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Constitution</a
+            >
+            <a
+              href="/oracle-2026.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Oracle 2026</a
+            >
+            <a
+              href="/new-era.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >New E.R.A</a
+            >
+            <a
+              href="/kalendrier.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Kalendrier</a
+            >
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-[#daa520] p-2">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
         <div
           id="mobile-menu"
@@ -38,24 +75,24 @@
         >
           <div class="flex flex-col gap-4">
             <a
-              href="#preambule"
-              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
-              >Préambule</a
-            >
-            <a
-              href="#principes"
-              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
-              >Principes</a
-            >
-            <a
-              href="#constitution"
+              href="/constitution.html"
               class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
               >Constitution</a
             >
             <a
-              href="#vision"
+              href="/oracle-2026.html"
               class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
-              >Vision</a
+              >Oracle 2026</a
+            >
+            <a
+              href="/new-era.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >New E.R.A</a
+            >
+            <a
+              href="/kalendrier.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Kalendrier</a
             >
           </div>
         </div>
@@ -125,17 +162,7 @@
                     <div class="btn-underline"></div>
                   </div>
                 </button>
-                <button
-                  id="viewWeekBtn"
-                  type="button"
-                  class="font-semibold text-lg"
-                  aria-label="Afficher la vue hebdomadaire"
-                >
-                  <span>Vue semaine</span>
-                  <div class="underline-wrapper">
-                    <div class="btn-underline"></div>
-                  </div>
-                </button>
+
                 <button
                   id="viewMonthBtn"
                   type="button"
@@ -279,17 +306,6 @@
                   class="flex flex-wrap gap-4 items-center justify-center mb-4"
                 >
                   <button
-                    id="goToTodayMonth"
-                    type="button"
-                    class="font-semibold"
-                    aria-label="Aller au jour actuel"
-                  >
-                    <span>📍 Aller à aujourd'hui</span>
-                    <div class="underline-wrapper">
-                      <div class="btn-underline"></div>
-                    </div>
-                  </button>
-                  <button
                     id="exportMonthBtn"
                     type="button"
                     class="px-6 py-3 text-white rounded-md bg-[#2B2B2B] hover:bg-gray-600 transition duration-300 font-semibold shadow-md flex items-center gap-2"
@@ -351,82 +367,6 @@
               </div>
             </div>
 
-            <!-- Vue semaine -->
-            <div id="weekSection" class="hidden">
-              <div
-                class="bg-[#525252] border border-[#c9a24d] w-[90%] mx-auto rounded-md shadow-xl p-8 mb-8"
-              >
-                <h3
-                  class="font-display text-3xl font-bold text-center mb-6 text-white flex flex-col sm:flex-row items-center justify-center gap-2"
-                >
-                  <img
-                    class="w-8 h-8"
-                    src="assets/_icons/_global/week.png"
-                    alt="icône de calendrier pour la semaine"
-                  />
-                  Navigation semaine par semaine
-                </h3>
-                <div
-                  class="flex flex-wrap gap-4 items-center justify-center mb-6"
-                >
-                  <button
-                    id="prevWeek"
-                    type="button"
-                    class="px-8 py-4 bg-[#c9a24d] text-white rounded-md transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 flex items-center gap-3 text-lg"
-                    aria-label="Semaine précédente"
-                  >
-                    <span class="text-2xl" aria-hidden="true">◀</span>
-                    <span>Précédent</span>
-                  </button>
-                  <div
-                    id="weekInfo"
-                    class="px-6 py-4 border-3 border-indigo-300 rounded-md bg-gradient-to-br from-white to-indigo-50 shadow-md font-bold text-lg font-body min-w-[280px] text-center"
-                  ></div>
-                  <button
-                    id="nextWeek"
-                    type="button"
-                    class="px-8 py-4 bg-[#C9A24D] text-white rounded-md transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 flex items-center gap-3 text-lg"
-                    aria-label="Semaine suivante"
-                  >
-                    <span>Suivant</span>
-                    <span class="text-2xl" aria-hidden="true">▶</span>
-                  </button>
-                </div>
-                <div
-                  class="flex flex-wrap gap-4 items-center justify-center mb-4"
-                >
-                  <button
-                    id="goToTodayWeek"
-                    type="button"
-                    class="font-semibold"
-                    aria-label="Aller à la semaine actuelle"
-                  >
-                    <span>📍 Aller à aujourd'hui</span>
-                    <div class="underline-wrapper">
-                      <div class="btn-underline"></div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-              <!-- Calendrier de la semaine -->
-              <div class="bg-[#3a3a3a] shadow-xl p-8 mb-8">
-                <h3
-                  class="font-display text-3xl font-bold text-center mb-6 text-white flex items-center justify-center gap-2"
-                >
-                  <img
-                    class="w-8 h-8"
-                    src="assets/_icons/_global/week.png"
-                    alt="icône de calendrier pour la semaine"
-                  />
-                  Calendrier de la semaine
-                </h3>
-                <div
-                  id="weekCalendar"
-                  class="grid grid-cols-1 lg:grid-cols-7 gap-4"
-                ></div>
-              </div>
-            </div>
-
             <!-- Vue annuelle -->
             <div id="yearSection" class="hidden">
               <div class="bg-[#3a3a3a] shadow-xl p-8 mb-8">
@@ -470,26 +410,28 @@
                 class="w-[90%] mx-auto mb-8 bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 rounded-md p-6 border-3 border-purple-400 shadow-lg"
               >
                 <div class="text-center">
-                  <img
-                    id="nextFestivalIcon"
-                    class="w-10 h-10 mb-3 mx-auto"
-                    src="assets/_icons/_global/confetti.png"
-                    alt="icône confetti"
-                  />
-                  <h4
-                    class="font-display text-2xl font-bold text-purple-900 mb-2"
-                  >
-                    Prochaine fête
-                  </h4>
                   <div
-                    class="text-xl font-bold text-purple-800 mb-3"
-                    id="nextFestivalName"
-                  ></div>
+                    class="flex flex-col md:flex-row gap-2 items-center justify-center mb-4"
+                  >
+                    <img
+                      id="nextFestivalIcon"
+                      class="w-7 h-7"
+                      src="assets/_icons/_global/confetti.png"
+                      alt="icône confetti"
+                    />
+                    <h4 class="font-display text-2xl font-bold text-purple-800">
+                      Prochaine fête :
+                    </h4>
+                    <div
+                      class="text-xl font-bold text-purple-800"
+                      id="nextFestivalName"
+                    ></div>
+                  </div>
                   <div
                     class="bg-white bg-opacity-70 rounded-xl p-4 inline-block"
                   >
                     <div
-                      class="text-4xl font-black text-purple-600 mb-1"
+                      class="text-3xl font-black text-purple-600 mb-1"
                       id="daysUntilFestival"
                     ></div>
                     <div

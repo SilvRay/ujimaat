@@ -1,4 +1,20 @@
 (() => {
+  // Mobile menu
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    });
+  }
+
   // 1) Scroll Progress (window)
   const progressBar = document.querySelector("[data-progress-bar]");
   const updateProgress = () => {
@@ -21,7 +37,7 @@
   const elSeconds = document.querySelector("[data-seconds]");
 
   // 1️⃣ Date cible (15 février à 00:00)
-  const targetTime = new Date("2026-02-15T00:00:00").getTime();
+  const targetTime = new Date("2026-03-08T00:00:00").getTime();
   console.log(new Date(targetTime).toLocaleString());
 
   const pad2 = (n) => String(n).padStart(2, "0");

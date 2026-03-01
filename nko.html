@@ -1,0 +1,1935 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./styles/nko.css" />
+
+    <title>ߒߞߏ | Renaissance Africaine - Académie N'ko</title>
+
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body class="h-full">
+    <canvas id="effectCanvas"></canvas>
+    <div class="app-wrapper">
+      <nav class="fixed top-0 left-0 right-[1rem] z-50 nav-glass">
+        <div class="max-w-[75rem] mx-auto px-6 py-4">
+          <div class="flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+              <div class="logo-wrap" style="width: 40px; height: 40px">
+                <span class="font-display font-bold text-[#daa520] text-lg"
+                  ><img
+                    class="nav-logo"
+                    src="assets/_images/_logos/logo-ujima.png"
+                    alt="logo UJIMA"
+                /></span>
+              </div>
+              <span class="font-display text-2xl font-semibold gradient-gold"
+                >Accueil</span
+              >
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+              <a
+                href="/constitution.html"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Constitution</a
+              >
+              <a
+                href="/oracle-2026.html"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Oracle 2026</a
+              >
+              <a
+                href="/new-era.html"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >New E.R.A</a
+              >
+              <a
+                href="/kalendrier.html"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Kalendrier</a
+              >
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-[#daa520] p-2">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewbox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            id="mobile-menu"
+            class="hidden md:hidden mt-4 pb-4 border-t border-[#daa520]/10 pt-4"
+          >
+            <div class="flex flex-col gap-4">
+              <a
+                href="/constitution.html"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Constitution</a
+              >
+              <a
+                href="/oracle-2026.html"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Oracle 2026</a
+              >
+              <a
+                href="/new-era.html"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >New E.R.A</a
+              >
+              <a
+                href="/kalendrier.html"
+                class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+                >Kalendrier</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="nko-text" id="mainTitle">ߒߞߏ | RENAISSANCE AFRICAINE</h1>
+          <p class="tagline" id="taglineText">
+            « La langue est la première frontière de la liberté. »
+          </p>
+          <div class="hero-description">
+            <p>
+              Vous vivez en Europe, mais votre cœur bat pour l'Afrique ? Vous
+              ressentez le besoin de vous reconnecter à vos racines et de
+              participer activement à la construction de l'<strong
+                >État Confédéral Africain</strong
+              >
+              ?
+            </p>
+            <p style="margin-top: 20px">
+              Ne soyez plus un spectateur de votre culture. Devenez-en l'acteur
+              principal en maîtrisant le <strong>N'ko</strong>, la langue
+              standard unifiée du Manden, l'outil de souveraineté intellectuelle
+              conçu par le visionnaire <strong>Solomana Kante</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Why Join Section -->
+      <section id="whyJoin">
+        <h2 class="section-title">
+          <img
+            class="w-14 h-14 md:w-20 md:h-20"
+            src="assets/_icons/earth-africa.png"
+            alt="globe terrestre avec l'Afrique au centre"
+          />
+          Pourquoi Rejoindre Ce Parcours ?
+        </h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/link.png"
+                alt="icône lien"
+              />
+            </div>
+            <h3 class="card-title">Identité</h3>
+            <p class="card-text">
+              Brisez les chaînes de l'aliénation linguistique et retrouvez votre
+              connexion authentique à vos racines africaines.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/unity.png"
+                alt="icône lien"
+              />
+            </div>
+            <h3 class="card-title">Unité</h3>
+            <p class="card-text">
+              Apprenez la langue qui unit Malinkés, Bambaras, Dioulas et
+              Mandinkas dans un bloc harmonieux et puissant.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/modernity.png"
+                alt="icône lien"
+              />
+            </div>
+            <h3 class="card-title">Modernité</h3>
+            <p class="card-text">
+              Accédez à une écriture capable de porter la science, la
+              technologie et la philosophie du 21ème siècle.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Philosophy Section -->
+      <section id="philosophy">
+        <h2 class="section-title">
+          <img
+            class="w-14 h-14 md:w-20 md:h-20"
+            src="assets/_icons/book.png"
+            alt="livre"
+          />
+          Le Système de Pensée N'ko
+        </h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/stars.png"
+                alt="icône étoiles"
+              />
+            </div>
+            <h3 class="card-title">La Dualité</h3>
+            <p class="card-text">
+              <strong>Voyelles = Esprit</strong><br />
+              Les 7 voyelles sont le "Souffle" (Ni) qui anime la matière.
+              <strong>Consonnes = Matière</strong><br />
+              Les 19 consonnes sont le corps physique qui supporte le monde.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/sacred.png"
+                alt="icône temple"
+              />
+            </div>
+            <h3 class="card-title">La Symbolique</h3>
+            <p class="card-text">
+              7 voyelles (sacré), 19 consonnes (forces), 1 nasale (identité).
+              Chaque nombre porte une sagesse cosmogonique.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/target.png"
+                alt="icône cible"
+              />
+            </div>
+            <h3 class="card-title">La Précision</h3>
+            <p class="card-text">
+              Les 8 tons vous enseignent l'honnêteté absolue : une petite erreur
+              change radicalement le sens de la réalité.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Cycle 1 Details -->
+      <section id="cycle1">
+        <h2 class="section-title">
+          <img
+            class="w-14 h-14 md:w-20 md:h-20"
+            src="assets/_icons/mortarboard.png"
+            alt="toque"
+          />
+          Cycle 1 : ߟߊ߬ߞߎߣߎ߲ (L'Éveil)
+        </h2>
+        <div class="cycle-container">
+          <div class="cycle-header">
+            <div class="cycle-number">1</div>
+            <div class="cycle-info">
+              <h3>L'Initiation à la Renaissance</h3>
+              <p>Durée : 3 mois (12 semaines) | 24 séances interactives</p>
+            </div>
+          </div>
+          <div class="cycle-content">
+            <div class="cycle-point">
+              <strong class="flex items-center gap-[0.75rem]">
+                <img
+                  class="w-5 h-5"
+                  src="assets/_icons/books.png"
+                  alt="plusieurs livres"
+                />
+                L'Histoire Interdite</strong
+              >
+              <p>
+                La genèse du N'ko (1949, Solomana Kante) et son rôle dans la
+                Renaissance Africaine.
+              </p>
+            </div>
+            <div class="cycle-point">
+              <strong class="flex items-center gap-[0.75rem]">
+                <img
+                  class="w-5 h-5"
+                  src="assets/_icons/stars.png"
+                  alt="icône étoiles"
+                />
+                Le Souffle (Voyelles)</strong
+              >
+              <p>Maîtrise des 7 sons fondamentaux qui animent la langue.</p>
+            </div>
+            <div class="cycle-point">
+              <strong class="flex items-center gap-[0.75rem]">
+                <img
+                  class="w-5 h-5"
+                  src="assets/_icons/hammer.png"
+                  alt="icône marteau"
+                />
+                La Matière (Consonnes)</strong
+              >
+              <p>Apprentissage des 19 caractères + la nasale unifiée (ߒ).</p>
+            </div>
+            <div class="cycle-point">
+              <strong class="flex items-center gap-[0.75rem]">
+                <img
+                  class="w-5 h-5"
+                  src="assets/_icons/target-arrow.png"
+                  alt="icône cible avec une flèche"
+                />
+                La Précision (Tons)</strong
+              >
+              <p>
+                Maîtrise des 8 signes tonals pour une prononciation parfaite.
+              </p>
+            </div>
+            <div class="cycle-point">
+              <strong class="flex items-center gap-[0.75rem]">
+                <img
+                  class="w-5 h-5"
+                  src="assets/_icons/laptop.png"
+                  alt="icône ordinateur portable"
+                />
+                Le Numérique</strong
+              >
+              <p>Installation et usage du clavier N'ko sur vos appareils.</p>
+            </div>
+            <div class="cycle-point">
+              <strong class="flex items-center gap-[0.75rem]">
+                <img
+                  class="w-5 h-5"
+                  src="assets/_icons/calligraphy.png"
+                  alt="icône parchemin et plume"
+                />
+                Calligraphie &amp; Fluidité</strong
+              >
+              <p>
+                Apprentissage du tracé de droite à gauche et maîtrise de
+                l'écriture liée.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="price-card">
+          <div class="price-value">TARIF SPÉCIAL RENAISSANCE</div>
+          <div class="price-amount" id="cyclePrice">180 €</div>
+          <div class="price-description">Prix définitif</div>
+          <div class="price-card-details">
+            48 heures intensives + ressources illimitées
+          </div>
+        </div>
+      </section>
+      <!-- Detailed Planning Section -->
+      <section id="detailedPlanning">
+        <h2 class="section-title calendar">
+          <img
+            class="w-14 h-14 md:w-20 md:h-20 inline md:mr-[2rem]"
+            src="assets/_icons/calendar.png"
+            alt="icône calendrier"
+          />Le Calendrier Précis de Votre Transformation
+        </h2>
+        <div class="planning-header">
+          <div class="planning-box">
+            <h4 class="flex items-center gap-3">
+              <img
+                class="w-7 h-7"
+                src="assets/_icons/opening-hours.png"
+                alt=""
+              />
+              Vos Jours et Horaires Fixes
+            </h4>
+            <p>
+              <strong>Mardi</strong> : 20h00 – 22h00<br /><em
+                >Théorie et mémorisation</em
+              >
+            </p>
+            <p>
+              <strong>Samedi</strong> : 10h00 – 12h00<br /><em
+                >Pratique, lecture à haute voix et dictée</em
+              >
+            </p>
+            <p
+              style="
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(16, 185, 129, 0.3);
+              "
+            >
+              <strong>Total</strong> : 4 heures par semaine<br /><strong
+                >Cycle complet</strong
+              >
+              : 48 heures intensives
+            </p>
+          </div>
+          <div class="planning-box">
+            <h4 class="flex items-center gap-3">
+              <img class="w-7 h-7" src="assets/_icons/investment.png" alt="" />
+              Un Investissement Clair
+            </h4>
+            <p>
+              <strong>Cycle 1 Complet</strong> :
+              <span style="font-size: 1.4rem; color: #ffd700; font-weight: 900"
+                >180 €</span
+              >
+            </p>
+            <p style="margin-top: 15px">
+              Soit <strong>7,50 €</strong> par séance de 2 heures
+            </p>
+            <p
+              style="
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px solid rgba(16, 185, 129, 0.3);
+              "
+            >
+              <strong>Paiement</strong> : Unique ou échelonné (3 mensualités de
+              60 €)
+            </p>
+          </div>
+        </div>
+        <!-- Week by Week -->
+        <h3
+          style="
+            font-size: 2rem;
+            color: #ffd700;
+            margin-top: 80px;
+            margin-bottom: 50px;
+            text-align: center;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          "
+        >
+          Les 12 Semaines Détaillées
+        </h3>
+        <h4
+          style="
+            font-size: 1.5rem;
+            color: #10b981;
+            margin: 40px 0 25px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffd700;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          "
+        >
+          MOIS 1 : La Fondation (Les Caractères)
+        </h4>
+        <div class="weeks-container">
+          <div class="week-card">
+            <div class="week-number">SEMAINE 1</div>
+            <div class="week-month">Mois 1</div>
+            <div class="week-title">Introduction à l'Histoire du N'ko</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : L'événement de 1949,
+                Solomana Kante, la réponse à l'article libanais
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Découvrez les 7 voyelles
+                (ߛߌ߰ߙߊ߬ߟߊ߲) - Le concept du "Souffle"
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 2</div>
+            <div class="week-month">Mois 1</div>
+            <div class="week-title">Les 19 Consonnes - Groupe 1</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Présentation visuelle des 10
+                premières consonnes
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Calligraphie intensive,
+                tracé de droite à gauche
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 3</div>
+            <div class="week-month">Mois 1</div>
+            <div class="week-title">Les 19 Consonnes - Groupe 2 + Nasale</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Les 9 consonnes restantes +
+                la nasale ߒ
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Dictées de signes, premiers
+                réflexes neurologiques
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 4</div>
+            <div class="week-month">Mois 1</div>
+            <div class="week-title">
+              Révision Générale et Premières Combinaisons
+            </div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Révision complète de
+                l'alphabet (27 lettres)
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Premières combinaisons
+                simples (Consonne + Voyelle)
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4
+          style="
+            font-size: 1.5rem;
+            color: #10b981;
+            margin: 40px 0 25px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffd700;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          "
+        >
+          MOIS 2 : L'Âme de la Langue (Les Tons - ߞߊ߲ߡߊߛߙߋ)
+        </h4>
+        <div class="weeks-container">
+          <div class="week-card">
+            <div class="week-number">SEMAINE 5</div>
+            <div class="week-month">Mois 2</div>
+            <div class="week-title">Les Tons Courts (4 Signes)</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Ton haut calme, Ton haut
+                brusque, Ton bas calme, Ton bas brusque
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Exercices d'écoute et
+                prononciation chorale
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 6</div>
+            <div class="week-month">Mois 2</div>
+            <div class="week-title">Les Tons Longs (4 Signes)</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : L'allongement des voyelles
+                avec les inflexions
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Dictées vocales pour
+                corriger la prononciation
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 7</div>
+            <div class="week-month">Mois 2</div>
+            <div class="week-title">Nasalisation et Ponctuation N'ko</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Signes de nasalisation
+                spécifiques au N'ko
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Ponctuation et accents
+                spéciaux
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 8</div>
+            <div class="week-month">Mois 2</div>
+            <div class="week-title">Pratique Intensive des Tons</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Comment un ton change
+                radicalement le sens (ba=mère, bá=fleuve, bǎ=chèvre)
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Exercices pratiques
+                intensifs avec des mots réels
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4
+          style="
+            font-size: 1.5rem;
+            color: #10b981;
+            margin: 40px 0 25px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffd700;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          "
+        >
+          MOIS 3 : Mécanique et Fluidité
+        </h4>
+        <div class="weeks-container">
+          <div class="week-card">
+            <div class="week-number">SEMAINE 9</div>
+            <div class="week-month">Mois 3</div>
+            <div class="week-title">Formation des Mots Complexes</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Règles de liaison et
+                composition de mots
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Construction de phrases
+                simples
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 10</div>
+            <div class="week-month">Mois 3</div>
+            <div class="week-title">Lecture de Textes Authentiques</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Proverbes et sagesses
+                populaires mandingues
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Lecture à haute voix,
+                fluidité et expression
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 11</div>
+            <div class="week-month">Mois 3</div>
+            <div class="week-title">Écriture Cursive et Clavier Numérique</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Maîtrise de l'écriture
+                cursive et liée
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Installation et utilisation
+                du clavier N'ko (Smartphone/PC)
+              </div>
+            </div>
+          </div>
+          <div class="week-card">
+            <div class="week-number">SEMAINE 12</div>
+            <div class="week-month">Mois 3</div>
+            <div class="week-title">Examen Final et Certification</div>
+            <div class="week-content">
+              <div class="week-lesson">
+                <strong>Séance 1 (Mardi)</strong> : Préparation à l'évaluation
+                finale
+              </div>
+              <div class="week-lesson">
+                <strong>Séance 2 (Samedi)</strong> : Examen - Lecture fluide
+                d'un texte inconnu + Présentation personnelle complète en N'ko
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- What's Included Section -->
+      <section id="whatIncluded">
+        <h2 class="section-title">
+          <img
+            class="w-14 h-14 md:w-20 md:h-20"
+            src="assets/_icons/stars-dotted.png"
+            alt="icône étoiles"
+          />
+          Voici Exactement Ce Qui Est Inclus
+        </h2>
+        <div class="pricing-comparison">
+          <div class="pricing-row header">
+            <div class="pricing-label">ÉLÉMENT</div>
+            <div class="pricing-value">CE QUE VOUS RECEVEZ</div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-label">
+              <img
+                class="w-5 h-5"
+                src="assets/_icons/live.png"
+                alt="icône live"
+              />
+              Cours Interactifs En Direct
+            </div>
+            <div class="pricing-value">24 séances (12 mardis + 12 samedis)</div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-label">
+              <img
+                class="w-5 h-5"
+                src="assets/_icons/replay.png"
+                alt="icône replay"
+              />
+              Accès aux Replays
+            </div>
+            <div class="pricing-value">Illimité pendant 1 an</div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-label">
+              <img
+                class="w-5 h-5"
+                src="assets/_icons/books.png"
+                alt="icône plusieurs livres"
+              />
+              Supports PDF
+            </div>
+            <div class="pricing-value">
+              Manuels de calligraphie + Grammaire N'ko
+            </div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-label">
+              <img
+                class="w-5 h-5"
+                src="assets/_icons/laptop.png"
+                alt="icône ordinateur portable"
+              />
+              Assistance Technique
+            </div>
+            <div class="pricing-value">
+              Installation claviers (iPhone, Android, Mac, Windows)
+            </div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-label">
+              <img
+                class="w-5 h-5"
+                src="assets/_icons/discord.png"
+                alt="logo discord"
+              />
+              Groupe Discord Privé
+            </div>
+            <div class="pricing-value">Communauté, entraide, partage 24/7</div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-label">
+              <img
+                class="w-5 h-5"
+                src="assets/_icons/certificate.png"
+                alt="icône certificat"
+              />
+              Certificat Numérique
+            </div>
+            <div class="pricing-value">
+              Délivré à la réussite de l'examen final
+            </div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-label">
+              <img
+                class="w-5 h-5"
+                src="assets/_icons/book.png"
+                alt="icône livre"
+              />
+              Ressources Bonus
+            </div>
+            <div class="pricing-value">
+              Vocabulaire moderne (tech, science, droit)
+            </div>
+          </div>
+        </div>
+        <h3
+          style="
+            font-size: 1.8rem;
+            color: #10b981;
+            margin: 60px 0 40px 0;
+            text-align: center;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          "
+        >
+          Pourquoi 180 € ?
+        </h3>
+        <div class="includes-grid">
+          <div class="include-item">
+            <strong>
+              <img
+                class="w-5 h-5"
+                src="assets/_icons/target-arrow.png"
+                alt="icône cible avec flèche"
+              />
+              Qualité &amp; Sérieux</strong
+            >
+            <p>
+              Un nombre d’apprenants volontairement limité pour assurer une
+              formation rigoureuse et de qualité.
+            </p>
+          </div>
+          <div class="include-item">
+            <strong
+              ><img class="w-5 h-5" src="assets/_icons/48-jours.png" alt="" />
+              48 Heures Intensives</strong
+            >
+            <p>
+              C'est équivalent à une semaine de formation résidentielle.
+              Condensé en 3 mois à votre rythme.
+            </p>
+          </div>
+          <div class="include-item">
+            <strong
+              ><img
+                class="w-5 h-5"
+                src="assets/_icons/earth-africa.png"
+                alt="globe terrestre avec l'Afrique au centre"
+              />
+              Accès Diaspora</strong
+            >
+            <p>
+              Vous êtes en Europe. L'horaire (20h le mardi, 10h le samedi) est
+              pensé pour vous.
+            </p>
+          </div>
+          <div class="include-item">
+            <strong
+              ><img
+                class="w-5 h-5"
+                src="assets/_icons/certificate.png"
+                alt=""
+              />
+              Certification Officielle</strong
+            >
+            <p>
+              Reconnu par l'État Confédéral Africain (virtuel). Utile pour des
+              projets futurs.
+            </p>
+          </div>
+          <div class="include-item">
+            <strong
+              ><img
+                class="w-5 h-5"
+                src="assets/_icons/group.png"
+                alt="icône groupe"
+              />
+              Places Limitées</strong
+            >
+            <p>
+              90 places seulement. Qualité et sérieux avant tout. Une vraie
+              communauté consciente.
+            </p>
+          </div>
+          <div class="include-item">
+            <strong
+              ><img
+                class="w-5 h-5"
+                src="assets/_icons/mobile-phone.png"
+                alt="icône téléphone mobile"
+              />
+              Outils Numériques</strong
+            >
+            <p>
+              Clavier N'ko, dictées vocales, immersion digitale. La Renaissance
+              au 21ème siècle.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Formateur Section -->
+      <section id="formateur">
+        <h2 class="section-title">
+          <img
+            class="w-14 h-14 md:w-20 md:h-20"
+            src="assets/_icons/master.png"
+            alt=""
+          />
+          Votre Formateur
+        </h2>
+        <div
+          style="
+            background: linear-gradient(
+              135deg,
+              rgba(16, 185, 129, 0.2) 0%,
+              rgba(255, 215, 0, 0.1) 100%
+            );
+            border: 3px solid #10b981;
+            border-radius: 0;
+            padding: 60px 40px;
+            text-align: center;
+          "
+        >
+          <div style="margin-bottom: 40px">
+            <div
+              style="
+                width: 150px;
+                height: 150px;
+                margin: 0 auto 30px;
+                background: linear-gradient(135deg, #10b981, #ffd700);
+                border-radius: 100vw;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4rem;
+                animation: float 3s ease-in-out infinite;
+              "
+            >
+              <img
+                class="w-full h-full"
+                src="assets/_images/nko/yomari-avatar.jpeg"
+                alt="Yomari maître et ambassadeur du N'ko"
+              />
+            </div>
+            <h3
+              style="
+                font-size: 1.8rem;
+                color: #ffd700;
+                margin-bottom: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 900;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+              "
+            >
+              Yomāri T. Dabo.
+            </h3>
+            <p
+              style="
+                font-size: 1.1rem;
+                color: #10b981;
+                margin-bottom: 20px;
+                font-weight: 700;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+            >
+              Maître du N'ko &amp; Ambassadeur
+            </p>
+          </div>
+          <div
+            style="
+              max-width: 700px;
+              margin: 0 auto;
+              margin-bottom: 40px;
+              text-align: left;
+            "
+          >
+            <p
+              style="
+                font-size: 1rem;
+                color: #d0d0d0;
+                line-height: 1.8;
+                margin-bottom: 20px;
+              "
+            >
+              Passionné par la transmission du N'ko et l'histoire de la
+              Renaissance Africaine, notre formateur vous accompagne avec
+              expertise et dévouement. Spécialisé dans l'enseignement
+              interactif, il crée un environnement d'apprentissage bienveillant
+              où chaque apprenant peut s'épanouir.
+            </p>
+            <p style="font-size: 1rem; color: #d0d0d0; line-height: 1.8">
+              Avec des années d'expérience dans la maîtrise du N'ko et une
+              profonde compréhension de la philosophie Manden, il est là pour
+              transformer votre relation à votre identité africaine.
+            </p>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 20px;
+              margin-top: 40px;
+            "
+          >
+            <a
+              href="https://www.nkowuruki.net/#/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(16, 185, 129, 0.2),
+                  rgba(255, 215, 0, 0.1)
+                );
+                border: 2px solid #10b981;
+                padding: 20px;
+                text-decoration: none;
+                color: #ffd700;
+                font-weight: 900;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+              onmouseover="
+                this.style.background =
+                  'linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(255, 215, 0, 0.2))';
+                this.style.transform = 'scale(1.08)';
+              "
+              onmouseout="
+                this.style.background =
+                  'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(255, 215, 0, 0.1))';
+                this.style.transform = 'scale(1)';
+              "
+            >
+              <img class="w-7 h-7" src="assets/_icons/website.png" alt="" />
+              Site Officiel
+            </a>
+            <a
+              href="https://www.instagram.com/nkowuruki/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(16, 185, 129, 0.2),
+                  rgba(255, 215, 0, 0.1)
+                );
+                border: 2px solid #10b981;
+                padding: 20px;
+                text-decoration: none;
+                color: #ffd700;
+                font-weight: 900;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+              onmouseover="
+                this.style.background =
+                  'linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(255, 215, 0, 0.2))';
+                this.style.transform = 'scale(1.08)';
+              "
+              onmouseout="
+                this.style.background =
+                  'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(255, 215, 0, 0.1))';
+                this.style.transform = 'scale(1)';
+              "
+            >
+              <img
+                class="w-7 h-7"
+                src="assets/_icons/insta.png"
+                alt="logo Instagram"
+              />
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/people/%DF%92%DF%9E%DF%8F-%DF%A5%DF%99%DF%8E%DF%9E%DF%8C/61557844109010/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(16, 185, 129, 0.2),
+                  rgba(255, 215, 0, 0.1)
+                );
+                border: 2px solid #10b981;
+                padding: 20px;
+                text-decoration: none;
+                color: #ffd700;
+                font-weight: 900;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+              onmouseover="
+                this.style.background =
+                  'linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(255, 215, 0, 0.2))';
+                this.style.transform = 'scale(1.08)';
+              "
+              onmouseout="
+                this.style.background =
+                  'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(255, 215, 0, 0.1))';
+                this.style.transform = 'scale(1)';
+              "
+            >
+              <img
+                class="w-7 h-7"
+                src="assets/_icons/fb.png"
+                alt="logo Facebook"
+              />
+              Facebook
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- FAQ Section -->
+      <section id="faq">
+        <h2 class="section-title">
+          <img src="" alt="" /><img
+            class="w-14 h-14 md:w-20 md:h-20"
+            src="assets/_icons/question.png"
+            alt
+          />
+          Les Questions Que Vous Vous Posez
+        </h2>
+        <div style="max-width: 900px; margin: 0 auto">
+          <div class="faq-question">
+            <h3
+              style="
+                font-size: 1.1rem;
+                color: #ffd700;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 900;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+            >
+              <span class="shrink-0 w-6"
+                ><img src="assets/_icons/plus.png" alt="icône plus"
+              /></span>
+              Je n'ai AUCUN niveau en langues africaines. C'est pour moi ?
+            </h3>
+          </div>
+          <div class="faq-answer">
+            <p style="color: #d0d0d0; line-height: 1.8; margin: 0">
+              <strong style="color: #ffd700"
+                >OUI, c'est EXACTEMENT pour vous.</strong
+              >
+              Le Cycle 1 commence du zéro absolu. Aucune pré-requis. On vous
+              enseigne les 27 lettres, les 8 tons, et la mécanique complète du
+              N'ko étape par étape.<br /><br /><strong style="color: #10b981"
+                >Spoiler:</strong
+              >
+              Après 12 semaines, vous serez capable de lire un texte N'ko
+              couramment et de vous présenter complètement en N'ko. C'est la
+              promesse du Cycle 1.
+            </p>
+          </div>
+          <div class="faq-question">
+            <h3
+              style="
+                font-size: 1.1rem;
+                color: #ffd700;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 900;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+            >
+              <span class="shrink-0 w-6"
+                ><img src="assets/_icons/plus.png" alt="icône plus"
+              /></span>
+              Je n'ai pas 4h/semaine à consacrer. C'est trop chargé ?
+            </h3>
+          </div>
+          <div class="faq-answer">
+            <p style="color: #d0d0d0; line-height: 1.8; margin: 0">
+              <strong style="color: #ffd700"
+                >Non, c'est le minimum stratégique.</strong
+              >
+              Vous avez 2 séances/semaine de 2 heures chacune. C'est faisable
+              même avec un job.<br /><br /><strong style="color: #10b981"
+                >Les vraies questions :</strong
+              ><br />
+              ✓ Peux-tu bloquer 2 heures le mardi soir? (20h-22h)<br />
+              ✓ Peux-tu être présent le samedi matin? (10h-12h)<br /><br />
+              Si oui → c'est pour toi.<br />
+              Si tu as un conflit, le Cycle 2 aura un horaire différent.
+            </p>
+          </div>
+          <div class="faq-question">
+            <h3
+              style="
+                font-size: 1.1rem;
+                color: #ffd700;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 900;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+            >
+              <span class="shrink-0 w-6"
+                ><img src="assets/_icons/plus.png" alt="icône plus"
+              /></span>
+              C'est quoi l'intérêt réel d'apprendre le N'ko ? C'est utile
+              concrètement ?
+            </h3>
+          </div>
+          <div class="faq-answer">
+            <p style="color: #d0d0d0; line-height: 1.8; margin: 0">
+              <strong style="color: #ffd700">Oui, sur 3 niveaux :</strong
+              ><br /><br /><strong style="color: #10b981">1. Identitaire</strong
+              ><br />
+              Retrouver votre connexion à vos racines. Briser le sentiment
+              d'être un "étranger" dans votre propre histoire. C'est une
+              guérison profonde.<br /><br /><strong style="color: #10b981"
+                >2. Communautaire</strong
+              ><br />
+              S'insérer dans l'espace Manden (Mali, Guinée, Côte d'Ivoire,
+              Sénégal, etc). Pouvoir converser avec les sages, les commerçants,
+              les artisans localement.<br /><br /><strong style="color: #10b981"
+                >3. Professionnel</strong
+              ><br />
+              • Freelance/Consultant en Afrique<br />
+              • Investisseur dans l'espace Manden<br />
+              • Entrepreneur social dans la diaspora<br />
+              • Créateur de contenu en N'ko (YouTube, TikTok, Podcast)<br /><br /><strong
+                style="color: #ffd700"
+                >Réalité :</strong
+              >
+              Le N'ko sera de plus en plus important dans la Renaissance
+              Africaine. Soyez parmi les pionniers.
+            </p>
+          </div>
+          <div class="faq-question">
+            <h3
+              style="
+                font-size: 1.1rem;
+                color: #ffd700;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 900;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+            >
+              <span class="shrink-0 w-6"
+                ><img src="assets/_icons/plus.png" alt="icône plus"
+              /></span>
+              Qu'est-ce que je fais APRÈS le Cycle 1 ? C'est vraiment la fin ?
+            </h3>
+          </div>
+          <div class="faq-answer">
+            <p style="color: #d0d0d0; line-height: 1.8; margin: 0">
+              <strong style="color: #ffd700"
+                >Non, c'est un commencement.</strong
+              >
+              Voici la suite :<br /><br /><strong style="color: #10b981"
+                >Cycle 2 (Prochainement)</strong
+              ><br />
+              • Littérature classique N'ko<br />
+              • Philosophie et sagesse Manden<br />
+              • Histoire de l'État Confédéral Africain<br />
+              • Débat et expression éloquente<br /><br /><strong
+                style="color: #10b981"
+                >Cycle 3 (Après)</strong
+              ><br />
+              • Écriture créative en N'ko<br />
+              • Traduction professionnelle<br />
+              • Mentorat et transmission<br /><br /><strong
+                style="color: #10b981"
+                >Communauté Permanente</strong
+              ><br />
+              • Discord 24/7 avec les alumni<br />
+              • Événements mensuels en ligne<br />
+              • Projets collaboratifs de la Renaissance<br /><br /><strong
+                style="color: #ffd700"
+                >Le N'ko, c'est pour la vie. Le Cycle 1, c'est juste le
+                début.</strong
+              >
+            </p>
+          </div>
+          <div class="faq-question">
+            <h3
+              style="
+                font-size: 1.1rem;
+                color: #ffd700;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 900;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              "
+            >
+              <span class="shrink-0 w-6"
+                ><img src="assets/_icons/plus.png" alt="icône plus"
+              /></span>
+              180 € c'est vraiment l'investissement juste ?
+            </h3>
+          </div>
+          <div class="faq-answer">
+            <p style="color: #d0d0d0; line-height: 1.8; margin: 0">
+              <strong style="color: #ffd700">Oui, comparons :</strong
+              ><br /><br />
+              • Cours particulier de langue : 30-60 € l'heure = 240-480 € pour 8
+              heures<br />
+              • Formation résidentielle : 500-1500 € pour 3 jours<br />
+              • Notre Cycle 1 : 180 € pour 48 heures intensives + replays
+              illimités<br /><br /><strong style="color: #10b981"
+                >Ce que vous payez réellement :</strong
+              ><br />
+              ✓ Un formateur expert (Nko Wuruki)<br />
+              ✓ 24 séances live + replays<br />
+              ✓ Matériels de calligraphie PDF<br />
+              ✓ Support technique 1-to-1<br />
+              ✓ Certificat officiel<br />
+              ✓ Communauté permanente<br /><br /><strong style="color: #10b981"
+                >À 180 € pour 12 semaines = 7,50 € par séance.</strong
+              >
+              C'est un investissement minimal pour une transformation profonde.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Modalities Section -->
+      <section id="modalities">
+        <h2 class="section-title">
+          <img src="" alt="" /><img
+            class="w-14 h-14 md:w-20 md:h-20"
+            src="assets/_icons/laptop.png"
+            alt
+          />
+          Modalités Pratiques (Diaspora Europe)
+        </h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/online.png"
+                alt=""
+              />
+            </div>
+            <div class="card-title">Format 100% En Ligne</div>
+            <div class="card-text">
+              Visioconférence interactive via Zoom + Groupe de suivi Discord
+              pour l'entraide et la communauté.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/clock.png"
+                alt="icône horloge"
+              />
+            </div>
+            <div class="card-title">Horaires Flexibles</div>
+            <div class="card-text">
+              <strong>Mardi</strong> : 20h00 – 22h00<br /><strong
+                >Samedi</strong
+              >
+              : 10h00 – 12h00<br />
+              (Heure de Paris/CET)
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-full h-full"
+                src="assets/_icons/ancient-book.png"
+                alt="icône livre"
+              />
+            </div>
+            <div class="card-title">Ressources Complètes</div>
+            <div class="card-text">
+              Replays disponibles, supports PDF de calligraphie, manuels N'ko,
+              et assistance à l'installation des claviers.
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Why Diaspora Matters -->
+      <section id="diaspora">
+        <h2 class="section-title">
+          <img
+            class="w-14 h-14 md:w-20 md:h-20"
+            src="assets/_icons/earth-africa.png"
+            alt="globe terrestre avec l'Afrique au centre"
+          />
+          Pourquoi C'est Vital Pour La Diaspora
+        </h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-ull h-full"
+                src="assets/_icons/community.png"
+                alt="icône groupe"
+              />
+            </div>
+            <h3 class="card-title">Recréer la Communauté</h3>
+            <p class="card-text">
+              Se retrouver entre Africains conscients autour d'un projet noble
+              et transcendant.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-ull h-full"
+                src="assets/_icons/plane.png"
+                alt="icône avion qui décolle"
+              />
+            </div>
+            <h3 class="card-title">Préparer le Retour</h3>
+            <p class="card-text">
+              Maîtriser la langue standard pour investir ou s'installer dans
+              l'espace Manden (Mali, Guinée, Côte d'Ivoire, etc).
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <img
+                class="w-ull h-full"
+                src="assets/_icons/family.png"
+                alt="icône famille"
+              />
+            </div>
+            <h3 class="card-title">Éduquer les Enfants</h3>
+            <p class="card-text">
+              Briser le cycle de l'acculturation en transmettant le N'ko à la
+              génération suivante.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Countdown Section -->
+      <section class="countdown-section">
+        <h2 class="countdown-title">
+          <img
+            class="w-10 h-10"
+            src="assets/_icons/timer.png"
+            alt="icône chrono"
+          />
+          Le Compte à Rebours a Commencé
+        </h2>
+        <p class="countdown-date">
+          Démarrage officiel : Mardi 3 Mars 2025 • 20h00
+        </p>
+        <div class="countdown-container" id="countdownContainer">
+          <div class="countdown-unit">
+            <span class="countdown-number" id="days">0</span>
+            <span class="countdown-label">Jours</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="hours">0</span>
+            <span class="countdown-label">Heures</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="minutes">0</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="seconds">0</span>
+            <span class="countdown-label">Secondes</span>
+          </div>
+        </div>
+        <p class="countdown-urgency">
+          ⚡ Les places se remplissent rapidement. Ne tardez pas !
+        </p>
+        <p
+          style="
+            color: #000000;
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 600;
+          "
+        >
+          Vous avez attendu longtemps pour trouver votre chemin. Le moment est
+          venu. Rejoignez ce mouvement avant que ce cycle ne soit complet.
+        </p>
+      </section>
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <h2 class="cta-heading">
+          <img class="w-10 h-10" src="assets/_icons/incscription.png" alt="" />
+          Comment S'Inscrire ?
+        </h2>
+        <p class="cta-description">
+          Les places sont limitées pour garantir un suivi de qualité et une
+          interactivité réelle. Rejoignez dès maintenant le mouvement qui
+          réécrit l'histoire de l'Afrique.
+        </p>
+        <a
+          href="https://buy.stripe.com/9B67sK8299tV9eAdiWgjC0y"
+          target="_blank"
+          class="cta-button"
+          id="ctaButton"
+        >
+          REJOINDRE LE MOUVEMENT
+        </a>
+      </section>
+      <!-- Footer Quote -->
+      <section id="footer-quote">
+        <div class="footer-quote">
+          <p>ߒߞߏ ߟߐ߲ ߧߋ߫ ߌ ߦߍ߬ߙߍ ߟߐ߲ ߠߋ߬ ߘߌ߫</p>
+          <p
+            style="
+              margin-top: 15px;
+              font-size: 1rem;
+              color: #10b981;
+              font-weight: 700;
+            "
+          >
+            (Connaître le N'ko, c'est se connaître soi-même)
+          </p>
+        </div>
+        <div class="closing-text">
+          Rejoignez le mouvement.<br />
+          Écrivons ensemble l'histoire de la
+          <strong>RENAISSANCE AFRICAINE</strong>.
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer
+        style="
+          background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.98),
+            rgba(10, 14, 39, 0.95)
+          );
+          border-top: 3px solid #10b981;
+          padding: 60px 40px 40px;
+          margin-top: 80px;
+        "
+      >
+        <div style="max-width: 1200px; margin: 0 auto">
+          <!-- Footer Content Grid -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 50px;
+              margin-bottom: 50px;
+            "
+          >
+            <!-- About Section -->
+            <div>
+              <h4
+                style="
+                  font-size: 1.3rem;
+                  color: #ffd700;
+                  margin-bottom: 20px;
+                  font-weight: 900;
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                "
+              >
+                ߒߞߏ | RENAISSANCE
+              </h4>
+              <p style="color: #d0d0d0; line-height: 1.8; font-size: 0.95rem">
+                L'académie N'ko pour la diaspora africaine en Europe. Maîtrisez
+                le N'ko, la langue de la souveraineté intellectuelle.
+              </p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+              <h4
+                style="
+                  font-size: 1.1rem;
+                  color: #10b981;
+                  margin-bottom: 20px;
+                  font-weight: 900;
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  display: flex;
+                  align-items: center;
+                  gap: 0.5rem;
+                "
+              >
+                <img
+                  class="w-6 h-6"
+                  src="assets/_icons/navigation.png"
+                  alt=""
+                />
+                NAVIGATION
+              </h4>
+              <ul style="list-style: none; padding: 0">
+                <li style="margin-bottom: 12px">
+                  <a
+                    href="#whyJoin"
+                    style="
+                      color: #d0d0d0;
+                      text-decoration: none;
+                      transition: color 0.3s;
+                      font-weight: 600;
+                    "
+                    onmouseover="this.style.color = '#FFD700'"
+                    onmouseout="this.style.color = '#D0D0D0'"
+                    >Pourquoi rejoindre ?</a
+                  >
+                </li>
+                <li style="margin-bottom: 12px">
+                  <a
+                    href="#cycle1"
+                    style="
+                      color: #d0d0d0;
+                      text-decoration: none;
+                      transition: color 0.3s;
+                      font-weight: 600;
+                    "
+                    onmouseover="this.style.color = '#FFD700'"
+                    onmouseout="this.style.color = '#D0D0D0'"
+                    >Le Cycle 1</a
+                  >
+                </li>
+                <li style="margin-bottom: 12px">
+                  <a
+                    href="#detailedPlanning"
+                    style="
+                      color: #d0d0d0;
+                      text-decoration: none;
+                      transition: color 0.3s;
+                      font-weight: 600;
+                    "
+                    onmouseover="this.style.color = '#FFD700'"
+                    onmouseout="this.style.color = '#D0D0D0'"
+                    >Calendrier Détaillé</a
+                  >
+                </li>
+                <li style="margin-bottom: 12px">
+                  <a
+                    href="#faq"
+                    style="
+                      color: #d0d0d0;
+                      text-decoration: none;
+                      transition: color 0.3s;
+                      font-weight: 600;
+                    "
+                    onmouseover="this.style.color = '#FFD700'"
+                    onmouseout="this.style.color = '#D0D0D0'"
+                    >Questions Fréquentes</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Contact Section -->
+            <div>
+              <h4
+                style="
+                  font-size: 1.1rem;
+                  color: #10b981;
+                  margin-bottom: 20px;
+                  font-weight: 900;
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  display: flex;
+                  align-items: center;
+                  gap: 0.5rem;
+                "
+              >
+                <img
+                  class="w-6 h-6"
+                  src="assets/_icons/contact.png"
+                  alt="icône téléphone"
+                />
+                NOUS CONTACTER
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: 18px">
+                <a
+                  href="mailto:contact@ujima.fr?subject=Nko"
+                  style="
+                    color: #d0d0d0;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    transition: color 0.3s;
+                    font-weight: 600;
+                  "
+                  onmouseover="this.style.color = '#FFD700'"
+                  onmouseout="this.style.color = '#D0D0D0'"
+                >
+                  <span style="width: 1.25rem"
+                    ><img
+                      class="w-full h-full"
+                      src="assets/_icons/email.png"
+                      alt="icône email"
+                  /></span>
+                  <span>contact@ujima.fr</span>
+                </a>
+                <a
+                  href="https://discord.gg/h2kF27hn9r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    color: #d0d0d0;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    transition: color 0.3s;
+                    font-weight: 600;
+                  "
+                  onmouseover="this.style.color = '#FFD700'"
+                  onmouseout="this.style.color = '#D0D0D0'"
+                >
+                  <span style="width: 1.25rem"
+                    ><img
+                      class="w-full h-full"
+                      src="assets/_icons/discord.png"
+                      alt="logo discord"
+                  /></span>
+                  <span>Rejoindre Discord</span>
+                </a>
+              </div>
+            </div>
+            <!-- Socials -->
+            <div>
+              <h4
+                style="
+                  font-size: 1.1rem;
+                  color: #10b981;
+                  margin-bottom: 20px;
+                  font-weight: 900;
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  display: flex;
+                  align-items: center;
+                  gap: 0.5rem;
+                "
+              >
+                <img class="w-10 h-10" src="assets/_icons/social.png" alt="" />
+                RÉSEAUX
+              </h4>
+              <div style="display: flex; gap: 15px">
+                <a
+                  href="https://www.instagram.com/nkowuruki/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    background: rgba(16, 185, 129, 0.2);
+                    border: 2px solid #10b981;
+                    border-radius: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.5rem;
+                    transition: all 0.3s ease;
+                  "
+                  onmouseover="
+                    this.style.background = 'rgba(16, 185, 129, 0.4)';
+                    this.style.transform = 'scale(1.1)';
+                    this.style.borderColor = '#FFD700';
+                  "
+                  onmouseout="
+                    this.style.background = 'rgba(16, 185, 129, 0.2)';
+                    this.style.transform = 'scale(1)';
+                    this.style.borderColor = '#10B981';
+                  "
+                >
+                  <img
+                    class="w-8 h-8"
+                    src="assets/_icons/insta.png"
+                    alt="logo Instagram"
+                  />
+                </a>
+                <a
+                  href="https://www.facebook.com/people/%DF%92%DF%9E%DF%8F-%DF%A5%DF%99%DF%8E%DF%9E%DF%8C/61557844109010/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    background: rgba(16, 185, 129, 0.2);
+                    border: 2px solid #10b981;
+                    border-radius: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.5rem;
+                    transition: all 0.3s ease;
+                  "
+                  onmouseover="
+                    this.style.background = 'rgba(16, 185, 129, 0.4)';
+                    this.style.transform = 'scale(1.1)';
+                    this.style.borderColor = '#FFD700';
+                  "
+                  onmouseout="
+                    this.style.background = 'rgba(16, 185, 129, 0.2)';
+                    this.style.transform = 'scale(1)';
+                    this.style.borderColor = '#10B981';
+                  "
+                >
+                  <img
+                    class="w-8 h-8"
+                    src="assets/_icons/fb.png"
+                    alt="logo Facebook"
+                  />
+                </a>
+                <a
+                  href="https://www.nkowuruki.net/#/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    background: rgba(16, 185, 129, 0.2);
+                    border: 2px solid #10b981;
+                    border-radius: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.5rem;
+                    transition: all 0.3s ease;
+                  "
+                  onmouseover="
+                    this.style.background = 'rgba(16, 185, 129, 0.4)';
+                    this.style.transform = 'scale(1.1)';
+                    this.style.borderColor = '#FFD700';
+                  "
+                  onmouseout="
+                    this.style.background = 'rgba(16, 185, 129, 0.2)';
+                    this.style.transform = 'scale(1)';
+                    this.style.borderColor = '#10B981';
+                  "
+                >
+                  <img class="w-8 h-8" src="assets/_icons/website.png" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Divider -->
+          <div
+            style="
+              height: 2px;
+              background: linear-gradient(
+                90deg,
+                transparent,
+                #10b981,
+                transparent
+              );
+              margin: 40px 0;
+            "
+          ></div>
+          <!-- Bottom Footer -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 20px;
+              text-align: center;
+            "
+          >
+            <p
+              style="
+                color: #10b981;
+                font-size: 0.95rem;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+              "
+            >
+              « La langue est la première frontière de la liberté »
+            </p>
+            <div class="flex flex-col gap-2">
+              <p style="color: #8a8a8a; font-size: 0.9rem; font-weight: 600">
+                © 2026 Académie N'ko | Renaissance Africaine. Tous droits
+                réservés.
+              </p>
+              <p style="color: #8a8a8a; font-size: 0.9rem; font-weight: 600">
+                © 2026 UJIMA - Tous droits réservés
+              </p>
+              <p style="color: #8a8a8a; font-size: 0.9rem; font-weight: 600">
+                Site web réalisé par
+                <a
+                  class="developer"
+                  href="https://www.linkedin.com/in/alirayane/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Rayane Ali</a
+                >
+              </p>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+              "
+            ></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./scripts/nko.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9d28ecc604dc2b24',t:'MTc3MTg3Mjc5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

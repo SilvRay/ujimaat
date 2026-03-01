@@ -123,9 +123,9 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
       <div class="max-w-7xl mx-auto px-6 py-4">
-        <div class="flex items-center justify-between md:justify-center">
+        <div class="flex items-center justify-between">
           <a href="index.html" class="flex items-center gap-3">
-            <div class="seal-decoration" style="width: 40px; height: 40px">
+            <div class="logo-wrap" style="width: 40px; height: 40px">
               <span class="font-display font-bold text-[#daa520] text-lg"
                 ><img
                   class="nav-logo"
@@ -134,25 +134,46 @@
               /></span>
             </div>
             <span class="font-display text-2xl font-semibold gradient-gold"
-              >UJIMA</span
+              >Accueil</span
             >
           </a>
-          <div class="menu-toggle" id="menuToggle">
+          <div class="hidden md:flex items-center gap-8">
+            <a
+              href="/constitution.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Constitution</a
+            >
+            <a
+              href="/oracle-2026.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Oracle 2026</a
+            >
+            <a
+              href="/new-era.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >New E.R.A</a
+            >
+            <a
+              href="/kalendrier.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Kalendrier</a
+            >
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-[#daa520] p-2">
             <svg
               class="w-6 h-6"
-              style="color: var(--color-primary)"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
+              viewbox="0 0 24 24"
             >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"
-              ></path>
+              />
             </svg>
-          </div>
+          </button>
         </div>
         <div
           id="mobile-menu"
@@ -160,24 +181,24 @@
         >
           <div class="flex flex-col gap-4">
             <a
-              href="#preambule"
-              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
-              >Préambule</a
-            >
-            <a
-              href="#principes"
-              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
-              >Principes</a
-            >
-            <a
-              href="#constitution"
+              href="/constitution.html"
               class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
               >Constitution</a
             >
             <a
-              href="#vision"
+              href="/oracle-2026.html"
               class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
-              >Vision</a
+              >Oracle 2026</a
+            >
+            <a
+              href="/new-era.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >New E.R.A</a
+            >
+            <a
+              href="/kalendrier.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Kalendrier</a
             >
           </div>
         </div>

@@ -25,7 +25,7 @@
     </div>
 
     <!-- Countdown -->
-    <div class="countdown-banner" data-countdown-banner>
+    <!-- <div class="countdown-banner" data-countdown-banner>
       <a href="index.html" class="nav_brand flex items-center gap-3">
         <div class="logo-wrap" style="width: 40px; height: 40px">
           <span class="font-display font-bold text-[#daa520] text-lg"
@@ -56,8 +56,115 @@
           <span class="countdown-label">Sec</span>
         </div>
       </div>
-    </div>
+    </div> -->
 
+    <!-- Navigation -->
+    <nav class="sticky top-0 left-0 right-0 z-50 nav-glass">
+      <!-- Countdown -->
+      <div class="countdown-banner" data-countdown-banner>
+        <span class="countdown-text">⚡ OFFRE EARLY BIRD SE TERMINE DANS</span>
+
+        <div class="countdown-timer">
+          <div class="countdown-item">
+            <span class="countdown-number" data-days>07</span>
+            <span class="countdown-label">Jours</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" data-hours>23</span>
+            <span class="countdown-label">Heures</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" data-minutes>59</span>
+            <span class="countdown-label">Min</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" data-seconds>59</span>
+            <span class="countdown-label">Sec</span>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="logo-wrap" style="width: 40px; height: 40px">
+              <span class="font-display font-bold text-[#daa520] text-lg"
+                ><img
+                  class="nav-logo"
+                  src="assets/_images/_logos/logo-ujima.png"
+                  alt="logo UJIMA"
+              /></span>
+            </div>
+            <span class="font-display text-2xl font-semibold gradient-gold"
+              >Accueil</span
+            >
+          </a>
+          <div class="hidden md:flex items-center gap-8">
+            <a
+              href="/constitution.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Constitution</a
+            >
+            <a
+              href="/oracle-2026.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Oracle 2026</a
+            >
+            <a
+              href="/new-era.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >New E.R.A</a
+            >
+            <a
+              href="/kalendrier.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Kalendrier</a
+            >
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-[#daa520] p-2">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden mt-4 pb-4 border-t border-[#daa520]/10 pt-4"
+        >
+          <div class="flex flex-col gap-4">
+            <a
+              href="/constitution.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Constitution</a
+            >
+            <a
+              href="/oracle-2026.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Oracle 2026</a
+            >
+            <a
+              href="/new-era.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >New E.R.A</a
+            >
+            <a
+              href="/kalendrier.html"
+              class="text-[#c9b896] hover:text-[#daa520] transition-colors text-sm font-medium"
+              >Kalendrier</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
     <!-- HERO -->
     <section class="section is-hero">
       <div class="container is-wide">
@@ -448,7 +555,7 @@
 
         <div class="spots-counter">
           <div class="spots-label">Places Restantes</div>
-          <div class="spots-remaining" data-spots>17</div>
+          <div class="spots-remaining" data-spots>0</div>
           <div class="spots-total">sur 20 places maximum</div>
         </div>
 

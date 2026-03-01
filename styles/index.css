@@ -433,7 +433,7 @@ main {
 .card:hover .cta {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.6);
-  transform: translateX(4px);
+  transform: translateX(0.25rem);
 }
 
 .arrow {
@@ -449,6 +449,11 @@ main {
   display: flex;
   gap: 0.4rem;
   color: #fff;
+  transition: var(--transition);
+}
+
+.card:hover .countdown-timer {
+  transform: translateX(0.25rem);
 }
 
 .countdown-item {

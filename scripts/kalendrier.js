@@ -365,10 +365,9 @@ function switchView(view) {
 
   const searchSection = document.getElementById("searchSection");
   const monthSection = document.getElementById("monthSection");
-  const weekSection = document.getElementById("weekSection");
   const yearSection = document.getElementById("yearSection");
 
-  const allSections = [searchSection, monthSection, weekSection, yearSection];
+  const allSections = [searchSection, monthSection, yearSection];
   const visibleSections = allSections.filter(function (section) {
     return section && !section.classList.contains("hidden");
   });
@@ -391,7 +390,6 @@ function switchView(view) {
     // Afficher la nouvelle section
     let targetSection = null;
     if (view === "search") targetSection = searchSection;
-    else if (view === "week") targetSection = weekSection;
     else if (view === "month") targetSection = monthSection;
     else if (view === "year") targetSection = yearSection;
 
@@ -412,16 +410,6 @@ function switchView(view) {
     if (view === "search") {
       const viewSearchBtn = document.getElementById("viewSearchBtn");
       if (viewSearchBtn) viewSearchBtn.classList.add("active");
-    } else if (view === "week") {
-      const viewWeekBtn = document.getElementById("viewWeekBtn");
-      if (viewWeekBtn) viewWeekBtn.classList.add("active");
-      // Initialiser la semaine si nécessaire
-      setTimeout(function () {
-        if (!currentWeekStart) {
-          currentWeekStart = parseDate("2026-03-19");
-        }
-        renderWeek();
-      }, 100);
     } else if (view === "month") {
       const viewMonthBtn = document.getElementById("viewMonthBtn");
       if (viewMonthBtn) viewMonthBtn.classList.add("active");
@@ -436,122 +424,6 @@ function switchView(view) {
       }, 100);
     }
   }, 350); // Durée synchronisée avec l'animation view-exit (0.35s)
-}
-
-function renderWeek() {
-  if (!currentWeekStart) return;
-
-  const weekInfo = document.getElementById("weekInfo");
-  const weekCalendar = document.getElementById("weekCalendar");
-  if (!weekInfo || !weekCalendar) return;
-
-  const weekEnd = new Date(currentWeekStart);
-  weekEnd.setDate(currentWeekStart.getDate() + 6);
-
-  weekInfo.textContent =
-    formatDate(currentWeekStart) + " → " + formatDate(weekEnd);
-
-  weekCalendar.innerHTML = "";
-
-  for (let i = 0; i < 7; i++) {
-    const currentDate = new Date(currentWeekStart);
-    currentDate.setDate(currentWeekStart.getDate() + i);
-
-    const m = findMonthForDate(currentDate);
-    if (!m) continue;
-
-    const start = parseDate(m.start);
-    const lunarDay = daysBetween(start, currentDate) + 1;
-    const moonIcon = getMoonPhaseIcon(currentDate, m);
-    const festival = getFestivalForDate(currentDate);
-    const sunPos = getSunPosition(currentDate, m);
-    const isTodayDate = isToday(currentDate);
-
-    const dayNames = [
-      "Dimanche",
-      "Lundi",
-      "Mardi",
-      "Mercredi",
-      "Jeudi",
-      "Vendredi",
-      "Samedi",
-    ];
-    const dayName = dayNames[currentDate.getDay()];
-
-    const dayCard = document.createElement("div");
-    dayCard.className =
-      "element-" +
-      m.element.toLowerCase() +
-      " rounded-md p-6 transform transition hover:scale-105 cursor-pointer" +
-      (festival ? " has-festival" : "") +
-      (isTodayDate ? " is-today" : "");
-    dayCard.setAttribute("role", "button");
-    dayCard.setAttribute("tabindex", "0");
-    dayCard.style.position = "relative";
-
-    dayCard.innerHTML =
-      (isTodayDate ? '<div class="today-badge">AUJOURD\'HUI</div>' : "") +
-      '<div class="text-center mb-4">' +
-      '<div class="text-base font-bold text-white mb-2">' +
-      escapeHtml(dayName) +
-      "</div>" +
-      '<div class="text-5xl font-black text-white mb-2">' +
-      currentDate.getDate() +
-      "</div>" +
-      '<div class="text-sm text-[#eaeaeac7]">' +
-      formatDate(currentDate) +
-      "</div>" +
-      "</div>" +
-      '<div class="text-center mb-4 flex flex-col items-center">' +
-      '<div class="flex items-center justify-center gap-2 mb-2">' +
-      '<div class="text-3xl shrink-0">' +
-      zodiacIcons[m.name] +
-      "</div>" +
-      '<div class="font-bold text-lg text-white">' +
-      escapeHtml(m.name) +
-      "</div>" +
-      "</div>" +
-      '<div class=" border border-[#c9a24d] badge-element badge-' +
-      m.element.toLowerCase() +
-      ' week-nav text-xs">' +
-      escapeHtml(m.element) +
-      "</div>" +
-      "</div>" +
-      '<div class="text-center text-sm text-white mb-3">' +
-      '<div class="font-semibold">Jour lunaire ' +
-      lunarDay +
-      "</div>" +
-      (sunPos
-        ? '<div class="text-xs mt-1">☀️ ' +
-          escapeHtml(sunPos.sign) +
-          " " +
-          sunPos.degree +
-          "°</div>"
-        : "") +
-      "</div>" +
-      (moonIcon
-        ? '<div class="text-center text-4xl mb-2">' + moonIcon + "</div>"
-        : "") +
-      (festival
-        ? '<div class="day-festival mt-3">' +
-          escapeHtml(festival.name) +
-          "</div>"
-        : "");
-
-    (function (date, month, lunar, moon, fest) {
-      dayCard.addEventListener("click", function () {
-        openDayModal(date, month, lunar, moon, fest);
-      });
-      dayCard.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openDayModal(date, month, lunar, moon, fest);
-        }
-      });
-    })(new Date(currentDate), m, lunarDay, moonIcon, festival);
-
-    weekCalendar.appendChild(dayCard);
-  }
 }
 
 function renderYearView() {
@@ -1187,18 +1059,12 @@ function init() {
   updateNextFestivalCountdown();
 
   const viewSearchBtn = document.getElementById("viewSearchBtn");
-  const viewWeekBtn = document.getElementById("viewWeekBtn");
   const viewMonthBtn = document.getElementById("viewMonthBtn");
   const viewYearBtn = document.getElementById("viewYearBtn");
 
   if (viewSearchBtn) {
     viewSearchBtn.addEventListener("click", function () {
       switchView("search");
-    });
-  }
-  if (viewWeekBtn) {
-    viewWeekBtn.addEventListener("click", function () {
-      switchView("week");
     });
   }
   if (viewMonthBtn) {
@@ -1209,56 +1075,6 @@ function init() {
   if (viewYearBtn) {
     viewYearBtn.addEventListener("click", function () {
       switchView("year");
-    });
-  }
-
-  const prevWeek = document.getElementById("prevWeek");
-  const nextWeek = document.getElementById("nextWeek");
-  const goToTodayWeek = document.getElementById("goToTodayWeek");
-
-  if (prevWeek) {
-    prevWeek.addEventListener("click", function () {
-      if (currentWeekStart) {
-        const newWeekStart = new Date(currentWeekStart);
-        newWeekStart.setDate(currentWeekStart.getDate() - 7);
-        if (newWeekStart >= parseDate("2026-03-19")) {
-          currentWeekStart = newWeekStart;
-          renderWeek();
-        }
-      }
-    });
-  }
-
-  if (nextWeek) {
-    nextWeek.addEventListener("click", function () {
-      if (currentWeekStart) {
-        const newWeekStart = new Date(currentWeekStart);
-        newWeekStart.setDate(currentWeekStart.getDate() + 7);
-        if (newWeekStart <= parseDate("2027-03-14")) {
-          currentWeekStart = newWeekStart;
-          renderWeek();
-        }
-      }
-    });
-  }
-
-  if (goToTodayWeek) {
-    goToTodayWeek.addEventListener("click", function () {
-      const today = new Date();
-      const sunday = new Date(today);
-      sunday.setDate(today.getDate() - today.getDay());
-      currentWeekStart = sunday;
-      renderWeek();
-
-      setTimeout(function () {
-        const weekCalendar = document.getElementById("weekCalendar");
-        if (weekCalendar) {
-          weekCalendar.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-          });
-        }
-      }, 100);
     });
   }
 
@@ -1661,4 +1477,20 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
 } else {
   init();
+}
+
+// Mobile menu
+const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+if (mobileMenuBtn && mobileMenu) {
+  mobileMenuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
 }
