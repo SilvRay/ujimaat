@@ -21,6 +21,48 @@
   </head>
   <body class="h-full">
     <div class="h-full w-full">
+      <div class="sticky top-0 z-50">
+      <!-- Bannière Conférence -->
+      <div
+        id="conference-banner"
+        class="relative bg-gradient-to-r from-[#1a0a00] via-[#2a1000] to-[#1a0a00] border-b border-[#daa520]/40 px-4 py-4"
+      >
+        <div
+          class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <div
+            class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left"
+          >
+            <span class="text-[#daa520] text-2xl">✦</span>
+            <div>
+              <p
+                class="text-[#daa520] font-semibold text-sm uppercase tracking-widest"
+              >
+                Conférence · 11 Avril 2026 · 14h–18h
+              </p>
+              <p
+                class="text-[#f0e0b0] text-base font-bold"
+                style="font-family: &quot;Orbitron&quot;, sans-serif"
+              >
+                Les assises de la Rê-volution Africaine
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://book.stripe.com/eVq7sKbeleOffCYbaOgjC0A"
+            class="shrink-0 inline-block bg-[#daa520] hover:bg-[#c8941a] text-[#0a0503] font-bold text-sm px-5 py-2 rounded-md uppercase tracking-wider transition-colors duration-200"
+          >
+            S'inscrire
+          </a>
+        </div>
+        <button
+          onclick="document.getElementById('conference-banner').remove()"
+          class="absolute top-2 right-3 text-[#daa520]/50 hover:text-[#daa520] text-xl leading-none"
+          aria-label="Fermer"
+        >
+          ×
+        </button>
+      </div>
       <header>
         <nav>
           <div class="hidden md:flex gap-4">
@@ -97,6 +139,7 @@
           </div>
         </nav>
       </header>
+      </div>
 
       <main class="main-gradient">
         <section class="hero">
