@@ -53,6 +53,35 @@ a {
   transition: var(--transition);
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+#conf-modal::-webkit-scrollbar {
+  width: 4px;
+}
+#conf-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+#conf-modal::-webkit-scrollbar-thumb {
+  background: #daa52060;
+  border-radius: 2px;
+}
+
 .main-gradient {
   background: radial-gradient(
     ellipse at top,

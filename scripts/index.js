@@ -421,3 +421,21 @@ function updateTimer(timer, diff) {
 
 // 6️⃣ Lancement
 initCountdowns();
+
+function closeConfModal() {
+  var overlay = document.getElementById("conf-modal-overlay");
+  if (overlay) {
+    overlay.style.animation = "fadeIn .2s ease reverse";
+    setTimeout(function () {
+      overlay.style.display = "none";
+    }, 180);
+  }
+}
+function openConfModal() {
+  var overlay = document.getElementById("conf-modal-overlay");
+  if (overlay) {
+    overlay.style.display = "flex";
+    overlay.style.animation = "fadeIn .3s ease";
+    document.getElementById("conf-modal").style.animation = "slideUp .35s ease";
+  }
+}
