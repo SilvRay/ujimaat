@@ -61,7 +61,7 @@
                 href="#"
                 class="text-gray-400 text-sm hover:text-white transition"
                 onclick="
-                  showMyList();
+                  scrollToMyList();
                   return false;
                 "
                 >Ma Liste</a
@@ -119,11 +119,12 @@
               ></span>
             </button>
             <!-- Profile -->
-            <div
-              class="w-8 h-8 rounded bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-white/50 transition"
+            <button
+              onclick="openPaymentPage({ type: 'nav' })"
+              class="px-4 py-1.5 rounded bg-gradient-to-br from-red-600 to-red-800 text-sm font-bold hover:ring-2 hover:ring-white/50 transition"
             >
-              <span class="text-sm font-bold">A</span>
-            </div>
+              Se connecter
+            </button>
           </div>
         </div>
         <!-- Search Bar (hidden by default) -->
@@ -311,7 +312,7 @@
           <h3
             class="text-xl md:text-2xl font-semibold mb-4 flex items-center gap-2"
           >
-            🔥 Populaire sur EduFlix
+            🔥 Populaire sur Funschooling
           </h3>
           <div
             class="flex gap-3 overflow-x-auto hide-scrollbar pb-4 gradient-mask"
@@ -331,123 +332,165 @@
           ></div>
         </section>
         <!-- Footer -->
-        <footer class="px-4 md:px-12 py-12 border-t border-zinc-800 mt-12">
-          <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <h4 class="text-gray-400 text-sm mb-4">Navigation</h4>
-                <ul class="space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Accueil</a
+        <footer class="mt-16 relative overflow-hidden">
+          <!-- Top gradient accent -->
+          <div
+            class="h-px bg-gradient-to-r from-transparent via-red-600 to-transparent"
+          ></div>
+          <div class="bg-zinc-950 px-4 md:px-12 pt-14 pb-8">
+            <div class="max-w-6xl mx-auto">
+              <!-- Brand + links grid -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                  <h2
+                    class="text-4xl font-black tracking-wider text-red-500 mb-3"
+                    style="
+                      font-family: &quot;Bebas Neue&quot;, sans-serif;
+                      letter-spacing: 3px;
+                    "
+                  >
+                    FUNSCHOOLING
+                  </h2>
+                  <p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+                    Une plateforme de savoir pour la renaissance africaine.
+                  </p>
+                  <a
+                    href="mailto:contact@ujima.fr"
+                    class="inline-flex items-center gap-2 mt-5 text-sm text-white hover:text-red-400 transition font-medium"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Catégories</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Nouveautés</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Ma Liste</a
-                    >
-                  </li>
-                </ul>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                    contact@ujima.fr
+                  </a>
+                </div>
+                <!-- Navigation -->
+                <div>
+                  <h4
+                    class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-5"
+                  >
+                    Navigation
+                  </h4>
+                  <ul class="space-y-3">
+                    <li>
+                      <a
+                        href="/index.html"
+                        class="text-gray-500 text-sm hover:text-white transition-colors"
+                        >Accueil</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        onclick="
+                          scrollToSection('new');
+                          return false;
+                        "
+                        class="text-gray-500 text-sm hover:text-white transition-colors"
+                        >Nouveautés</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        onclick="
+                          scrollToMyList();
+                          return false;
+                        "
+                        class="text-gray-500 text-sm hover:text-white transition-colors"
+                        >Ma Liste</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <!-- Catégories -->
+                <div>
+                  <h4
+                    class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-5"
+                  >
+                    Catégories
+                  </h4>
+                  <ul class="space-y-3">
+                    <li>
+                      <a
+                        href="#"
+                        onclick="
+                          scrollToCategory('Formations');
+                          return false;
+                        "
+                        class="text-gray-500 text-sm hover:text-white transition-colors flex items-center gap-2"
+                      >
+                        <span
+                          class="w-1.5 h-1.5 rounded-full bg-red-600 flex-shrink-0"
+                        ></span
+                        >🎓 Formations
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        onclick="
+                          scrollToCategory('Spiritualité & Mystères');
+                          return false;
+                        "
+                        class="text-gray-500 text-sm hover:text-white transition-colors flex items-center gap-2"
+                      >
+                        <span
+                          class="w-1.5 h-1.5 rounded-full bg-red-600 flex-shrink-0"
+                        ></span
+                        >🔮 Spiritualité &amp; Mystères
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        onclick="
+                          scrollToCategory(
+                            'Développement Personnel & Réflexion',
+                          );
+                          return false;
+                        "
+                        class="text-gray-500 text-sm hover:text-white transition-colors flex items-center gap-2"
+                      >
+                        <span
+                          class="w-1.5 h-1.5 rounded-full bg-red-600 flex-shrink-0"
+                        ></span
+                        >🌟 Développement Personnel
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h4 class="text-gray-400 text-sm mb-4">Catégories</h4>
-                <ul class="space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Développement</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Business</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Design</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Marketing</a
-                    >
-                  </li>
-                </ul>
+              <!-- Bottom bar -->
+              <div class="h-px bg-zinc-800 mb-6"></div>
+              <div
+                class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-600"
+              >
+                <p class="font-medium">
+                  © 2026 <span class="text-zinc-500">UJIMA</span> — Tous droits
+                  réservés.
+                </p>
+                <p>
+                  Site web réalisé par
+                  <a
+                    href="https://www.linkedin.com/in/alirayane/"
+                    target="_blank"
+                    class="text-zinc-400 font-medium underline hover:text-zinc-200"
+                    >Rayane Ali</a
+                  >
+                </p>
               </div>
-              <div>
-                <h4 class="text-gray-400 text-sm mb-4">Support</h4>
-                <ul class="space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >FAQ</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Contact</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Aide</a
-                    >
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="text-gray-400 text-sm mb-4">Légal</h4>
-                <ul class="space-y-2">
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Conditions</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-gray-500 text-sm hover:text-white transition"
-                      >Confidentialité</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="text-center text-gray-600 text-sm">
-              <p id="footerText">© 2024 EduFlix. Tous droits réservés.</p>
             </div>
           </div>
         </footer>
@@ -524,31 +567,26 @@
               À l'occasion du Nouvel An africain du 20 mars 2026, profitez d'une
               offre spéciale à
               <span class="text-white font-bold">360€</span> pour accéder à
-              notre univers d'apprentissage, de transformation et de
-              progression.
+              l'intégraglité notre univers d'apprentissage, de transformation et
+              de progression.
             </p>
             <!-- Features -->
             <ul class="space-y-1.5 mb-5 text-sm text-gray-300">
-              <li>🎥 +400 heures de vidéos de formation</li>
-              <li>📚 Supports PDF téléchargeables</li>
-              <li>🤝 Communauté d'apprentissage</li>
+              <li>🎥 +500 heures de vidéos d'enseignements</li>
+              <li>📚 +40 e-books téléchargeables</li>
             </ul>
             <!-- Warning box -->
-            <div
-              class="bg-zinc-800 border border-zinc-600 rounded-lg p-4 mb-5 text-sm text-gray-300 space-y-1.5"
-            >
-              <p class="font-semibold text-white">⚠️ Important</p>
-              <p>
-                Cette offre prend fin le
-                <span class="text-amber-400 font-medium"
-                  >20 mars 2026 à 23h59</span
-                >.
+            <div class="border border-amber-500/30 bg-amber-500/5 rounded-xl p-5 mb-5 space-y-3">
+              <p class="text-amber-400 font-semibold text-sm flex items-center gap-2">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                </svg>
+                Important
               </p>
-              <p>Tout le contenu du site sera supprimé début décembre 2026.</p>
-              <p>
-                Après votre inscription, pensez à télécharger l'ensemble de vos
-                contenus avant cette date.
-              </p>
+              <div class="space-y-2 text-sm text-gray-300 leading-relaxed">
+                <p>⏳ Cette offre prend fin le <span class="text-amber-400 font-semibold">20 mars 2026 à 23h59</span>.</p>
+                <p>🗂️ Tout le contenu sera supprimé début <span class="font-medium text-white">décembre 2026</span>. Après votre inscription, pensez à télécharger vos contenus avant cette date.</p>
+              </div>
             </div>
             <!-- Mission text -->
             <p class="text-gray-400 text-xs leading-relaxed mb-6">

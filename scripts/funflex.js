@@ -2303,6 +2303,7 @@ function renderCategories() {
 
     const section = document.createElement("div");
     section.className = "mb-8";
+    section.dataset.category = category;
     section.innerHTML = `
           <h3 class="text-xl md:text-2xl font-semibold mb-4 flex items-center gap-2">
             ${icon} ${category}
@@ -2456,13 +2457,13 @@ function openSeriesModal(seriesId) {
           <!-- Season Selector -->
           <div class="flex items-center justify-between mb-3 sm:mb-4">
             <h3 class="text-base sm:text-xl font-semibold">${isLibrary ? "Livres" : "Épisodes"}</h3>
-            <div class="relative">
-              <select id="seasonSelector-${series.id}" onchange="renderEpisodes(${series.id}, this.value)" class="season-selector appearance-none pl-3 pr-8 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-600 max-w-[160px] sm:max-w-none">
-                ${series.seasons.map((s, i) => `<option value="${i}">${s.title}</option>`).join("")}
-              </select>
-              <svg class="w-3 h-3 sm:w-4 sm:h-4 absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
+            <div class="season-dropdown-wrapper" id="seasonDropdown-${series.id}" data-series-id="${series.id}">
+              <button onclick="toggleSeasonDropdown(${series.id})" class="season-selector flex items-center gap-2 pl-3 pr-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-600">
+                <span id="seasonLabel-${series.id}">${series.seasons[0].title}</span>
+                <svg class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -2475,6 +2476,12 @@ function openSeriesModal(seriesId) {
 
   modal.classList.remove("hidden");
   document.body.style.overflow = "hidden";
+
+  // Fermer le dropdown si l'utilisateur scrolle dans le modal
+  const modalScroller = modal.querySelector(".relative.h-full.overflow-auto");
+  if (modalScroller) {
+    modalScroller.addEventListener("scroll", () => closeSeasonPortal(), { passive: true });
+  }
 }
 
 function renderEpisodesHTML(series, seasonIndex) {
@@ -2563,6 +2570,7 @@ function renderEpisodes(seriesId, seasonIndex) {
 function closeSeriesModal() {
   document.getElementById("seriesModal").classList.add("hidden");
   document.body.style.overflow = "";
+  closeSeasonPortal();
 }
 
 // ============================================
@@ -2885,7 +2893,7 @@ function showMyList() {
             <h3 class="text-2xl font-semibold mb-2">Votre liste est vide</h3>
             <p class="text-gray-400 mb-6">Ajoutez des formations pour les retrouver facilement</p>
             <button onclick="showHome()" class="px-6 py-3 bg-red-600 rounded font-semibold hover:bg-red-700 transition">
-              Découvrir les formations
+              Découvrir les séries
             </button>
           </div>
         `;
@@ -2928,6 +2936,89 @@ function toggleSearch() {
   }
 }
 
+document.addEventListener("click", (e) => {
+  // Fermer la barre de recherche
+  const searchBar = document.getElementById("searchBar");
+  if (!searchBar.classList.contains("hidden")) {
+    const navbar = document.getElementById("navbar");
+    if (!navbar.contains(e.target)) {
+      searchBar.classList.add("hidden");
+      document.getElementById("searchInput").value = "";
+      showHome();
+    }
+  }
+  // Fermer le dropdown de saisons si clic en dehors
+  const portal = document.getElementById("season-portal");
+  if (portal && !portal.classList.contains("hidden")) {
+    const activeWrapper = document.querySelector(".season-dropdown-wrapper.active");
+    if (!portal.contains(e.target) && (!activeWrapper || !activeWrapper.contains(e.target))) {
+      closeSeasonPortal();
+    }
+  }
+});
+
+let _seasonPortalSeriesId = null;
+
+function getOrCreateSeasonPortal() {
+  let portal = document.getElementById("season-portal");
+  if (!portal) {
+    portal = document.createElement("ul");
+    portal.id = "season-portal";
+    portal.className = "hidden fixed bg-zinc-800 border border-zinc-700 rounded-lg overflow-y-auto shadow-xl z-[200]";
+    portal.style.maxHeight = "260px";
+    document.body.appendChild(portal);
+  }
+  return portal;
+}
+
+function closeSeasonPortal() {
+  const portal = document.getElementById("season-portal");
+  if (portal) portal.classList.add("hidden");
+  document.querySelectorAll(".season-dropdown-wrapper.active").forEach((w) => w.classList.remove("active"));
+  _seasonPortalSeriesId = null;
+}
+
+function toggleSeasonDropdown(seriesId) {
+  const portal = getOrCreateSeasonPortal();
+  const wrapper = document.getElementById(`seasonDropdown-${seriesId}`);
+
+  // Si déjà ouvert pour cette série, on ferme
+  if (_seasonPortalSeriesId === seriesId && !portal.classList.contains("hidden")) {
+    closeSeasonPortal();
+    return;
+  }
+
+  // Peupler le portal
+  const series = seriesData.find((s) => s.id === seriesId);
+  portal.innerHTML = series.seasons.map((s, i) => `
+    <li onclick="selectSeason(${seriesId}, ${i})" class="season-dropdown-option px-4 py-2.5 text-xs sm:text-sm cursor-pointer whitespace-nowrap">${s.title}</li>
+  `).join("");
+
+  // Positionner via getBoundingClientRect (coordonnées viewport)
+  const btn = wrapper.querySelector("button");
+  const rect = btn.getBoundingClientRect();
+
+  // Laisser le portal se dimensionner selon son contenu, puis recaler à droite du bouton
+  portal.style.width = "max-content";
+  portal.style.top = (rect.bottom + 4) + "px";
+  portal.style.left = "0px"; // temporaire pour mesure
+  portal.classList.remove("hidden");
+
+  const portalWidth = portal.offsetWidth;
+  const left = Math.max(4, rect.right - portalWidth);
+  portal.style.left = left + "px";
+
+  wrapper.classList.add("active");
+  _seasonPortalSeriesId = seriesId;
+}
+
+function selectSeason(seriesId, index) {
+  const series = seriesData.find((s) => s.id === seriesId);
+  document.getElementById(`seasonLabel-${seriesId}`).textContent = series.seasons[index].title;
+  closeSeasonPortal();
+  renderEpisodes(seriesId, index);
+}
+
 function handleSearch(query) {
   if (!query.trim()) {
     showHome();
@@ -2951,6 +3042,7 @@ function handleSearch(query) {
             <p class="text-gray-400">Essayez avec d'autres mots-clés</p>
           </div>
         `;
+    scrollWithOffset(container);
     return;
   }
 
@@ -2966,13 +3058,40 @@ function handleSearch(query) {
     card.classList.add("w-full");
     grid.appendChild(card);
   });
+
+  scrollWithOffset(container);
+}
+
+const SCROLL_OFFSET = 100;
+
+function scrollWithOffset(element) {
+  const container = document.getElementById("app");
+  const top =
+    element.getBoundingClientRect().top + container.scrollTop - SCROLL_OFFSET;
+  container.scrollTo({ top, behavior: "smooth" });
 }
 
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
+  if (section) scrollWithOffset(section);
+}
+
+function scrollToCategory(categoryName) {
+  showHome();
+  setTimeout(() => {
+    const section = document.querySelector(
+      `#categories [data-category="${categoryName}"]`,
+    );
+    if (section) scrollWithOffset(section);
+  }, 100);
+}
+
+function scrollToMyList() {
+  showMyList();
+  setTimeout(() => {
+    const section = document.getElementById("categories");
+    if (section) scrollWithOffset(section);
+  }, 100);
 }
 
 // ============================================
@@ -3101,47 +3220,29 @@ function openPaymentPage(context) {
                 .join("")}
             </ul>
 
-            <!-- Formulaire Stripe -->
-            <div class="border-t border-zinc-700 pt-6 mt-2">
-              <p class="text-sm font-medium text-gray-300 mb-4">Informations de paiement</p>
-              <div class="space-y-4 mb-4">
-                <div>
-                  <label class="block text-xs text-gray-400 mb-1.5">Nom complet</label>
-                  <input type="text" id="payment-name" placeholder="Prénom Nom"
-                    class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition">
-                </div>
-                <div>
-                  <label class="block text-xs text-gray-400 mb-1.5">Email</label>
-                  <input type="email" id="payment-email" placeholder="nom@exemple.com"
-                    class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition">
-                </div>
-                <div>
-                  <label class="block text-xs text-gray-400 mb-1.5">Carte bancaire</label>
-                  <div id="stripe-payment-element" class="bg-zinc-800 border border-zinc-700 rounded-lg p-3">
-                    <div class="flex items-center justify-center py-4">
-                      <div class="w-5 h-5 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>
-                      <span class="ml-3 text-sm text-gray-500">Chargement...</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="stripe-error" class="hidden mb-4 p-3 bg-red-900/30 border border-red-800 rounded-lg text-red-400 text-sm"></div>
-              <div class="flex justify-center">
-                <stripe-buy-button
-                  buy-button-id="buy_btn_1T9RjKAGOTTzQZaBgV3jdIat"
-                  publishable-key="pk_live_51Mc4A5AGOTTzQZaBCEaTlIaWNIQg5StZtZEWYndovUDoCzH6lqnR44T1f2VkwhpDVpjpNUD77yVhW2KhsgAYGujF00BFfkiuLx"
-                ></stripe-buy-button>
-              </div>
-              <p class="text-center text-xs text-gray-500 mt-4">Paiement possible en plusieurs fois avec Klarna • Sécurisé par Stripe 🔒</p>
+            <!-- Bouton Stripe -->
+            <div class="border-t border-zinc-700 pt-6 mt-2 flex flex-col items-center gap-4">
+              <stripe-buy-button
+                buy-button-id="buy_btn_1T9RjKAGOTTzQZaBgV3jdIat"
+                publishable-key="pk_live_51Mc4A5AGOTTzQZaBCEaTlIaWNIQg5StZtZEWYndovUDoCzH6lqnR44T1f2VkwhpDVpjpNUD77yVhW2KhsgAYGujF00BFfkiuLx"
+              ></stripe-buy-button>
+              <p class="text-center text-xs text-gray-200">Paiement possible en plusieurs fois avec Klarna • Sécurisé par Stripe 🔒</p>
             </div>
           </div>
         </div>
 
         <!-- Warning -->
-        <div class="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 text-xs text-gray-500 space-y-1.5">
-          <p class="text-gray-400 font-medium">⚠️ Important</p>
-          <p>Cette offre prend fin le <span class="text-amber-400">20 mars 2026 à 23h59</span>.</p>
-          <p>Tout le contenu sera supprimé début décembre 2026. Pensez à télécharger vos contenus avant cette date.</p>
+        <div class="border border-amber-500/30 bg-amber-500/5 rounded-xl p-5 space-y-3">
+          <p class="text-amber-400 font-semibold text-sm flex items-center gap-2">
+            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+            </svg>
+            Important
+          </p>
+          <div class="space-y-2 text-sm text-gray-300 leading-relaxed">
+            <p>⏳ Cette offre prend fin le <span class="text-amber-400 font-semibold">20 mars 2026 à 23h59</span>.</p>
+            <p>🗂️ Tout le contenu sera supprimé début <span class="font-medium text-white">décembre 2026</span>. Pensez à télécharger vos contenus avant cette date.</p>
+          </div>
         </div>
 
       </div>
