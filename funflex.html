@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduFlix - Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/funflex.css" />
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body
+    class="h-full bg-black text-white overflow-x-hidden"
+    style="font-family: &quot;Inter&quot;, sans-serif"
+  >
+    <div id="app" class="h-full overflow-auto">
+      <!-- Navigation -->
+      <nav
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        id="navbar"
+      >
+        <div class="px-4 md:px-12 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-8">
+            <!-- Logo -->
+            <h1
+              id="logo"
+              class="text-2xl md:text-3xl font-bold tracking-wider netflix-red cursor-pointer"
+              style="font-family: &quot;Bebas Neue&quot;, sans-serif"
+            >
+              FUNSCHOOLING
+            </h1>
+            <!-- Nav Links -->
+            <div class="hidden md:flex items-center gap-6">
+              <a
+                href="#"
+                class="text-white text-sm font-medium hover:text-gray-300 transition"
+                onclick="
+                  showHome();
+                  return false;
+                "
+                >Accueil</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 text-sm hover:text-white transition"
+                onclick="
+                  scrollToSection('categories');
+                  return false;
+                "
+                >Catégories</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 text-sm hover:text-white transition"
+                onclick="
+                  showMyList();
+                  return false;
+                "
+                >Ma Liste</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 text-sm hover:text-white transition"
+                onclick="
+                  scrollToSection('new');
+                  return false;
+                "
+                >Nouveautés</a
+              >
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <!-- Search -->
+            <button
+              class="p-2 hover:bg-white/10 rounded-full transition"
+              onclick="toggleSearch()"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+            <!-- Notifications -->
+            <button
+              class="p-2 hover:bg-white/10 rounded-full transition relative"
+              onclick="openOfferPopup()"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                /></svg
+              ><span
+                class="absolute top-1 right-1 w-2 h-2 bg-red-600 rounded-full"
+              ></span>
+            </button>
+            <!-- Profile -->
+            <div
+              class="w-8 h-8 rounded bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-white/50 transition"
+            >
+              <span class="text-sm font-bold">A</span>
+            </div>
+          </div>
+        </div>
+        <!-- Search Bar (hidden by default) -->
+        <div id="searchBar" class="hidden px-4 md:px-12 pb-4">
+          <div class="relative max-w-xl">
+            <input
+              type="text"
+              placeholder="Rechercher une série, un sujet..."
+              class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 pl-10 text-sm focus:outline-none focus:border-red-600 transition"
+              id="searchInput"
+              oninput="handleSearch(this.value)"
+            />
+            <svg
+              class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+        </div>
+      </nav>
+      <!-- Main Content -->
+      <main id="mainContent">
+        <!-- Hero Section -->
+        <section
+          class="relative h-screen min-h-[560px] max-h-[900px] overflow-hidden"
+          id="heroSection"
+        >
+          <!-- Background Grid -->
+          <div class="absolute inset-0 bg-black">
+            <div id="heroBgGrid" class="absolute inset-0 overflow-hidden"></div>
+          </div>
+          <!-- Gradient Overlay -->
+          <div class="hero-gradient absolute inset-0"></div>
+          <!-- Content -->
+          <div
+            class="relative h-full flex items-end md:items-center px-4 md:px-12 pb-20 md:pb-0"
+          >
+            <div class="max-w-2xl pt-16 md:pt-0 w-full">
+              <!-- Category Badge -->
+              <div class="animate-fade-in-up opacity-0 mb-4">
+                <span
+                  class="category-pill px-3 py-1 rounded-full text-xs font-medium text-red-400"
+                >
+                  🎓 Formations
+                </span>
+              </div>
+              <!-- Title -->
+              <h2
+                id="heroTitle"
+                class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-3 md:mb-4 animate-fade-in-up opacity-0 delay-100"
+                style="
+                  font-family: &quot;Bebas Neue&quot;, sans-serif;
+                  letter-spacing: 2px;
+                "
+              >
+                MAÂT CONTINUUM
+              </h2>
+              <!-- Meta Info -->
+              <div
+                class="flex flex-wrap items-center gap-2 md:gap-4 mb-3 md:mb-4 animate-fade-in-up opacity-0 delay-200"
+              >
+                <span class="text-green-500 font-semibold">99% Match</span>
+                <span class="text-gray-400">2024</span>
+                <span class="px-2 py-0.5 border border-gray-500 text-xs"
+                  >HD</span
+                >
+                <span class="text-gray-400">9 Saisons</span>
+                <span class="px-2 py-0.5 bg-zinc-800 rounded text-xs"
+                  >Débutant → Avancé</span
+                >
+              </div>
+              <!-- Description -->
+              <p
+                id="heroDescription"
+                class="text-sm md:text-lg text-gray-300 mb-5 md:mb-8 max-w-xl line-clamp-3 sm:line-clamp-none animate-fade-in-up opacity-0 delay-300"
+              >
+                Une formation complète et transformatrice explorant les sciences
+                de l'existence, la relation et la nutrition. De l'orientation
+                aux principes fondamentaux, apprenez à vous comprendre et à
+                transformer votre vie.
+              </p>
+              <!-- Buttons -->
+              <div
+                class="flex flex-wrap items-center gap-3 animate-fade-in-up opacity-0 delay-400"
+              >
+                <button
+                  onclick="openSeriesModal(0)"
+                  class="flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition transform hover:scale-105"
+                >
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  Commencer
+                </button>
+                <button
+                  onclick="addToList(0)"
+                  id="heroListBtn"
+                  class="flex items-center gap-2 px-6 py-3 bg-zinc-700/80 text-white font-semibold rounded hover:bg-zinc-600 transition"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                  Ma Liste
+                </button>
+                <button
+                  onclick="openSeriesModal(0)"
+                  class="p-3 bg-zinc-800/50 rounded-full border border-zinc-600 hover:border-white transition"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Scroll Indicator -->
+          <div
+            class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+          >
+            <svg
+              class="w-6 h-6 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </div>
+        </section>
+        <!-- Continue Learning Section -->
+        <section
+          class="px-4 md:px-12 py-8 -mt-32 relative z-10"
+          id="continueSection"
+        >
+          <h3
+            class="text-xl md:text-2xl font-semibold mb-4 flex items-center gap-2"
+          >
+            <span class="text-red-500">▶</span> Continuer à apprendre
+          </h3>
+          <div
+            class="flex gap-3 overflow-x-auto hide-scrollbar pb-4 gradient-mask"
+          >
+            <!-- Continue cards will be generated by JS -->
+          </div>
+        </section>
+        <!-- Categories Section -->
+        <section class="px-4 md:px-12 py-6" id="categories">
+          <!-- Category rows will be generated by JS -->
+        </section>
+        <!-- Popular Section -->
+        <section class="px-4 md:px-12 py-6" id="popular">
+          <h3
+            class="text-xl md:text-2xl font-semibold mb-4 flex items-center gap-2"
+          >
+            🔥 Populaire sur EduFlix
+          </h3>
+          <div
+            class="flex gap-3 overflow-x-auto hide-scrollbar pb-4 gradient-mask"
+            id="popularRow"
+          ></div>
+        </section>
+        <!-- New Section -->
+        <section class="px-4 md:px-12 py-6" id="new">
+          <h3
+            class="text-xl md:text-2xl font-semibold mb-4 flex items-center gap-2"
+          >
+            ✨ Nouveautés
+          </h3>
+          <div
+            class="flex gap-3 overflow-x-auto hide-scrollbar pb-4 gradient-mask"
+            id="newRow"
+          ></div>
+        </section>
+        <!-- Footer -->
+        <footer class="px-4 md:px-12 py-12 border-t border-zinc-800 mt-12">
+          <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+              <div>
+                <h4 class="text-gray-400 text-sm mb-4">Navigation</h4>
+                <ul class="space-y-2">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Accueil</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Catégories</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Nouveautés</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Ma Liste</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-gray-400 text-sm mb-4">Catégories</h4>
+                <ul class="space-y-2">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Développement</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Business</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Design</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Marketing</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-gray-400 text-sm mb-4">Support</h4>
+                <ul class="space-y-2">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >FAQ</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Contact</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Aide</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-gray-400 text-sm mb-4">Légal</h4>
+                <ul class="space-y-2">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Conditions</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-gray-500 text-sm hover:text-white transition"
+                      >Confidentialité</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="text-center text-gray-600 text-sm">
+              <p id="footerText">© 2024 EduFlix. Tous droits réservés.</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+      <!-- Series Modal -->
+      <div id="seriesModal" class="fixed inset-0 z-[100] hidden">
+        <div
+          class="modal-backdrop absolute inset-0"
+          onclick="closeSeriesModal()"
+        ></div>
+        <div class="relative h-full overflow-auto py-0 sm:py-8 px-0 sm:px-4">
+          <div
+            class="series-modal w-full sm:max-w-4xl sm:mx-auto sm:rounded-xl overflow-hidden shadow-2xl animate-fade-in-up"
+          >
+            <!-- Modal content will be generated by JS -->
+            <div id="modalContent"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Offer Popup -->
+      <div
+        id="offerPopup"
+        class="fixed inset-0 z-[120] hidden flex items-center justify-center"
+      >
+        <div
+          class="modal-backdrop absolute inset-0"
+          onclick="closeOfferPopup()"
+        ></div>
+        <div
+          class="relative bg-zinc-900 border border-zinc-700 rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-lg flex flex-col animate-fade-in-up overflow-hidden"
+          style="max-height: 90dvh"
+        >
+          <!-- Fixed header -->
+          <div class="flex-shrink-0">
+            <div
+              class="h-1 bg-gradient-to-r from-red-600 via-amber-500 to-red-600 rounded-t-2xl sm:rounded-t-2xl"
+            ></div>
+            <div
+              class="flex items-start justify-between gap-4 px-6 pt-5 pb-4 border-b border-zinc-800"
+            >
+              <h2
+                class="text-xl md:text-2xl font-bold leading-tight"
+                style="
+                  font-family: &quot;Bebas Neue&quot;, sans-serif;
+                  letter-spacing: 1px;
+                "
+              >
+                🌍 Offre exceptionnelle – Nouvel An africain
+              </h2>
+              <button
+                onclick="closeOfferPopup()"
+                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center transition mt-0.5"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <!-- Scrollable body -->
+          <div class="overflow-y-auto flex-1 px-6 py-5">
+            <!-- Main text -->
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              À l'occasion du Nouvel An africain du 20 mars 2026, profitez d'une
+              offre spéciale à
+              <span class="text-white font-bold">360€</span> pour accéder à
+              notre univers d'apprentissage, de transformation et de
+              progression.
+            </p>
+            <!-- Features -->
+            <ul class="space-y-1.5 mb-5 text-sm text-gray-300">
+              <li>🎥 +400 heures de vidéos de formation</li>
+              <li>📚 Supports PDF téléchargeables</li>
+              <li>🤝 Communauté d'apprentissage</li>
+            </ul>
+            <!-- Warning box -->
+            <div
+              class="bg-zinc-800 border border-zinc-600 rounded-lg p-4 mb-5 text-sm text-gray-300 space-y-1.5"
+            >
+              <p class="font-semibold text-white">⚠️ Important</p>
+              <p>
+                Cette offre prend fin le
+                <span class="text-amber-400 font-medium"
+                  >20 mars 2026 à 23h59</span
+                >.
+              </p>
+              <p>Tout le contenu du site sera supprimé début décembre 2026.</p>
+              <p>
+                Après votre inscription, pensez à télécharger l'ensemble de vos
+                contenus avant cette date.
+              </p>
+            </div>
+            <!-- Mission text -->
+            <p class="text-gray-400 text-xs leading-relaxed mb-6">
+              ✨ Cette initiative s'inscrit dans une démarche de massification
+              du savoir pour le rendre accessible au plus grand nombre et
+              contribuer à la renaissance africaine.
+            </p>
+            <!-- CTA Button -->
+            <a
+              href="#"
+              onclick="
+                event.preventDefault();
+                closeOfferPopup();
+                openPaymentPage({ type: 'popup' });
+              "
+              class="flex items-center justify-center gap-2 w-full py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition transform hover:scale-[1.02] text-sm md:text-base"
+            >
+              ➡️ Je profite de l'offre à 360€
+            </a>
+            <!-- Secondary text -->
+            <p class="text-center text-xs text-gray-200 mt-3 pb-2">
+              💳 Paiement possible en plusieurs fois avec Klarna • Offre valable
+              jusqu'au 20 mars 2026
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Payment Modal -->
+      <div id="paymentModal" class="fixed inset-0 z-[130] hidden bg-black">
+        <div id="paymentContent" class="h-full overflow-auto"></div>
+      </div>
+      <!-- Video Player Modal -->
+      <div id="playerModal" class="fixed inset-0 z-[110] hidden bg-black">
+        <div id="playerContent" class="h-full">
+          <!-- Player content will be generated by JS -->
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/funflex.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9d8a5fe70215cfe8',t:'MTc3Mjg5NDYyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
