@@ -3126,14 +3126,12 @@ function openPaymentPage(context) {
                 </div>
               </div>
               <div id="stripe-error" class="hidden mb-4 p-3 bg-red-900/30 border border-red-800 rounded-lg text-red-400 text-sm"></div>
-              <button id="stripe-submit" onclick="submitStripePayment()"
-                class="flex items-center justify-center gap-2 w-full py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition text-base">
-                <svg id="stripe-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                </svg>
-                <span id="stripe-submit-text">💳 Payer 360€</span>
-              </button>
+              <div class="flex justify-center">
+                <stripe-buy-button
+                  buy-button-id="buy_btn_1T9RjKAGOTTzQZaBgV3jdIat"
+                  publishable-key="pk_live_51Mc4A5AGOTTzQZaBCEaTlIaWNIQg5StZtZEWYndovUDoCzH6lqnR44T1f2VkwhpDVpjpNUD77yVhW2KhsgAYGujF00BFfkiuLx"
+                ></stripe-buy-button>
+              </div>
               <p class="text-center text-xs text-gray-500 mt-4">Paiement possible en plusieurs fois avec Klarna • Sécurisé par Stripe 🔒</p>
             </div>
           </div>
