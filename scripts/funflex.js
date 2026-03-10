@@ -2422,7 +2422,7 @@ function openSeriesModal(seriesId) {
                 </svg>
                 ${myList.includes(series.id) ? "Dans ma liste" : "Ma Liste"}
               </button>
-              <button class="p-2.5 bg-zinc-700/50 rounded-full border border-zinc-600 hover:border-white transition">
+              <button onclick="shareContent('${series.title}')" class="p-2.5 bg-zinc-700/50 rounded-full border border-zinc-600 hover:border-white transition">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
                 </svg>
@@ -2480,7 +2480,9 @@ function openSeriesModal(seriesId) {
   // Fermer le dropdown si l'utilisateur scrolle dans le modal
   const modalScroller = modal.querySelector(".relative.h-full.overflow-auto");
   if (modalScroller) {
-    modalScroller.addEventListener("scroll", () => closeSeasonPortal(), { passive: true });
+    modalScroller.addEventListener("scroll", () => closeSeasonPortal(), {
+      passive: true,
+    });
   }
 }
 
@@ -2571,6 +2573,32 @@ function closeSeriesModal() {
   document.getElementById("seriesModal").classList.add("hidden");
   document.body.style.overflow = "";
   closeSeasonPortal();
+}
+
+async function shareContent(title) {
+  const url = window.location.href;
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, url });
+    } catch (_) {}
+  } else {
+    await navigator.clipboard.writeText(url);
+    showToast("Lien copié !");
+  }
+}
+
+function showToast(message) {
+  const existing = document.getElementById("funflex-toast");
+  if (existing) existing.remove();
+  const toast = document.createElement("div");
+  toast.id = "funflex-toast";
+  toast.textContent = message;
+  toast.className = "fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-800 text-white text-sm px-4 py-2.5 rounded-full shadow-lg z-[9999] transition-opacity duration-300";
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
 }
 
 // ============================================
@@ -2950,8 +2978,13 @@ document.addEventListener("click", (e) => {
   // Fermer le dropdown de saisons si clic en dehors
   const portal = document.getElementById("season-portal");
   if (portal && !portal.classList.contains("hidden")) {
-    const activeWrapper = document.querySelector(".season-dropdown-wrapper.active");
-    if (!portal.contains(e.target) && (!activeWrapper || !activeWrapper.contains(e.target))) {
+    const activeWrapper = document.querySelector(
+      ".season-dropdown-wrapper.active",
+    );
+    if (
+      !portal.contains(e.target) &&
+      (!activeWrapper || !activeWrapper.contains(e.target))
+    ) {
       closeSeasonPortal();
     }
   }
@@ -2964,7 +2997,8 @@ function getOrCreateSeasonPortal() {
   if (!portal) {
     portal = document.createElement("ul");
     portal.id = "season-portal";
-    portal.className = "hidden fixed bg-zinc-800 border border-zinc-700 rounded-lg overflow-y-auto shadow-xl z-[200]";
+    portal.className =
+      "hidden fixed bg-zinc-800 border border-zinc-700 rounded-lg overflow-y-auto shadow-xl z-[200]";
     portal.style.maxHeight = "260px";
     document.body.appendChild(portal);
   }
@@ -2974,7 +3008,9 @@ function getOrCreateSeasonPortal() {
 function closeSeasonPortal() {
   const portal = document.getElementById("season-portal");
   if (portal) portal.classList.add("hidden");
-  document.querySelectorAll(".season-dropdown-wrapper.active").forEach((w) => w.classList.remove("active"));
+  document
+    .querySelectorAll(".season-dropdown-wrapper.active")
+    .forEach((w) => w.classList.remove("active"));
   _seasonPortalSeriesId = null;
 }
 
@@ -2983,16 +3019,23 @@ function toggleSeasonDropdown(seriesId) {
   const wrapper = document.getElementById(`seasonDropdown-${seriesId}`);
 
   // Si déjà ouvert pour cette série, on ferme
-  if (_seasonPortalSeriesId === seriesId && !portal.classList.contains("hidden")) {
+  if (
+    _seasonPortalSeriesId === seriesId &&
+    !portal.classList.contains("hidden")
+  ) {
     closeSeasonPortal();
     return;
   }
 
   // Peupler le portal
   const series = seriesData.find((s) => s.id === seriesId);
-  portal.innerHTML = series.seasons.map((s, i) => `
+  portal.innerHTML = series.seasons
+    .map(
+      (s, i) => `
     <li onclick="selectSeason(${seriesId}, ${i})" class="season-dropdown-option px-4 py-2.5 text-xs sm:text-sm cursor-pointer whitespace-nowrap">${s.title}</li>
-  `).join("");
+  `,
+    )
+    .join("");
 
   // Positionner via getBoundingClientRect (coordonnées viewport)
   const btn = wrapper.querySelector("button");
@@ -3000,7 +3043,7 @@ function toggleSeasonDropdown(seriesId) {
 
   // Laisser le portal se dimensionner selon son contenu, puis recaler à droite du bouton
   portal.style.width = "max-content";
-  portal.style.top = (rect.bottom + 4) + "px";
+  portal.style.top = rect.bottom + 4 + "px";
   portal.style.left = "0px"; // temporaire pour mesure
   portal.classList.remove("hidden");
 
@@ -3014,7 +3057,8 @@ function toggleSeasonDropdown(seriesId) {
 
 function selectSeason(seriesId, index) {
   const series = seriesData.find((s) => s.id === seriesId);
-  document.getElementById(`seasonLabel-${seriesId}`).textContent = series.seasons[index].title;
+  document.getElementById(`seasonLabel-${seriesId}`).textContent =
+    series.seasons[index].title;
   closeSeasonPortal();
   renderEpisodes(seriesId, index);
 }
@@ -3196,17 +3240,20 @@ function openPaymentPage(context) {
             <!-- Price -->
             <div class="flex items-end gap-3 mb-1">
               <span class="text-5xl sm:text-6xl font-black">360€</span>
+              <span class="text-2xl text-gray-500 line-through mb-1">4 320€</span>
             </div>
             <p class="text-amber-400 text-sm font-medium mb-6">🌍 Offre Nouvel An africain — jusqu'au 20 mars 2026</p>
 
             <!-- Features -->
             <ul class="space-y-3 mb-8">
               ${[
-                "+400 heures de vidéos de formation",
-                "44 ebooks PDF téléchargeables",
-                "95 replays de lives",
-                "Accès à vie à tout le contenu",
-                "Communauté d'apprentissage Kaxoka",
+                "+500 heures de vidéos de formation",
+                "+40 e-books téléchargeables",
+                "4 parcours de formation",
+                "5 séries de masterclass à thématiques variées",
+
+                "Une bibliothèque d'éveil de conscience",
+                "Télécharger tout le contenu avant décembre 2026 pour un accès à vie",
               ]
                 .map(
                   (f) => `
