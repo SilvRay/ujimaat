@@ -2957,15 +2957,6 @@ function showHome() {
 // SEARCH
 // ============================================
 
-function toggleMobileMenu() {
-  const menu = document.getElementById("mobileMenu");
-  menu.classList.toggle("hidden");
-}
-
-function closeMobileMenu() {
-  document.getElementById("mobileMenu").classList.add("hidden");
-}
-
 function toggleSearch() {
   const searchBar = document.getElementById("searchBar");
   searchBar.classList.toggle("hidden");
@@ -2975,14 +2966,6 @@ function toggleSearch() {
 }
 
 document.addEventListener("click", (e) => {
-  // Fermer le menu mobile si clic en dehors
-  const mobileMenu = document.getElementById("mobileMenu");
-  if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
-    const navbar = document.getElementById("navbar");
-    if (!navbar.contains(e.target)) {
-      mobileMenu.classList.add("hidden");
-    }
-  }
   // Fermer la barre de recherche
   const searchBar = document.getElementById("searchBar");
   if (!searchBar.classList.contains("hidden")) {
@@ -3288,7 +3271,7 @@ function openPaymentPage(context) {
             <!-- Bouton paiement -->
             <div class="border-t border-zinc-700 pt-6 mt-2 flex flex-col items-center gap-4">
               <a
-                href="https://ujima.fr/program/funflex"
+                href="https://ujima.fr/payment?product_id=funflex&type=learning_program&packageId=package_1773234041297_8"
                 class="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold rounded-xl text-base transition-all transform hover:scale-[1.02] shadow-lg shadow-red-900/30"
               >
                 Accéder à l'offre — 360€

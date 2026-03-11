@@ -33,8 +33,7 @@
               class="text-2xl md:text-3xl font-bold tracking-wider netflix-red cursor-pointer"
               style="font-family: &quot;Bebas Neue&quot;, sans-serif"
             >
-              <span class="md:hidden">F</span
-              ><span class="hidden md:inline">FUNSCHOOLING</span>
+              FUNSCHOOLING
             </h1>
             <!-- Nav Links -->
             <div class="hidden md:flex items-center gap-6">
@@ -114,75 +113,13 @@
               ></span>
             </button>
             <!-- Profile -->
-            <button
-              onclick="openPaymentPage({ type: 'nav' })"
+            <a
+              href="https://ujima.fr/program/funflex"
               class="px-4 py-1.5 rounded bg-gradient-to-br from-red-600 to-red-800 text-sm font-bold hover:ring-2 hover:ring-white/50 transition"
             >
               Se connecter
-            </button>
-            <!-- Hamburger (mobile only) -->
-            <button
-              class="md:hidden p-2 hover:bg-white/10 rounded-full transition"
-              onclick="toggleMobileMenu()"
-              id="hamburgerBtn"
-            >
-              <svg
-                id="hamburgerIcon"
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
+            </a>
           </div>
-        </div>
-        <!-- Mobile Menu (hidden by default) -->
-        <div
-          id="mobileMenu"
-          class="hidden md:hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur px-4 py-3 flex flex-col gap-1"
-        >
-          <a
-            href="index.html"
-            class="text-white text-sm font-medium py-2.5 px-3 rounded-lg hover:bg-white/10 transition"
-            >Accueil</a
-          >
-          <a
-            href="#"
-            onclick="
-              scrollToSection('categories');
-              closeMobileMenu();
-              return false;
-            "
-            class="text-gray-400 text-sm py-2.5 px-3 rounded-lg hover:bg-white/10 hover:text-white transition"
-            >Catégories</a
-          >
-          <a
-            href="#"
-            onclick="
-              scrollToMyList();
-              closeMobileMenu();
-              return false;
-            "
-            class="text-gray-400 text-sm py-2.5 px-3 rounded-lg hover:bg-white/10 hover:text-white transition"
-            >Ma Liste</a
-          >
-          <a
-            href="#"
-            onclick="
-              scrollToSection('new');
-              closeMobileMenu();
-              return false;
-            "
-            class="text-gray-400 text-sm py-2.5 px-3 rounded-lg hover:bg-white/10 hover:text-white transition"
-            >Nouveautés</a
-          >
         </div>
         <!-- Search Bar (hidden by default) -->
         <div id="searchBar" class="hidden px-4 md:px-12 pb-4">
