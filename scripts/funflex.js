@@ -2593,7 +2593,8 @@ function showToast(message) {
   const toast = document.createElement("div");
   toast.id = "funflex-toast";
   toast.textContent = message;
-  toast.className = "fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-800 text-white text-sm px-4 py-2.5 rounded-full shadow-lg z-[9999] transition-opacity duration-300";
+  toast.className =
+    "fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-800 text-white text-sm px-4 py-2.5 rounded-full shadow-lg z-[9999] transition-opacity duration-300";
   document.body.appendChild(toast);
   setTimeout(() => {
     toast.style.opacity = "0";
@@ -2956,6 +2957,15 @@ function showHome() {
 // SEARCH
 // ============================================
 
+function toggleMobileMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("hidden");
+}
+
+function closeMobileMenu() {
+  document.getElementById("mobileMenu").classList.add("hidden");
+}
+
 function toggleSearch() {
   const searchBar = document.getElementById("searchBar");
   searchBar.classList.toggle("hidden");
@@ -2965,6 +2975,14 @@ function toggleSearch() {
 }
 
 document.addEventListener("click", (e) => {
+  // Fermer le menu mobile si clic en dehors
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+    const navbar = document.getElementById("navbar");
+    if (!navbar.contains(e.target)) {
+      mobileMenu.classList.add("hidden");
+    }
+  }
   // Fermer la barre de recherche
   const searchBar = document.getElementById("searchBar");
   if (!searchBar.classList.contains("hidden")) {
@@ -3267,12 +3285,14 @@ function openPaymentPage(context) {
                 .join("")}
             </ul>
 
-            <!-- Bouton Stripe -->
+            <!-- Bouton paiement -->
             <div class="border-t border-zinc-700 pt-6 mt-2 flex flex-col items-center gap-4">
-              <stripe-buy-button
-                buy-button-id="buy_btn_1T9RjKAGOTTzQZaBgV3jdIat"
-                publishable-key="pk_live_51Mc4A5AGOTTzQZaBCEaTlIaWNIQg5StZtZEWYndovUDoCzH6lqnR44T1f2VkwhpDVpjpNUD77yVhW2KhsgAYGujF00BFfkiuLx"
-              ></stripe-buy-button>
+              <a
+                href="https://ujima.fr/program/funflex"
+                class="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold rounded-xl text-base transition-all transform hover:scale-[1.02] shadow-lg shadow-red-900/30"
+              >
+                Accéder à l'offre — 360€
+              </a>
               <p class="text-center text-xs text-gray-200">Paiement possible en plusieurs fois avec Klarna • Sécurisé par Stripe 🔒</p>
             </div>
           </div>
