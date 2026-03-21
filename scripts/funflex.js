@@ -3243,7 +3243,7 @@ function openPaymentPage(context) {
               <span class="text-5xl sm:text-6xl font-black">360€</span>
               <span class="text-2xl text-gray-500 line-through mb-1">4 320€</span>
             </div>
-            <p class="text-amber-400 text-sm font-medium mb-6">🌍 Offre Nouvel An africain — jusqu'au 20 mars 2026</p>
+            <p class="text-amber-400 text-sm font-medium mb-6">🌍 Offre Nouvel An africain — jusqu'au 11 avril 2026</p>
 
             <!-- Features -->
             <ul class="space-y-3 mb-8">
@@ -3290,7 +3290,7 @@ function openPaymentPage(context) {
             Important
           </p>
           <div class="space-y-2 text-sm text-gray-300 leading-relaxed">
-            <p>⏳ Cette offre prend fin le <span class="text-amber-400 font-semibold">20 mars 2026 à 23h59</span>.</p>
+            <p>⏳ Cette offre prend fin le <span class="text-amber-400 font-semibold">11 avril 2026 à 23h59</span>.</p>
             <p>🗂️ Tout le contenu sera supprimé début <span class="font-medium text-white">décembre 2026</span>. Pensez à télécharger vos contenus avant cette date.</p>
           </div>
         </div>
