@@ -3291,6 +3291,7 @@ function openPaymentPage(context) {
           </p>
           <div class="space-y-2 text-sm text-gray-300 leading-relaxed">
             <p>⏳ Cette offre prend fin le <span class="text-amber-400 font-semibold">11 avril 2026 à 23h59</span>.</p>
+            <p>🚫 Cet achat est <span class="font-semibold text-white">non remboursable</span>.</p>
             <p>🗂️ Tout le contenu sera supprimé début <span class="font-medium text-white">décembre 2026</span>. Pensez à télécharger vos contenus avant cette date.</p>
           </div>
         </div>
