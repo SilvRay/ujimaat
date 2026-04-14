@@ -3234,66 +3234,26 @@ function openPaymentPage(context) {
       <!-- Offer card -->
       <div class="flex-1 px-4 sm:px-8 pb-12 max-w-2xl mx-auto w-full">
 
+        <!-- Expired notice -->
         <div class="bg-zinc-900 border border-zinc-700 rounded-2xl overflow-hidden mb-5">
-          <div class="h-1 bg-gradient-to-r from-red-600 via-amber-500 to-red-600"></div>
-          <div class="p-6 sm:p-8">
-
-            <!-- Price -->
-            <div class="flex items-end gap-3 mb-1">
-              <span class="text-5xl sm:text-6xl font-black">360€</span>
-              <span class="text-2xl text-gray-500 line-through mb-1">4 320€</span>
+          <div class="h-1 bg-zinc-700"></div>
+          <div class="p-6 sm:p-8 flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-full bg-zinc-800 border border-zinc-600 flex items-center justify-center mb-4">
+              <svg class="w-7 h-7 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
             </div>
-            <p class="text-amber-400 text-sm font-medium mb-6">🌍 Offre Nouvel An africain — jusqu'au 11 avril 2026</p>
-
-            <!-- Features -->
-            <ul class="space-y-3 mb-8">
-              ${[
-                "+500 heures de vidéos de formation",
-                "+40 e-books téléchargeables",
-                "4 parcours de formation",
-                "5 séries de masterclass à thématiques variées",
-
-                "Une bibliothèque d'éveil de conscience",
-                "Télécharger tout le contenu avant décembre 2026 pour un accès à vie",
-              ]
-                .map(
-                  (f) => `
-              <li class="flex items-center gap-3 text-gray-300 text-sm">
-                <span class="w-5 h-5 rounded-full bg-green-600/20 border border-green-600/40 flex items-center justify-center flex-shrink-0">
-                  <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                </span>
-                ${f}
-              </li>`,
-                )
-                .join("")}
-            </ul>
-
-            <!-- Bouton paiement -->
-            <div class="border-t border-zinc-700 pt-6 mt-2 flex flex-col items-center gap-4">
-              <a
-                href="https://ujima.fr/payment?product_id=funflex&type=learning_program&packageId=package_1773234041297_8"
-                class="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold rounded-xl text-base transition-all transform hover:scale-[1.02] shadow-lg shadow-red-900/30"
-              >
-                Accéder à l'offre — 360€
-              </a>
-              <p class="text-center text-xs text-gray-200">Paiement possible en plusieurs fois avec Klarna • Sécurisé par Stripe 🔒</p>
-            </div>
+            <span class="px-3 py-1 bg-zinc-800 border border-zinc-600 rounded-full text-gray-400 text-xs font-medium uppercase tracking-wider mb-4">Offre expirée</span>
+            <p class="text-gray-300 text-sm leading-relaxed max-w-sm">
+              L'offre spéciale Funflex à <span class="text-white font-semibold">360€</span> n'est plus disponible. Les inscriptions sont désormais closes.
+            </p>
           </div>
         </div>
 
-        <!-- Warning -->
-        <div class="border border-amber-500/30 bg-amber-500/5 rounded-xl p-5 space-y-3">
-          <p class="text-amber-400 font-semibold text-sm flex items-center gap-2">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-            </svg>
-            Important
-          </p>
-          <div class="space-y-2 text-sm text-gray-300 leading-relaxed">
-            <p>⏳ Cette offre prend fin le <span class="text-amber-400 font-semibold">11 avril 2026 à 23h59</span>.</p>
-            <p>🚫 Cet achat est <span class="font-semibold text-white">non remboursable</span>.</p>
-            <p>🗂️ Tout le contenu sera supprimé début <span class="font-medium text-white">décembre 2026</span>. Pensez à télécharger vos contenus avant cette date.</p>
-          </div>
+        <!-- Info -->
+        <div class="border border-zinc-700 bg-zinc-800/50 rounded-xl p-5 space-y-2 text-sm text-gray-300 leading-relaxed">
+          <p>🗂️ Le contenu actuel sera supprimé début <span class="font-medium text-white">décembre 2026</span>.</p>
+          <p>🚀 Un tout nouveau genre de contenu fera son apparition sur la plateforme après cette date. Restez connectés.</p>
         </div>
 
       </div>
