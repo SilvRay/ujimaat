@@ -422,6 +422,9 @@ function updateTimer(timer, diff) {
 // 6️⃣ Lancement
 initCountdowns();
 
+// Popup conférence — s'ouvre automatiquement après 1 seconde
+setTimeout(openConfModal, 1000);
+
 function closeConfModal() {
   var overlay = document.getElementById("conf-modal-overlay");
   if (overlay) {

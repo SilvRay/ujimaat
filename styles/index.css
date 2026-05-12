@@ -649,6 +649,280 @@ main {
   text-decoration: underline;
 }
 
+/* ── Bouton nav conférence ── */
+.conf-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 119, 6, 0.45);
+  background: rgba(217, 119, 6, 0.1);
+  color: #fbbf24;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.conf-nav-btn:hover {
+  background: rgba(217, 119, 6, 0.2);
+  border-color: rgba(217, 119, 6, 0.7);
+  transform: translateY(-1px);
+}
+
+.conf-nav-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #fbbf24;
+  box-shadow: 0 0 6px #fbbf24;
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
+}
+
+/* ── Popup Conférence ── */
+#conf-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(5, 3, 2, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+#conf-modal {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background: #0d0a07;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(217, 119, 6, 0.1);
+}
+
+.conf-modal-bar {
+  height: 3px;
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg, #d97706, #fbbf24, #d97706);
+}
+
+.conf-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.conf-modal-eyebrow {
+  display: block;
+  color: #fbbf24;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.conf-modal-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.conf-modal-close {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.conf-modal-close:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+}
+
+.conf-modal-body {
+  padding: 20px 24px 24px;
+}
+
+.conf-modal-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.conf-modal-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+}
+
+.conf-modal-meta-item svg {
+  flex-shrink: 0;
+  color: #fbbf24;
+}
+
+.conf-modal-desc {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.conf-modal-axes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.conf-modal-axes span {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  background: rgba(217, 119, 6, 0.08);
+  color: #fde68a;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.conf-modal-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  background: rgba(217, 119, 6, 0.06);
+  margin-bottom: 20px;
+}
+
+.conf-modal-price-label {
+  margin: 0 0 4px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.conf-modal-price {
+  margin: 0;
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.conf-modal-price span {
+  font-family: inherit;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+.conf-modal-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.conf-modal-includes span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.conf-modal-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d97706, #fbbf24);
+  color: #0d0a07;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 32px rgba(217, 119, 6, 0.35);
+  margin-bottom: 12px;
+}
+
+.conf-modal-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(217, 119, 6, 0.5);
+}
+
+.conf-modal-later {
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 13px;
+  padding: 8px;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.conf-modal-later:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.card--event {
+  border-color: rgba(217, 119, 6, 0.35);
+  background: rgba(217, 119, 6, 0.06);
+}
+
+.card--event:hover {
+  border-color: rgba(217, 119, 6, 0.6);
+  box-shadow: 0 25px 60px rgba(217, 119, 6, 0.22);
+  background: rgba(217, 119, 6, 0.1);
+}
+
+.event-badge {
+  display: inline-flex;
+  margin-top: 16px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 119, 6, 0.4);
+  background: rgba(217, 119, 6, 0.12);
+  color: #fbbf24;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
