@@ -434,187 +434,42 @@ if (typeof gsap !== "undefined") {
 // Pour l'instant : contenu programmatique (formes géométriques + texte).
 // Plus tard : on pourra le remplacer par ctx.drawImage(uneVraieImage).
 
-function createSculptureCanvas(W, H) {
+function createSculptureCanvas(W, H, imgSphinx, imgPyramid) {
   const cv  = document.createElement("canvas");
   cv.width  = W;
   cv.height = H;
   const ctx = cv.getContext("2d");
 
-  // ── Fond TRANSPARENT ────────────────────────────────────────────────
-  // Contrairement à Brique 2 (qui avait un fond noir), ici on laisse le fond
-  // transparent. destination-in utilise le canal ALPHA — un fond noir opaque
-  // (alpha=1) laisserait TOUT visible, ce qui court-circuiterait le masque.
-  // Seules les formes blanches contribuent au rendu final via screen blend.
-  ctx.clearRect(0, 0, W, H);
+  // ── Fond noir ────────────────────────────────────────────────────────
+  // Avec multiply : noir × n'importe quoi = noir → invisible via screen.
+  // Blanc × blanc = blanc → lumineux via screen. Le fond noir est donc
+  // "transparent" fonctionnellement dans ce pipeline.
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0, 0, W, H);
 
-  ctx.lineCap = "round";
+  // ── Placement des images ─────────────────────────────────────────────
+  // On calcule une taille qui permet à chaque image d'occuper les flancs
+  // tout en restant proportionnelle. Les images peuvent légèrement empiéter
+  // sur la zone centrale — avec multiply+screen, seul le sillage du curseur
+  // les révèle, donc elles ne "couvrent" pas la vidéo visuellement.
+  const imgH = Math.min(H * 0.78, W * 0.32); // hauteur max : 78% de la section
 
-  // ── Paramètres de placement ──────────────────────────────────────────
-  // Le contenu est limité aux 20% les plus à gauche et les plus à droite.
-  // La zone centrale (~60%) reste vide pour ne pas recouvrir la vidéo.
-  const LX  = W * 0.08;  // axe vertical de la colonne gauche
-  const RX  = W * 0.92;  // axe vertical de la colonne droite
-  const TOP = H * 0.07;
-  const BOT = H * 0.93;
+  // Sphinx — flanc gauche, ancré en bas à gauche
+  const sphinxRatio = imgSphinx.naturalWidth / imgSphinx.naturalHeight;
+  const sphinxW = imgH * sphinxRatio;
+  const sphinxX = W * 0.01;                   // légèrement décalé du bord gauche
+  const sphinxY = (H - imgH) * 0.42;          // centré légèrement au-dessus du milieu
 
-  // ── COLONNE GAUCHE ───────────────────────────────────────────────────
+  ctx.drawImage(imgSphinx, sphinxX, sphinxY, sphinxW, imgH);
 
-  // Ligne verticale principale
-  ctx.strokeStyle = "rgba(255,255,255,0.9)";
-  ctx.lineWidth   = 0.7;
-  ctx.beginPath();
-  ctx.moveTo(LX, TOP);
-  ctx.lineTo(LX, BOT);
-  ctx.stroke();
+  // Pyramide aztèque — flanc droit, miroir du sphinx
+  const pyramidRatio = imgPyramid.naturalWidth / imgPyramid.naturalHeight;
+  const pyramidW = imgH * pyramidRatio;
+  const pyramidX = W - pyramidW - W * 0.01;   // symétrique du sphinx
+  const pyramidY = (H - imgH) * 0.42;
 
-  // Graduations : 20 divisions, les multiples de 5 sont plus longs et plus épais
-  for (let i = 0; i <= 20; i++) {
-    const y   = TOP + (BOT - TOP) * (i / 20);
-    const len = i % 5 === 0 ? 16 : 7;
-    ctx.lineWidth   = i % 5 === 0 ? 0.75 : 0.35;
-    ctx.globalAlpha = i % 5 === 0 ? 0.9  : 0.5;
-    ctx.beginPath();
-    ctx.moveTo(LX, y);
-    ctx.lineTo(LX + len, y);
-    ctx.stroke();
-  }
-  ctx.globalAlpha = 1;
+  ctx.drawImage(imgPyramid, pyramidX, pyramidY, pyramidW, imgH);
 
-  // Bracket angle en L — haut gauche
-  ctx.strokeStyle = "rgba(255,255,255,0.8)";
-  ctx.lineWidth   = 0.65;
-  ctx.beginPath();
-  ctx.moveTo(LX + W * 0.11, TOP + H * 0.025);
-  ctx.lineTo(LX,             TOP + H * 0.025);
-  ctx.lineTo(LX,             TOP);
-  ctx.stroke();
-
-  // Bracket angle en L — bas gauche
-  ctx.beginPath();
-  ctx.moveTo(LX + W * 0.11, BOT - H * 0.025);
-  ctx.lineTo(LX,             BOT - H * 0.025);
-  ctx.lineTo(LX,             BOT);
-  ctx.stroke();
-
-  // Arc décoratif depuis le coin supérieur gauche
-  ctx.strokeStyle = "rgba(255,255,255,0.6)";
-  ctx.lineWidth   = 0.55;
-  ctx.beginPath();
-  ctx.arc(0, TOP, W * 0.17, 0, Math.PI * 0.42);
-  ctx.stroke();
-
-  ctx.strokeStyle = "rgba(255,255,255,0.35)";
-  ctx.lineWidth   = 0.4;
-  ctx.beginPath();
-  ctx.arc(0, TOP, W * 0.23, 0, Math.PI * 0.33);
-  ctx.stroke();
-
-  // Petits carrés-marqueurs sur l'axe (repères visuels)
-  [0.25, 0.5, 0.75].forEach((t) => {
-    const y = TOP + (BOT - TOP) * t;
-    ctx.strokeStyle = "rgba(255,255,255,0.8)";
-    ctx.lineWidth   = 0.5;
-    ctx.strokeRect(LX - 3, y - 3, 6, 6);
-  });
-
-  // Texte vertical (tourné de -90° le long de la ligne)
-  ctx.save();
-  ctx.translate(LX - 20, H * 0.5);
-  ctx.rotate(-Math.PI / 2);
-  ctx.textAlign    = "center";
-  ctx.textBaseline = "middle";
-  ctx.font         = `400 ${Math.max(9, W * 0.011)}px ui-monospace, 'SF Mono', monospace`;
-  ctx.fillStyle    = "rgba(255,255,255,0.68)";
-  ctx.fillText("AVANT-PREMIÈRE · 25 JUILLET 2026", 0, 0);
-  ctx.restore();
-
-  // ── COLONNE DROITE (miroir exact) ────────────────────────────────────
-
-  ctx.strokeStyle = "rgba(255,255,255,0.9)";
-  ctx.lineWidth   = 0.7;
-  ctx.beginPath();
-  ctx.moveTo(RX, TOP);
-  ctx.lineTo(RX, BOT);
-  ctx.stroke();
-
-  for (let i = 0; i <= 20; i++) {
-    const y   = TOP + (BOT - TOP) * (i / 20);
-    const len = i % 5 === 0 ? 16 : 7;
-    ctx.lineWidth   = i % 5 === 0 ? 0.75 : 0.35;
-    ctx.globalAlpha = i % 5 === 0 ? 0.9  : 0.5;
-    ctx.beginPath();
-    ctx.moveTo(RX, y);
-    ctx.lineTo(RX - len, y);
-    ctx.stroke();
-  }
-  ctx.globalAlpha = 1;
-
-  ctx.strokeStyle = "rgba(255,255,255,0.8)";
-  ctx.lineWidth   = 0.65;
-  ctx.beginPath();
-  ctx.moveTo(RX - W * 0.11, TOP + H * 0.025);
-  ctx.lineTo(RX,             TOP + H * 0.025);
-  ctx.lineTo(RX,             TOP);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.moveTo(RX - W * 0.11, BOT - H * 0.025);
-  ctx.lineTo(RX,             BOT - H * 0.025);
-  ctx.lineTo(RX,             BOT);
-  ctx.stroke();
-
-  ctx.strokeStyle = "rgba(255,255,255,0.6)";
-  ctx.lineWidth   = 0.55;
-  ctx.beginPath();
-  ctx.arc(W, TOP, W * 0.17, Math.PI * 0.58, Math.PI);
-  ctx.stroke();
-
-  ctx.strokeStyle = "rgba(255,255,255,0.35)";
-  ctx.lineWidth   = 0.4;
-  ctx.beginPath();
-  ctx.arc(W, TOP, W * 0.23, Math.PI * 0.67, Math.PI);
-  ctx.stroke();
-
-  [0.25, 0.5, 0.75].forEach((t) => {
-    const y = TOP + (BOT - TOP) * t;
-    ctx.strokeStyle = "rgba(255,255,255,0.8)";
-    ctx.lineWidth   = 0.5;
-    ctx.strokeRect(RX - 3, y - 3, 6, 6);
-  });
-
-  ctx.save();
-  ctx.translate(RX + 20, H * 0.5);
-  ctx.rotate(Math.PI / 2);
-  ctx.textAlign    = "center";
-  ctx.textBaseline = "middle";
-  ctx.font         = `400 ${Math.max(9, W * 0.011)}px ui-monospace, 'SF Mono', monospace`;
-  ctx.fillStyle    = "rgba(255,255,255,0.68)";
-  ctx.fillText("UJIMAAT · L'ART COMPLET DE LA PUISSANCE", 0, 0);
-  ctx.restore();
-
-  // ── Lignes horizontales "flanc" ──────────────────────────────────────
-  // Ces lignes traversent toute la largeur mais sont transparentes au centre
-  // (gradient qui s'efface au milieu) → elles ne couvrent pas la vidéo visuellement.
-  [0.22, 0.5, 0.78].forEach((t) => {
-    const y = TOP + (BOT - TOP) * t;
-    const g = ctx.createLinearGradient(0, 0, W, 0);
-    g.addColorStop(0,    "rgba(255,255,255,0)");
-    g.addColorStop(0.12, "rgba(255,255,255,0.4)");
-    g.addColorStop(0.38, "rgba(255,255,255,0)"); // disparaît avant le centre vidéo
-    g.addColorStop(0.62, "rgba(255,255,255,0)"); // reprend après le centre vidéo
-    g.addColorStop(0.88, "rgba(255,255,255,0.4)");
-    g.addColorStop(1,    "rgba(255,255,255,0)");
-    ctx.strokeStyle = g;
-    ctx.lineWidth   = 0.4;
-    ctx.globalAlpha = 1;
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(W, y);
-    ctx.stroke();
-  });
-
-  ctx.textAlign    = "left";
-  ctx.textBaseline = "alphabetic";
   return cv;
 }
 
@@ -637,11 +492,33 @@ function createSculptureCanvas(W, H) {
 //   6. CSS mix-blend-mode:screen fusionne cela avec le fond sombre
 //      → la sculpture apparaît comme une lumière sculptée dans l'obscurité
 
-function initTrailCanvas() {
+async function initTrailCanvas() {
   const canvas = document.getElementById("trailCanvas");
   if (!canvas) return;
 
-  // Contexte du canvas VISIBLE (fond transparent — clearRect chaque frame)
+  // ── Chargement des images ─────────────────────────────────────────────
+  // On charge les deux gravures avant de démarrer la boucle.
+  // new Image() + onload encapsulé dans une Promise → await parallèle.
+  function loadImg(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload  = () => resolve(img);
+      img.onerror = () => reject(new Error(`Impossible de charger : ${src}`));
+      img.src = src;
+    });
+  }
+
+  let imgSphinx, imgPyramid;
+  try {
+    [imgSphinx, imgPyramid] = await Promise.all([
+      loadImg("assets/_images/puissance-civilisationnelle/sphynx.jpg"),
+      loadImg("assets/_images/puissance-civilisationnelle/aztec-pyramid.jpg"),
+    ]);
+  } catch (e) {
+    console.warn("Trail canvas : images non chargées, effet désactivé.", e);
+    return;
+  }
+
   const ctx = canvas.getContext("2d");
 
   let W = canvas.offsetWidth;
@@ -653,38 +530,32 @@ function initTrailCanvas() {
   let mouseY     = -999;
   let isHovering = false;
 
-  // ── Canvas de données de traînée (hors-écran) ────────────────────────
-  // Ce canvas accumule "la lumière" laissée par le curseur.
-  // Il utilise l'ALPHA (transparence) comme signal, pas la luminosité.
-  // Transparent = éteint → destination-in laisse passer 0% de la sculpture
-  // Blanc opaque = allumé → destination-in laisse passer 100% de la sculpture
-  // IMPORTANT : un fond noir OPAQUE aurait alpha=1 partout = tout révélé en permanence.
+  // ── Canvas de traînée (hors-écran, fond NOIR) ─────────────────────────
+  // Pour l'opération multiply, on travaille en luminosité (noir=0, blanc=1),
+  // pas en alpha. Fond noir = "éteint", blanc peint au curseur = "allumé".
+  // multiply(sculpture_blanc, trail_blanc) = blanc → visible via screen.
+  // multiply(sculpture_blanc, trail_noir)  = noir  → invisible via screen.
   const trailDataCV  = document.createElement("canvas");
   trailDataCV.width  = W;
   trailDataCV.height = H;
   const trailCtx     = trailDataCV.getContext("2d");
-  // départ : tout transparent (clearRect = alpha=0 partout)
-  trailCtx.clearRect(0, 0, W, H);
+  trailCtx.fillStyle = "#000";
+  trailCtx.fillRect(0, 0, W, H);
 
-  // ── Canvas sculpturale (Brique 2) ────────────────────────────────────
-  // Contient le dessin géométrique blanc sur fond noir.
-  // Restera inchangé entre les frames (sauf au resize).
-  let sculptureCV = createSculptureCanvas(W, H);
+  // ── Canvas sculpturale avec les vraies images ─────────────────────────
+  let sculptureCV = createSculptureCanvas(W, H, imgSphinx, imgPyramid);
 
   // ── Canvas temporaire pour le compositing ────────────────────────────
-  // Recréé à la bonne taille si nécessaire.
-  // Sert uniquement comme étape intermédiaire dans draw().
   const tempCV  = document.createElement("canvas");
   tempCV.width  = W;
   tempCV.height = H;
   const tempCtx = tempCV.getContext("2d");
 
-  // ── Suivi de la souris sur la section teaser ─────────────────────────
+  // ── Suivi de la souris ───────────────────────────────────────────────
   const teaserSection = document.getElementById("teaser");
   if (teaserSection) {
     teaserSection.addEventListener("mousemove", (e) => {
       const rect = canvas.getBoundingClientRect();
-      // position de la souris RELATIVE au canvas (pas à la fenêtre)
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
       isHovering = true;
@@ -698,61 +569,60 @@ function initTrailCanvas() {
   window.addEventListener("resize", () => {
     W = canvas.offsetWidth;
     H = canvas.offsetHeight;
-    // Mettre à jour les dimensions de tous les canvas liés
     canvas.width       = W;
     canvas.height      = H;
     trailDataCV.width  = W;
     trailDataCV.height = H;
     tempCV.width       = W;
     tempCV.height      = H;
-    // Réinitialiser la traînée (reset de la lumière accumulée → tout transparent)
-    trailCtx.clearRect(0, 0, W, H);
-    // Recréer la sculpture à la nouvelle taille
-    sculptureCV = createSculptureCanvas(W, H);
+    trailCtx.fillStyle = "#000";
+    trailCtx.fillRect(0, 0, W, H);
+    // Les images sont déjà en mémoire — pas besoin de les recharger
+    sculptureCV = createSculptureCanvas(W, H, imgSphinx, imgPyramid);
   });
 
   // ── Boucle de rendu ──────────────────────────────────────────────────
   function draw() {
     requestAnimationFrame(draw);
 
-    // ── ÉTAPE 1 : mettre à jour le masque de lumière (traînée) ──────────
-    // On érode progressivement l'alpha (destination-out = efface de la transparence).
-    // Contrairement à fillRect noir (qui augmente l'opacité), destination-out
-    // RÉDUIT l'alpha de 5.5% par frame → ~35 frames pour disparaître complètement.
-    trailCtx.globalCompositeOperation = "destination-out";
-    trailCtx.fillStyle = "rgba(0, 0, 0, 0.055)"; // la valeur alpha = taux d'effacement
+    // ── ÉTAPE 1 : fade de la traînée ─────────────────────────────────────
+    // On recouvre d'un noir semi-transparent : les valeurs RGB se rapprochent
+    // de 0 (noir) à chaque frame. ~35 frames pour disparaître complètement.
+    trailCtx.fillStyle = "rgba(0,0,0,0.055)";
     trailCtx.fillRect(0, 0, W, H);
-    trailCtx.globalCompositeOperation = "source-over"; // reset obligatoire
 
-    // Si la souris survole la section, on peint un halo au curseur.
-    // Rayon 180px (plus large = plus visible), opacité centre 0.65.
+    // Halo blanc au curseur — rayon 200px, centre quasi pur blanc (alpha 1.0)
+    // pour que multiply donne le maximum de luminosité sur la sculpture.
     if (isHovering) {
-      const g = trailCtx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 180);
-      g.addColorStop(0,   "rgba(255, 255, 255, 0.65)"); // centre : presque opaque
-      g.addColorStop(0.4, "rgba(255, 255, 255, 0.18)"); // mi-chemin : fondu
-      g.addColorStop(1,   "rgba(255, 255, 255, 0)");    // bord : transparent
+      const g = trailCtx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 200);
+      g.addColorStop(0,    "rgba(255,255,255,1.0)"); // centre  : blanc pur
+      g.addColorStop(0.35, "rgba(255,255,255,0.4)"); // mi-zone : gris
+      g.addColorStop(1,    "rgba(255,255,255,0)");   // bord    : noir
       trailCtx.fillStyle = g;
-      trailCtx.fillRect(mouseX - 180, mouseY - 180, 360, 360);
+      trailCtx.fillRect(mouseX - 200, mouseY - 200, 400, 400);
     }
 
-    // ── ÉTAPE 2 : masquage sculpture × traînée ───────────────────────────
-    // On dessine la sculpture sur tempCV (fond noir = caché, blanc = visible)
+    // ── ÉTAPE 2 : multiply — sculpture × traînée ─────────────────────────
+    // On dessine la sculpture sur tempCV, puis on la multiplie par la traînée.
+    // multiply(A, B) = A*B/255 pixel par pixel.
+    // blanc(255)×blanc(255) = blanc(255) → glow via screen  ✓
+    // blanc(255)×noir(0)    = noir(0)    → invisible via screen ✓
+    // noir(0)×n'importe quoi = noir(0)   → invisible ✓
+    if (tempCV.width !== W || tempCV.height !== H) {
+      tempCV.width  = W;
+      tempCV.height = H;
+    }
     tempCtx.clearRect(0, 0, W, H);
     tempCtx.drawImage(sculptureCV, 0, 0, W, H);
-
-    // 'destination-in' : les pixels du DESTINATION (sculpture sur tempCV)
-    // sont conservés uniquement là où le SOURCE (trailDataCV) est lumineux.
-    // Concrètement : sculpture masquée = visible seulement dans le sillage.
-    tempCtx.globalCompositeOperation = "destination-in";
+    tempCtx.globalCompositeOperation = "multiply";
     tempCtx.drawImage(trailDataCV, 0, 0, W, H);
-    tempCtx.globalCompositeOperation = "source-over"; // reset obligatoire
+    tempCtx.globalCompositeOperation = "source-over"; // reset
 
-    // ── ÉTAPE 3 : affichage final sur le canvas visible ──────────────────
-    // clearRect → fond transparent (le HTML sous le canvas reste visible)
+    // ── ÉTAPE 3 : affichage final ────────────────────────────────────────
+    // Le canvas visible a un fond noir (tempCV a un fond noir après multiply).
+    // mix-blend-mode:screen en CSS : screen(noir, fond_sombre) ≈ noir = invisible.
+    // screen(blanc, fond_sombre) = lumineux. Le fond noir "disparaît" visuellement.
     ctx.clearRect(0, 0, W, H);
-    // On dessine le résultat masqué.
-    // Grâce à mix-blend-mode:screen (CSS), les zones lumineuses de tempCV
-    // s'additionnent avec le fond sombre → effet de lumière sculptée.
     ctx.drawImage(tempCV, 0, 0, W, H);
   }
 
